@@ -3,8 +3,8 @@ import axios from 'axios';
 import { Link ,useParams ,useNavigate} from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import useAuth from '../hooks/useAuth.jsx'
-import Header from '../Home/Header'
+import useAuth from '../../hooks/useAuth'
+import Header from '../HomePage/Header'
 
 function AddOffer() {
     const navigate = useNavigate();
