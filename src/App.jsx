@@ -23,6 +23,8 @@ import UsersList from './features/users/UsersList';
 import EditUser from './features/users/EditUser';
 import NewUserForm from './features/users/NewUserForm';
 import AccountStats from './ClientComponent/AdminStatistique/AcountStats';
+import StudentProfile from './ClientComponent/StudentComponent/StudentProfile';
+import Profile from './features/auth/profile';
 
 
 const Login = lazy(() => import('./features/auth/Login'));
@@ -87,6 +89,12 @@ function App() {
                     </Route>
                     <Route path="add-Student">
                       <Route index element={<AddStudent />} />
+                    </Route>
+                    <Route path="ProfileStudent/:id">
+                      <Route index element={<StudentProfile />} />
+                    </Route>
+                    <Route path="Profile">
+                      <Route index element={<Profile />} />
                     </Route>
 
 
