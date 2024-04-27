@@ -41,6 +41,7 @@ function HeaderClient() {
                             <a href="contact.html" className="nav-item nav-link">Contact</a>
                         </div>
                         <div className="d-flex m-3 me-0">
+
      
        {/* <a href="#" className="position-relative me-4 my-auto">
         <i className="fa fa-shopping-bag fa-2x"></i>
@@ -59,6 +60,7 @@ function HeaderClient() {
         <i className="fas fa-user fa-2x"></i>
       </a> */}
     </div>
+
                     </div>
                 </nav>
             </div>
