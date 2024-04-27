@@ -12,7 +12,7 @@ import React, { useState, Suspense, lazy } from 'react';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import Apply from './ClientComponent/OfferComponent/ApplyOffer'
 import Layout from './components/Layout'
-import AddOffer from './Offer/AddOffer'
+import AddOffer from './ClientComponent/OfferComponent/AddOffer'
 import PersistLogin from './features/auth/PersistLogin';
 import Prefetch from './features/auth/Prefetch';
 import RequireAuth from './features/auth/RequireAuth'
