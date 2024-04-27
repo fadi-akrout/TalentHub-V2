@@ -91,16 +91,15 @@ function HomeP  ()  {
         <>
         <Header/>
         <div className="container-fluid page-header py-5">
-            <h1 className="text-center text-white display-6">Shop</h1>
+            <h1 className="text-center text-white display-6">Home</h1>
             <ol className="breadcrumb justify-content-center mb-0">
-                <li className="breadcrumb-item"><a href="#">Home</a></li>
-                <li className="breadcrumb-item"><a href="#">Pages</a></li>
-                <li className="breadcrumb-item active text-white">Shop</li>
+                <li className="breadcrumb-item"/>
+                <li className="breadcrumb-item"/>
+                <li className="breadcrumb-item active text-white"></li>
             </ol>
         </div>
         <div className="container-fluid fruite py-5">
             <div className="container py-5">
-                <h1 className="mb-4">Fresh fruits shop</h1>
                 <div className="row g-4">
                     <div className="col-lg-12">
                         <div className="row g-4">
@@ -138,7 +137,7 @@ function HomeP  ()  {
                             </div>
                         </div>
                         <div className="row g-4">
-                            <div className="col-lg-3">
+                           {/*  <div className="col-lg-3">
                                 <div className="row g-4">
                                     <div className="col-lg-12">
                                         <div className="mb-3">
@@ -146,11 +145,11 @@ function HomeP  ()  {
                                             <ul className="list-unstyled fruite-categorie">
                                                 <li>
                                                     <div className="d-flex justify-content-between fruite-name">
-                                                        <a href="#" /* onClick={() => handleCategorySelection('Apples')} */><i className="fas fa-apple-alt me-2"></i>Apples</a>
+                                                        <a href="#" onClick={() => handleCategorySelection('Apples')} ><i className="fas fa-apple-alt me-2"></i>Apples</a>
                                                         <span>(3)</span>
                                                     </div>
                                                 </li>
-                                                {/* Add other categories */}
+                                             
                                             </ul>
                                         </div>
                                     </div>
@@ -164,31 +163,31 @@ function HomeP  ()  {
                                                 name="rangeInput"
                                                 min="0"
                                                 max="500"
-                                              /*   value={priceRange}
-                                                onChange={handlePriceRangeChange} */
+                                              value={priceRange}
+                                                onChange={handlePriceRangeChange} 
                                             />
-                                            <output id="amount" name="amount" min-value="0" max-value="500" htmlFor="rangeInput">{/* {priceRange} */}</output>
+                                            <output id="amount" name="amount" min-value="0" max-value="500" htmlFor="rangeInput">{priceRange} </output>
                                         </div>
                                     </div>
                                     <div className="col-lg-12">
                                         <div className="mb-3">
                                             <h4>Additional</h4>
                                             <div className="mb-2">
-                                                {/* Add radio inputs for additional options */}
+                                            
                                             </div>
                                         </div>
                                     </div>
                                     <div className="col-lg-12">
                                         <h4 className="mb-3">Featured products</h4>
                                         <div className="d-flex align-items-center justify-content-start">
-                                            {/* Add featured product items */}
+                                            
                                         </div>
                                         <div className="d-flex justify-content-center my-4">
                                             <a href="#" className="btn border border-secondary px-4 py-3 rounded-pill text-primary w-100">View More</a>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </div> */}
                             <div className="col-lg-9">
                                 <div className="row g-4 justify-content-center">
                                     {offers.map(offer => (

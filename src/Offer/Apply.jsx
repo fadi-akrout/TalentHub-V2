@@ -78,7 +78,7 @@ function Apply() {
         <li className="breadcrumb-item"><a href="#">Pages</a></li>
         <li className="breadcrumb-item active text-white">Shop</li>
     </ol>
-</div>
+    </div>
 
 <div className="container-fluid py-5 mt-5">
             <div className="container py-5">

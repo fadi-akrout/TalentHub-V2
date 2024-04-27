@@ -12,6 +12,7 @@ import React, { useState, Suspense, lazy } from 'react';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import Apply from './Offer/Apply'
 import Layout from './components/Layout'
+import AddOffer from './Offer/AddOffer'
 function App() {
   const [count, setCount] = useState(0)
 
@@ -31,6 +32,9 @@ function App() {
             
             <Route path="apply/:id">
                       <Route index element={<Apply />} />
+            </Route>
+            <Route path="addoffer">
+                      <Route index element={<AddOffer />} />
             </Route>
          </Route>
         </Routes>
