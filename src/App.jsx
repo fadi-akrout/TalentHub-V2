@@ -22,6 +22,7 @@ import DashLayout from './components/DashLayout';
 import UsersList from './features/users/UsersList';
 import EditUser from './features/users/EditUser';
 import NewUserForm from './features/users/NewUserForm';
+import AccountStats from './ClientComponent/AdminStatistique/AcountStats';
 
 
 const Login = lazy(() => import('./features/auth/Login'));
@@ -31,6 +32,7 @@ const VerifyEmail = lazy(() => import('./features/auth/verifyEmail'));
 import ForgotPassword from './features/auth/forgotPassword';
 import Evenements from './ClientComponent/EventComponent/Event'
 import AddEvent from './ClientComponent/EventComponent/AddEvent'
+import AddStudent from'./ClientComponent/StudentComponent/AddStudent';
 import { ROLES } from './config/roles'
 
 
@@ -71,6 +73,9 @@ function App() {
                         <Route path=":id" element={<EditUser />} />
                         <Route path="new" element={<NewUserForm />} />
                       </Route>
+                      <Route path="stats">
+                        <Route index element={<AccountStats />} />
+                      </Route>
 
                     </Route>
 
@@ -80,7 +85,9 @@ function App() {
                     <Route path="addoffer">
                       <Route index element={<AddOffer />} />
                     </Route>
-
+                    <Route path="add-Student">
+                      <Route index element={<AddStudent />} />
+                    </Route>
 
 
                   </Route>  {/* End Dash */}
