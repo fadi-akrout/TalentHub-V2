@@ -29,8 +29,8 @@ const Signup = lazy(() => import('./features/auth/Signup'));
 const ResetPassword = lazy(() => import('./features/auth/resetPassword'));
 const VerifyEmail = lazy(() => import('./features/auth/verifyEmail'));
 import ForgotPassword from './features/auth/forgotPassword';
-
-
+import Evenements from './ClientComponent/EventComponent/Event'
+import AddEvent from './ClientComponent/EventComponent/AddEvent'
 import { ROLES } from './config/roles'
 
 
@@ -39,12 +39,12 @@ function App() {
 
   return (
     <>
-   {/*  <Header/>
+      {/*  <Header/>
     <Home />
     <Footer/> */}
-    <Suspense fallback={<div>Loading...</div>}>
-         <Routes>
-           <Route path="/" element={<Layout />}>
+      <Suspense fallback={<div>Loading...</div>}>
+        <Routes>
+          <Route path="/" element={<Layout />}>
             {/* public routes */}
             <Route index element={<Home />} />
 
@@ -57,9 +57,9 @@ function App() {
             <Route path="/verify-email/:userId" element={<VerifyEmail />} />
 
 
-          {/* Protected Routes */}
-          <Route element={<PersistLogin />}>
-          <Route element={<RequireAuth allowedRoles={[...Object.values(ROLES)]} />}>
+            {/* Protected Routes */}
+            <Route element={<PersistLogin />}>
+              <Route element={<RequireAuth allowedRoles={[...Object.values(ROLES)]} />}>
                 <Route element={<Prefetch />}>
                   <Route path='dash' element={<DashLayout />}>
                     <Route path="*" element={<Navigate to="/dash" />} />
@@ -73,22 +73,29 @@ function App() {
                       </Route>
 
                     </Route>
-            
-            <Route path="apply/:id">
+
+                    <Route path="apply/:id">
                       <Route index element={<Apply />} />
-            </Route>
-            <Route path="addoffer">
+                    </Route>
+                    <Route path="addoffer">
                       <Route index element={<AddOffer />} />
-            </Route>
+                    </Route>
 
 
-            </Route>  {/* End Dash */}
+
+                  </Route>  {/* End Dash */}
                 </Route>
               </Route>
-         </Route>  {/* End Protected Routes */}
-         </Route>
+            </Route>  {/* End Protected Routes */}
+            <Route path="evenements">
+              <Route index element={<Evenements />} />
+            </Route>
+            <Route path="add-event">
+              <Route index element={<AddEvent />} />
+            </Route>
+          </Route>
         </Routes>
-        </Suspense>
+      </Suspense>
     </>
   )
 }
