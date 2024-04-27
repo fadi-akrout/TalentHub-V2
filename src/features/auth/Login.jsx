@@ -62,12 +62,12 @@ const Login = () => {
                     setErrMsg('User not found')
                 } else if (err.status === 401) {
                     setErrMsg('Wrong password')
-                }else if (err.status === 403) {
+                } else if (err.status === 403) {
                     setErrMsg('This account has been deactivated by the adminstrator')
-                }else if (err.status === 402) {
+                } else if (err.status === 402) {
                     setErrMsg('This account must be activated')
                 }
-                 else {
+                else {
                     setErrMsg(err.data?.message)
                 }
                 errRef.current.focus()
@@ -87,92 +87,113 @@ const Login = () => {
     const content = (
         <>
             <HeaderClient />
+            <div className="container-fluid page-header py-5">
+                <h1 className="text-center text-white display-6">Login</h1>
+                <ol className="breadcrumb justify-content-center mb-0">
+                    <li className="breadcrumb-item" />
+                    <li className="breadcrumb-item" />
+                    <li className="breadcrumb-item active text-white"></li>
+                </ol>
+            </div>
+            <div className="container-fluid py-5">
+                <div className="container py-5">
 
-            <section className="contact-us" id="contact">
-                <div className="container">
-                    <div className="row">
-                        <div className="col-lg-12 align-self-center">
-                            <div className="row">
-                                <div className="col-lg-12">
-                                    <br /><br />
-                                    <br /><br />
-                                    <br /><br />
-                                    <p  ref={errRef} className={errClass} aria-live="assertive">{errMsg}</p>
 
-                                    <form id="contact" onSubmit={handleSubmit}>
-                                        <div className="row">
-                                            <div className="col-lg-12">
-                                                <h2>Login</h2>
-                                            </div>
-                                            <fieldset>
-                                                <label htmlFor="email">Email:</label>
-                                                <input
-                                                    className={`form-control ${!validEmail && email.length > 0 ? 'is-invalid' : ''}`}
-                                                    type="email"
-                                                    id="email"
-                                                    ref={userRef}
-                                                    value={email}
-                                                    onChange={handleUserInput}
-                                                    autoComplete="on"
-                                                    required
-                                                    aria-invalid={!validEmail && email.length > 0 ? 'true' : 'false'}
-                                                />
-                                                {!validEmail && email.length > 0 && (
-                                                    <div className="invalid-feedback">Please enter a valid email address.</div>
-                                                )}
-                                            </fieldset>
-                                            <fieldset>
-                                                <label htmlFor="password">Password:</label>
-                                                <div className="password-input-group">
-                                                    <input
-                                                        className={`form-control ${!validPassword && password.length > 0 ? 'is-invalid' : ''}`}
-                                                        type={showPassword ? 'text' : 'password'} // Afficher le mot de passe en texte clair ou masqué
-                                                        id="password"
-                                                        onChange={handlePwdInput}
-                                                        value={password}
-                                                        required
-                                                        aria-invalid={!validPassword && password.length > 0 ? 'true' : 'false'}
-                                                    />
-                                                    <button type="button" className="password-toggle-btn" onClick={toggleShowPassword}>
-                                                        {showPassword ? 'Hide' : 'Show'}
-                                                    </button>
-                                                    {!validPassword && password.length > 0 && (
-                                                    <div className="invalid-feedback">
-                                                        Password must be at least 8 characters long and contain at least one uppercase letter, one lowercase letter, and one number.
-                                                    </div>
-                                                )}
-                                                </div>
-                                                
-                                            </fieldset>
-                                            <fieldset>
-                                                <label htmlFor="persist" className="form__persist">
-                                                    Trust This Device
-                                                    <input
-                                                        type="checkbox"
-                                                        className="form__checkbox"
-                                                        id="persist"
-                                                        onChange={handleToggle}
-                                                        checked={persist}
-                                                    />
-                                                </label>
-                                                <div className="forgot-password-link">
-        <Link to="/forgot-password">Forgot Password?</Link>
-    </div>
-                                            </fieldset>
-                                            <button className="form__submit-button" disabled={!validEmail || !validPassword}>
-                                                LogIn
-                                            </button>
+
+
+
+                    <p ref={errRef} className={errClass} aria-live="assertive" style={{ color: 'red' }}>{errMsg}</p>
+
+                    <form onSubmit={handleSubmit}>
+                        <div className="row g-5">
+                            <div className="col-md-12 col-lg-6 col-xl-7">
+
+                                <div className="row">
+                                    <div className="col-md-12 col-lg-6">
+                                        <div className="form-item w-100">
+                                            <label className="form-label my-3">Email:</label>
+                                            <input
+                                                className={`form-control ${!validEmail && email.length > 0 ? 'is-invalid' : ''}`}
+                                                type="email"
+                                                id="email"
+                                                ref={userRef}
+                                                value={email}
+                                                onChange={handleUserInput}
+                                                autoComplete="on"
+                                                required
+                                                aria-invalid={!validEmail && email.length > 0 ? 'true' : 'false'}
+                                            />
+                                            {!validEmail && email.length > 0 && (
+                                                <div className="invalid-feedback">Please enter a valid email address.</div>
+                                            )}
                                         </div>
-                                    </form>
+                                    </div>
+
                                 </div>
+                                <div className="row">
+                                    <div className="col-md-12 col-lg-6">
+                                        <div className="form-item w-100">
+                                            <label className="form-label my-3">Password:</label>
+                                            <input
+                                                className={`form-control ${!validPassword && password.length > 0 ? 'is-invalid' : ''}`}
+                                                type={showPassword ? 'text' : 'password'} // Afficher le mot de passe en texte clair ou masqué
+                                                id="password"
+                                                onChange={handlePwdInput}
+                                                value={password}
+                                                required
+                                                aria-invalid={!validPassword && password.length > 0 ? 'true' : 'false'}
+                                            />
+                                            <button type="button" className="btn border border-secondary rounded-pill" onClick={toggleShowPassword}>
+                                                {showPassword ? 'Hide' : 'Show'}
+                                            </button>
+                                            {!validPassword && password.length > 0 && (
+                                                <div className="invalid-feedback">
+                                                    Password must be at least 8 characters long and contain at least one uppercase letter, one lowercase letter, and one number.
+                                                </div>
+                                            )}
+
+                                        </div>
+                                    </div>
+
+                                </div>
+
+
+
+                                <fieldset>
+                                    <label htmlFor="persist" className="form__persist">
+                                        Trust This Device
+                                        <input
+                                            type="checkbox"
+                                            className="form__checkbox"
+                                            id="persist"
+                                            onChange={handleToggle}
+                                            checked={persist}
+                                        />
+                                    </label>
+                                    <div className="forgot-password-link">
+                                        <Link to="/forgot-password">Forgot Password?</Link>
+                                    </div>
+                                </fieldset>
                             </div>
                         </div>
-                    </div>
+                        <button className="btn border border-secondary rounded-pill px-4 py-2 mb-4 text-primary" style={{ marginTop: '20px' }} disabled={!validEmail || !validPassword}>
+                            <i className=" me-2 text-primary"></i>
+                            LogIn
+                        </button>
+
+
+
+                    </form>
+
+
+
+
+
+                    <section className="upcoming-meetings" id="meetings">
+                        <Footer />
+                    </section>
                 </div>
-            </section>
-            <section className="upcoming-meetings" id="meetings">
-                <Footer />
-            </section>
+            </div>
         </>
     )
 
