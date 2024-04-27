@@ -94,14 +94,14 @@ if(success) return (
 if(!(invalidUser=='')) return (
   <>
   <div>
-    <h1 style={{color:'white'}}>{invalidUser}Reset token Not valid</h1>
+    <h1 >{invalidUser}Reset token Not valid</h1>
   </div>
   </>
 );
 if(busy) return (
   <>
   <div>
-    <h1 style={{color:'white'}}>wait for a momment verifying reset token</h1>
+    <h1 >wait for a momment verifying reset token</h1>
   </div>
   </>
 );
@@ -120,10 +120,10 @@ if(busy) return (
         <div className="col-lg-12 align-self-center">
           <div className="row">
             <div className="col-lg-12">
-          
-                <p style={{color:'white'}} className={errClass} aria-live="assertive">{error}</p>
+                <p  className={errClass} aria-live="assertive">{error}</p>
 
                 <form id="contact" onSubmit={handleSubmit}>
+                  
                     <label htmlFor="password">Password:</label>
                     <input
                         className="form-control"
@@ -142,7 +142,7 @@ if(busy) return (
                     <label htmlFor="confirmPassword">Confirme password:</label>
                     <input
                         className="form-control"
-                        type="confirmPassword"
+                        type="password"
                         id="confirmPassword"
                         name="confirmPassword"
                         placeholder='*********'

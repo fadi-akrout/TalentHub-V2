@@ -3,9 +3,9 @@ import axios from 'axios';
 import { Link ,useParams ,useNavigate} from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import useAuth from '../hooks/useAuth.jsx'
-import Header from '../Home/Header'
-function Apply() {
+import useAuth from '../../hooks/useAuth'
+import Header from '../HomePage/Header.jsx'
+function ApplyOffer() {
     const navigate = useNavigate();
     const{id}=useParams()
     const [Title,SetTitle]=useState()
@@ -244,4 +244,4 @@ function Apply() {
   )
 }
 
-export default Apply
+export default ApplyOffer
