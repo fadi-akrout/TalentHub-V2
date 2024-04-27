@@ -1,10 +1,11 @@
 import React from 'react'
 import Header from './Header'
+import HeaderClient from '../Dashboard/HeaderClient'
 
 function Home() {
   return (
    <>
- <Header/>
+ <HeaderClient/>
 <div className="container-fluid py-5 mb-5 hero-header">
     <div className="container py-5">
         <div className="row g-5 align-items-center">
