@@ -27,6 +27,7 @@ const ForgotPassword = () => {
     <div>
     <HeaderClient />
   </div>
+  <br></br>
   <section className="contact-us" id="contact">
 <div className="container">
   <div className="row">
@@ -35,8 +36,8 @@ const ForgotPassword = () => {
         <div className="col-lg-12"></div>
     <div>
       <h2>Forgot Password</h2>
-      {message && <p style={{ color: 'white' }}>{message}</p>}
-      {error && <p style={{ color: 'white' }} >{error}</p>}
+      {message && <p >{message}</p>}
+      {error && <p  >{error}</p>}
       <form id="contact" onSubmit={handleSubmit}>
         <div>
           <label htmlFor="email">Email:</label>

@@ -1,6 +1,6 @@
 import React from 'react'
-import '../../public/css/style.css'
-function Header() {
+import '../../../public/css/style.css'
+function HeaderClient() {
   return (
     <>
    
@@ -75,4 +75,4 @@ function Header() {
   )
 }
 
-export default Header
+export default HeaderClient
