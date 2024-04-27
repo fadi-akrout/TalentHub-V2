@@ -12,6 +12,7 @@ import React, { useState, Suspense, lazy } from 'react';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import Apply from './ClientComponent/OfferComponent/ApplyOffer'
 import Layout from './components/Layout'
+import AddOffer from './Offer/AddOffer'
 import PersistLogin from './features/auth/PersistLogin';
 import Prefetch from './features/auth/Prefetch';
 import RequireAuth from './features/auth/RequireAuth'
@@ -75,6 +76,9 @@ function App() {
             
             <Route path="apply/:id">
                       <Route index element={<Apply />} />
+            </Route>
+            <Route path="addoffer">
+                      <Route index element={<AddOffer />} />
             </Route>
 
 
