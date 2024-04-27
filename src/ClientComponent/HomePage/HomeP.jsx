@@ -83,7 +83,7 @@ function HomeP  ()  {
       navigate(`./updateoffer/${offerId}`);
   }
   const navigateToApply = (offerId) => {
-    navigate(`/apply/${offerId}`);
+    navigate(`./apply/${offerId}`);
   }
   
 

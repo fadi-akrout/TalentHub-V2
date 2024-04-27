@@ -16,7 +16,6 @@ const NOTES_REGEX = /^\/dash\/notes(\/)?$/
 const USERS_REGEX = /^\/dash\/users(\/)?$/
 function Header() {
 
-
   const { username, email, isStudent, isAdmin, isRecruter } = useAuth()
   const [searchTerm, setSearchTerm] = useState('');
   const [suggestions, setSuggestions] = useState([]);
