@@ -5,7 +5,8 @@
   }
   
   .cardsss {
-    width: 250px;
+    height: 100px;
+    width: 230px;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -68,12 +69,15 @@
   text-align: center;
 }
 .homePage {
-  margin: 100px;
+  margin: 150px;
 }
 .barchart {
-  margin-top: 100px;
   border: #433939;
   justify-content: center;
+  background-color: rgb(176, 176, 179);
+  border-radius: 50px;
+  margin: 110px;
+  padding: 50px;
 }
 .logo{
   justify-content: center;

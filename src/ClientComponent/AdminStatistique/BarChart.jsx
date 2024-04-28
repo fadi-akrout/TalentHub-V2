@@ -24,18 +24,21 @@ export default function BarAnimation() {
   const modifiedSeries = filterData.datasets.map((s, index) => ({
     ...s,
     data: s.data.slice(0, itemNb),
-    label: index === 0 ? 'Student' : 'Offers' 
+    label: index === 0 ? 'Students' : 'Offers' 
   }));
 
   return (
+  <>
+    <h3 className='mt-4'>Student Compared With Offers</h3>
       <div className='barchart'>
-        <h3>Student Compared With Offers</h3>
         <BarChart
-          height={450}
+          height={350}
           series={modifiedSeries}
           skipAnimation={skipAnimation}
+  
         />
       </div>
+      </>
   );
 }
 
