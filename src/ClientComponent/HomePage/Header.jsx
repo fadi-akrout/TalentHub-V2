@@ -284,7 +284,7 @@ function Header() {
             </div>
             <div className="container px-0">
                 <nav className="navbar navbar-light bg-white navbar-expand-md">
-                    <a href="index.html" className="navbar-brand"><h1 className="text-primary display-6">TalentH</h1></a>
+                    <a href="index.html" className="navbar-brand"><h1 className="text-primary display-6">TalentHub</h1></a>
                     <button className="navbar-toggler py-2 px-3" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
                         <span className="fa fa-bars text-primary"></span>
                     </button>
