@@ -11,7 +11,7 @@ function AddOffer() {
     const [formData, setFormData] = useState({
       Title: '',
       Experience_required: '',
-      Domain: '',
+      Description: '',
       Mission: '',
       Salary: '',
       Speciality: '',
@@ -25,7 +25,7 @@ function AddOffer() {
         let newErrors = {};
         if (!formData.Title.trim()) newErrors.Title = "Title is required .";
         if (!formData.Experience_required.trim()) newErrors.Experience_required = "Experience required.";
-        if (!formData.Domain.trim()) newErrors.Domain = "Domain is required.";
+        if (!formData.Description.trim()) newErrors.Description = "Description is required.";
         if (!formData.Mission.trim()) newErrors.Mission = "Mission is required.";
         if (!formData.Salary) newErrors.Salary = "Salary is required.";
         if (!formData.Speciality.trim()) newErrors.Speciality = "Speciality is required.";
@@ -63,7 +63,7 @@ function AddOffer() {
       try {
         const response = await axios.post('http://localhost:3500/offers', formData);
         console.log(response.data);
-        navigate('/HomeP');
+        navigate('/dash');
       } catch (error) {
         console.error("Il y a eu un problème avec l'envoi du formulaire :", error);
       }
@@ -79,101 +79,82 @@ function AddOffer() {
                 <li className="breadcrumb-item active text-white"></li>
             </ol>
         </div>
-    <div className="container-fluid py-5">
-            <div className="container py-5">
-               
-                <form  onSubmit={handleSubmit}>
-                    <div className="row g-5">
-                        <div className="col-md-12 col-lg-6 col-xl-7">
+        <section className="contact-us" id="contact" style={{ marginTop: '100px' }}>
+                <div className="container">
+                    <div className="row">
+                        <div className="col-lg-12 align-self-center">
                             <div className="row">
-                                <div className="col-md-12 col-lg-6">
-                                    <div className="form-item w-100">
-                                        <label className="form-label my-3">Title
-                                        </label>
-                                        <input type="text" id="Title" className="form-control" name="Title" value={formData.Title} onChange={handleChange}  onBlur={handleBlur} required />
-                        {errors.Title && <div className="text-danger">{errors.Title}</div>}
-                                    </div>
-                                </div>
-                                <div className="col-md-12 col-lg-6">
-                                    <div className="form-item w-100">
-                                        <label className="form-label my-3">Experience required
-                                           
-                                        </label>
-                                        <input type="text" id="Experience_required" className="form-control" name="Experience_required" value={formData.Experience_required} onChange={handleChange}  onBlur={handleBlur} required />
-                                                  {errors.Experience_required && <div className="text-danger">{errors.Experience_required}</div>}
-
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="form-item">
-                                <label className="form-label my-3">Domain
-                                    
-                                </label>
-                                <input type="text" id="Domain" className="form-control" name="Domain" value={formData.Domain} onChange={handleChange} onBlur={handleBlur}  required />
-                                                  {errors.Domain && <div className="text-danger">{errors.Domain}</div>}
-
-                            </div>
-                            <div className="form-item">
-                                <label className="form-label my-3">Mission 
-                                    
-                                </label>
-                                <input type="text" id="Mission" className="form-control" name="Mission" value={formData.Mission} onChange={handleChange} onBlur={handleBlur}  required />
-                                                  {errors.Mission && <div className="text-danger">{errors.Mission}</div>}
-
-                            </div>
-                            <div className="form-item">
-                                <label className="form-label my-3">Salary
-                                    
-                                </label>
-                                <input type="number" id="Salary" className="form-control" name="Salary" value={formData.Salary} onChange={handleChange}  onBlur={handleBlur} required />
-                                                  {errors.Salary && <div className="text-danger">{errors.Salary}</div>}
-
-                            </div>
-                            <div className="form-item">
-                                <label className="form-label my-3">Speciality
-                                  
-                                </label>
-                                <input type="text" id="Speciality" className="form-control" name="Speciality" value={formData.Speciality} onChange={handleChange}  onBlur={handleBlur} required />
-                                                  {errors.Speciality && <div className="text-danger">{errors.Speciality}</div>}
-                            </div>
-                            <div className="form-item">
-                                <label className="form-label my-3">Job Type
-                                    
-                                </label>
-                                <select id="JobType" className="form-control" name="JobType" value={formData.JobType} onChange={handleChange}  onBlur={handleBlur} required>
+                                <div className="col-lg-12">
+                                    <form onSubmit={handleSubmit} id="contact" className="card p-4">
+                                        <div className="row">
+                                            <div className="col-lg-12">
+                                                <h2>Add offer</h2>
+                                            </div>
+                                        </div>
+                                        <div className="row">
+                                            <div className="col-md-6">
+                                                <div className="mb-3">
+                                                    <label htmlFor="Title" className="form-label my-3">Title:</label>
+                                                    <input type="text" id="Title" className="form-control" name="Title" value={formData.Title} onChange={handleChange} onBlur={handleBlur} required />
+                                                    {errors.Title && <div className="text-danger">{errors.Title}</div>}
+                                                </div>
+                                                <div className="mb-3">
+                                                    <label htmlFor="Experience_required" className="form-label my-3">Experience required:</label>
+                                                    <input type="text" id="Experience_required" className="form-control" name="Experience_required" value={formData.Experience_required} onChange={handleChange} onBlur={handleBlur} required />
+                                                    {errors.Experience_required && <div className="text-danger">{errors.Experience_required}</div>}
+                                                </div>
+                                                
+                                                <div className="mb-3">
+                                                    <label htmlFor="Mission" className="form-label my-3">Post:</label>
+                                                    <input type="text" id="Mission" className="form-control" name="Mission" value={formData.Mission} onChange={handleChange} onBlur={handleBlur} required />
+                                                    {errors.Mission && <div className="text-danger">{errors.Mission}</div>}
+                                                </div>
+                                                <div className="mb-3">
+                                                    <label htmlFor="Salary" className="form-label my-3">Salary:</label>
+                                                    <input type="number" id="Salary" className="form-control" name="Salary" value={formData.Salary} onChange={handleChange} onBlur={handleBlur} required />
+                                                    {errors.Salary && <div className="text-danger">{errors.Salary}</div>}
+                                                </div>
+                                            </div>
+                                            <div className="col-md-6">
+                                               
+                                                <div className="mb-3">
+                                                    <label htmlFor="Speciality" className="form-label my-3">Speciality:</label>
+                                                    <input type="text" id="Speciality" className="form-control" name="Speciality" value={formData.Speciality} onChange={handleChange} onBlur={handleBlur} required />
+                                                    {errors.Speciality && <div className="text-danger">{errors.Speciality}</div>}
+                                                </div>
+                                                <div className="mb-3">
+                                                    <label htmlFor="JobType" className="form-label my-3">Job Type:</label>
+                                                    <select id="JobType" className="form-control" name="JobType" value={formData.JobType} onChange={handleChange} onBlur={handleBlur} required>
+                                                        <option value="">Select Job Type</option>
+                                                        <option value="Full Time">Full Time</option>
+                                                        <option value="Part Time">Part Time</option>
+                                                        <option value="Contract">Contract</option>
+                                                        <option value="Summer internship">Summer internship</option>
+                                                        <option value="PFE">PFE</option>
+                                                    </select>
                                                     {errors.JobType && <div className="text-danger">{errors.JobType}</div>}
+                                                </div>
+                                                <div className="mb-3">
+                                                    <label htmlFor="JobCity" className="form-label my-3">Job City:</label>
+                                                    <input type="text" id="JobCity" className="form-control" name="JobCity" value={formData.JobCity} onChange={handleChange} onBlur={handleBlur} required />
+                                                    {errors.JobCity && <div className="text-danger">{errors.JobCity}</div>}
+                                                </div>
+                                            </div>
+                                            <div className="mb-3">
+                                                    <label htmlFor="Description" className="form-label my-3">Description:</label>
+                                                    <textarea name="Description" className="form-control" spellCheck="false" cols="30" rows="11" placeholder="Order Notes (Optional)" value={formData.Description} onChange={handleChange} onBlur={handleBlur} required></textarea>
+{errors.Description && <div className="text-danger">{errors.Description}</div>}
 
-                            <option value="">Select Job Type</option>
-                            <option value="Full Time">Full Time</option>
-                            <option value="Part Time">Part Time</option>
-                            <option value="Contract">Contract</option>
-                            <option value="Summer internship">Summer internship</option>
-                            <option value="PFE">PFE</option>
-                          </select>
+                                                </div>
+                                        </div>
+                                        <button type="submit" className="btn border border-secondary rounded-pill px-4 py-2 mb-4 text-primary">Add Offer</button>
+                                    </form>
+                                </div>
                             </div>
-                            <div className="form-item">
-                                <label className="form-label my-3">Job City
-                                     
-                                </label>
-                                <input type="text" id="JobCity" className="form-control" name="JobCity" value={formData.JobCity} onChange={handleChange} onBlur={handleBlur}  required />
-                                                  {errors.JobCity && <div className="text-danger">{errors.JobCity}</div>}
-                            </div>
-                           
-                           
-                          {/*   <div className="form-item">
-                                <textarea name="text" className="form-control" spellCheck="false" cols="30" rows="11" placeholder="Order Notes (Optional)"></textarea>
-                            </div> */}
                         </div>
                     </div>
-
-                    <button className="btn border border-secondary rounded-pill px-4 py-2 mb-4 text-primary"style={{ marginTop: '20px' }}>
-  <i className=" me-2 text-primary"></i>
-  Add Offer
-</button>                  </form>
-            </div>
-        </div>
-
-
+                </div>
+            </section>
     </>
   )
 }

@@ -10,7 +10,7 @@ function ApplyOffer() {
     const{id}=useParams()
     const [Title,SetTitle]=useState()
     const [Experience_required,SetExperience_required]=useState()
-    const [Domain,SetDomain]=useState()
+    const [Description,SetDescription]=useState()
     const [Mission,SetMission]=useState()
     const [Salary,SetSalary]=useState()
     const [Speciality,SetSpeciality]=useState()
@@ -26,7 +26,7 @@ function ApplyOffer() {
                       // setOffers(response.data);
                       SetTitle(response.data.Title);
                       SetExperience_required(response.data.Experience_required);
-                      SetDomain(response.data.Domain);
+                      SetDescription(response.data.Description);
                       SetMission(response.data.Mission);
                       SetSalary(response.data.Salary);
                       SetSpeciality(response.data.Speciality);
@@ -51,7 +51,7 @@ function ApplyOffer() {
                toast.success('Congratulations! Your application was successfully submitted!');
    
                console.log(result)
-              // navigate('/dash')
+              navigate('/dash')
              })
              .catch(err => {
                // Handle the error based on the error message
@@ -72,11 +72,11 @@ function ApplyOffer() {
     <>
     <Header/>
     <div className="container-fluid page-header py-5">
-    <h1 className="text-center text-white display-6">Shop</h1>
+    <h1 className="text-center text-white display-6">Offer details</h1>
     <ol className="breadcrumb justify-content-center mb-0">
-        <li className="breadcrumb-item"><a href="#">Home</a></li>
-        <li className="breadcrumb-item"><a href="#">Pages</a></li>
-        <li className="breadcrumb-item active text-white">Shop</li>
+        <li className="breadcrumb-item"></li>
+        <li className="breadcrumb-item"></li>
+        <li className="breadcrumb-item active text-white"></li>
     </ol>
     </div>
 
@@ -98,9 +98,7 @@ function ApplyOffer() {
                                 <h4 className="fw-bold mb-3">{Title}</h4>
                                 <p className="mb-3">Experience required: {Experience_required}</p>
                                
-                                <p className="mb-4">The generated Lorem Ipsum is therefore always free from repetition injected humour, or non-characteristic words etc.</p>
-                                <p className="mb-4">Susp endisse ultricies nisi vel quam suscipit. Sabertooth peacock flounder; chain pickerel hatchetfish, pencilfish snailfish</p>
-                              
+                                <p style={{ overflowWrap: 'break-word' }}>{Description}</p>
                                 <button className="btn border border-secondary rounded-pill px-4 py-2 mb-4 text-primary" onClick={Update}>
   <i className=" me-2 text-primary"></i>
   Apply Now
@@ -115,14 +113,12 @@ function ApplyOffer() {
                                 </nav>
                                 <div className="tab-content mb-5">
                                     <div className="tab-pane active" id="nav-about" role="tabpanel" aria-labelledby="nav-about-tab">
-                                        <p>The generated Lorem Ipsum is therefore always free from repetition injected humour, or non-characteristic words etc.
-                                            Susp endisse ultricies nisi vel quam suscipit </p>
-                                        <p>Sabertooth peacock flounder; chain pickerel hatchetfish, pencilfish snailfish filefish Antarctic
-                                            icefish goldeye aholehole trumpetfish pilot fish airbreathing catfish, electric ray sweeper.</p>
+                                    <p style={{ overflowWrap: 'break-word' }}>{Description}</p>
+                                       
                                         <div className="px-2">
                                             <div className="row g-4">
                                                 <div className="col-6">
-                                                    <div className="row bg-light align-items-center text-center justify-content-center py-2">
+                                                <div className="row text-center align-items-center justify-content-center py-2">
                                                         <div className="col-6">
                                                             <p className="mb-0">Experience required</p>
                                                         </div>
@@ -130,14 +126,7 @@ function ApplyOffer() {
                                                             <p className="mb-0">{Experience_required} </p>
                                                         </div>
                                                     </div>
-                                                    <div className="row text-center align-items-center justify-content-center py-2">
-                                                        <div className="col-6">
-                                                            <p className="mb-0">Domain</p>
-                                                        </div>
-                                                        <div className="col-6">
-                                                            <p className="mb-0">{Domain}</p>
-                                                        </div>
-                                                    </div>
+                                                   
                                                     <div className="row bg-light text-center align-items-center justify-content-center py-2">
                                                         <div className="col-6">
                                                             <p className="mb-0">Mission</p>

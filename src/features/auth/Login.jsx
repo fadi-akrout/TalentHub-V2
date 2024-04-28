@@ -143,7 +143,7 @@ const Login = () => {
                                                 required
                                                 aria-invalid={!validPassword && password.length > 0 ? 'true' : 'false'}
                                             />
-                                            <button type="button" className="btn border border-secondary rounded-pill" onClick={toggleShowPassword}>
+                                            <button type="button" className="btn border border-secondary rounded-pill" onClick={toggleShowPassword} style={{ marginTop: '20px' }}>
                                                 {showPassword ? 'Hide' : 'Show'}
                                             </button>
                                             {!validPassword && password.length > 0 && (
@@ -159,7 +159,7 @@ const Login = () => {
 
 
 
-                                <fieldset>
+                                <fieldset style={{ marginTop: '20px' }}>
                                     <label htmlFor="persist" className="form__persist">
                                         Trust This Device
                                         <input
