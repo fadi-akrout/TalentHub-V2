@@ -33,6 +33,14 @@ function Cv() {
     <div>
         <Header />
       </div>
+      <div className="container-fluid page-header py-5">
+        <h1 className="text-center text-white display-6">Upload Resume</h1>
+        <ol className="breadcrumb justify-content-center mb-0">
+          <li className="breadcrumb-item" />
+          <li className="breadcrumb-item" />
+          <li className="breadcrumb-item active text-white"></li>
+        </ol>
+      </div>
       <section className="contact-us" id="contact">
     <div className="container">
       <div className="row">
@@ -40,8 +48,8 @@ function Cv() {
           <div className="row">
             <div className="col-lg-12"></div>
     <div>
-      <h1 style={{ color: 'white' }}>Upload Resume</h1>
-      <input style={{ color: 'white' }} type="file" onChange={handleFileChange} accept=".pdf" />
+     
+      <input type="file" onChange={handleFileChange} accept=".pdf" />
       <button className="btn btn-danger" onClick={handleUpload}>Upload</button>
       {result && !result.error && (
         <div >
@@ -64,6 +72,7 @@ function Cv() {
             </div>
             </div>
             </section>
+            <br /><br /><br /><br />
             <section className="upcoming-meetings" id="meetings">
         <Footer />
       </section>
