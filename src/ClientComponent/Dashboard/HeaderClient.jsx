@@ -1,5 +1,15 @@
 import React from 'react'
 import '../../../public/css/style.css'
+import { Link } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {
+  faFileCirclePlus,
+  faFilePen,
+  faUserGear,
+  faSignInAlt ,
+  faRightFromBracket,
+  faUserPlus 
+} from "@fortawesome/free-solid-svg-icons"
 function HeaderClient() {
     return (
         <>
@@ -47,12 +57,18 @@ function HeaderClient() {
         <i className="fa fa-shopping-bag fa-2x"></i>
         <span className="position-absolute bg-secondary rounded-circle d-flex align-items-center justify-content-center text-dark px-1" style={{top: "-5px", left: "15px", height: "20px", minWidth: "20px"}}>3</span>
       </a>  */}
-      <a href="/login" className="my-auto mx-2">
-        <i className="fas fa-sign-in-alt fa-2x"></i>
-      </a>
-      <a href="/signup" className="my-auto mx-2">
-        <i className="fas fa-user-plus fa-2x"></i>
-      </a>
+     <Link to="/login" className="nav-link" >
+        <div>
+           <FontAwesomeIcon icon={faSignInAlt} className="fa-lg mb-1" />
+        </div>
+        Login
+      </Link>
+<Link to="/signup" className="nav-link" >
+        <div>
+           <FontAwesomeIcon icon={faUserPlus} className="fa-lg mb-1" />
+        </div>
+        signup
+      </Link>
      {/*  <a href="#" className="my-auto mx-2">
         <i className="fas fa-sign-out-alt fa-2x"></i>
       </a>

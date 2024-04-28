@@ -135,7 +135,7 @@ const Signup = () => {
 
 
 
-          <p style={{ color: 'green' }} ref={usernameRef} className={errClass} aria-live="assertive">{errMsg}</p>
+          <p style={{ color: 'red' }} ref={usernameRef} className={errClass} aria-live="assertive">{errMsg}</p>
           <form onSubmit={handleSubmit}>
             <div className="row g-5">
               <div className="col-md-12 col-lg-6 col-xl-7">

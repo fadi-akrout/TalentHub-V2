@@ -6,8 +6,14 @@ import {
   faFileCirclePlus,
   faFilePen,
   faUserGear,
-
-  faRightFromBracket
+  faSignInAlt ,
+  faRightFromBracket,
+  faUserPlus ,
+  faIdCard,
+  faEnvelope,
+  faBriefcase,
+  faFile,
+  faTag
 } from "@fortawesome/free-solid-svg-icons"
 import useAuth from '../../hooks/useAuth'
 import { useSendLogoutMutation } from '../../features/auth/authApiSlice';
@@ -16,7 +22,7 @@ const NOTES_REGEX = /^\/dash\/notes(\/)?$/
 const USERS_REGEX = /^\/dash\/users(\/)?$/
 function Header() {
 
-  const { username, email, isStudent, isAdmin, isRecruter } = useAuth()
+  const { username, email, isStudent, isAdmin, isRecruter,userId,isAlumni } = useAuth()
   const [searchTerm, setSearchTerm] = useState('');
   const [suggestions, setSuggestions] = useState([]);
   const navigate = useNavigate();
@@ -150,15 +156,14 @@ function Header() {
   if (isAdmin) {
     if (!USERS_REGEX.test(pathname) && pathname.includes('/dash')) {
       userButton = (
-
-        <li className="nav-item text-center mx-2 mx-lg-1">
-          <Link to="/dash/users" className="nav-link">
-            <div>
+        <Link to= "/dash/users" className="nav-link">
+       
+         <div>
               <FontAwesomeIcon icon={faUserGear} className="fa-lg mb-1" />
             </div>
-            Users
-          </Link>
-        </li>
+        Users
+        </Link>
+       
       )
     }
   }
@@ -168,14 +173,14 @@ function Header() {
    if (isAdmin) {
     if (!NOTES_REGEX.test(pathname) && pathname.includes('/dash')) {
       notesButton = (
-        <li className="nav-item text-center mx-2 mx-lg-1">
-          <Link to="/dash/cv" className="nav-link">
-            <div>
-              <FontAwesomeIcon icon={faFilePen} className="fa-lg mb-1" />
+        <Link to= "/dash/cv" className="nav-link">
+       
+        <div>
+              <FontAwesomeIcon icon={faFile} className="fa-lg mb-1" />
             </div>
-            CV Extracting
-          </Link>
-        </li>
+        CV
+        </Link>
+
       )
 
     }
@@ -184,28 +189,62 @@ function Header() {
    if (isAdmin) {
     if (!NOTES_REGEX.test(pathname) && pathname.includes('/dash')) {
       jobsButton = (
-        <li className="nav-item text-center mx-2 mx-lg-1">
-          <Link to="/dash/job" className="nav-link">
-            <div>
-              <FontAwesomeIcon icon={faFilePen} className="fa-lg mb-1" />
+        <Link to= "/dash/job" className="nav-link">
+     
+        <div>
+        <FontAwesomeIcon icon={faFilePen} className="fa-lg mb-1" />
             </div>
-            Job Extracting
-          </Link>
-        </li>
+            Job
+            </Link>
+    
+
       )
 
     }
   } 
 
+  let myOffersButton = null
+  if ( isStudent || isAlumni) {
+   if (!NOTES_REGEX.test(pathname) && pathname.includes('/dash')) {
+     myOffersButton = (
+
+         <Link to= {`/dash/myoffers/${userId}`} className="nav-link">
+           <div>
+             <FontAwesomeIcon icon={faTag} className="fa-lg mb-1" />
+           </div>
+           My offers
+         </Link>
+      
+     )
+
+   }
+ } 
+ let ownerOffersButton = null
+  if ( isRecruter || isAlumni || isAdmin) {
+   if (!NOTES_REGEX.test(pathname) && pathname.includes('/dash')) {
+     ownerOffersButton = (
+      
+         <Link to= {`/dash/ownedoffers/${userId}`} className="nav-link">
+           <div>
+             <FontAwesomeIcon icon={faTag} className="fa-lg mb-1" />
+           </div>
+           Offers
+         </Link>
+     
+     )
+
+   }
+ } 
+
   const logoutButton = (
-    <li className="nav-item text-center mx-2 mx-lg-1">
+  
       <Link to="/" className="nav-link" onClick={sendLogout}>
         <div>
           <FontAwesomeIcon icon={faRightFromBracket} className="fa-lg mb-1" />
         </div>
         Logout
       </Link>
-    </li>
+   
   )
 
   const errClass = isError ? "errmsg" : "offscreen"
@@ -219,6 +258,8 @@ function Header() {
         {newUserButton}
         {notesButton}
         {jobsButton}
+        {myOffersButton}
+        {ownerOffersButton}
         {userButton}
         {logoutButton}
       </>
@@ -243,16 +284,15 @@ function Header() {
             </div>
             <div className="container px-0">
                 <nav className="navbar navbar-light bg-white navbar-expand-md">
-                    <a href="index.html" className="navbar-brand"><h1 className="text-primary display-6">Fruitables</h1></a>
+                    <a href="index.html" className="navbar-brand"><h1 className="text-primary display-6">TalentH</h1></a>
                     <button className="navbar-toggler py-2 px-3" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
                         <span className="fa fa-bars text-primary"></span>
                     </button>
                     <div className="collapse navbar-collapse bg-white" id="navbarCollapse">
                         <div className="navbar-nav mx-auto">
-                            <a href="index.html" className="nav-item nav-link active">Home</a>
-                            <a href="shop.html" className="nav-item nav-link">Shop</a>
-                            <a href="shop-detail.html" className="nav-item nav-link">Shop Detail</a>
-                            {(!isAdmin) && <a href="shop-detail.html" className="nav-item nav-link"><Link to="/dash/Profile" className="dropdown-item">Profile</Link></a>}
+                            <a href="/dash" className="nav-item nav-link active">Home</a>
+                           {/*  <a href="shop.html" className="nav-item nav-link">Shop</a>
+                            <a href="shop-detail.html" className="nav-item nav-link">Shop Detail</a> */}
                             <div className="nav-item dropdown">
                                 <a href="#" className="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
                                 <div className="dropdown-menu m-0 bg-secondary rounded-0">
@@ -263,21 +303,44 @@ function Header() {
                                 </div>
                             </div>
                             {(isAdmin || isRecruter) && <li><Link to="/dash/stats" className="nav-link px-2 link-dark">Statistics</Link></li>}
+                            {(isAdmin || isRecruter) && <li><Link to="/dash/addoffer" className="nav-link px-2 link-dark"> Add Offer</Link></li>}
+                            {(isAdmin || isRecruter) && <li><Link to="/dash/add-event" className="nav-link px-2 link-dark"> Add Events</Link></li>}
+                            
+                            
                         </div>
                         <div className="d-flex m-3 me-0">
-                            <button className="btn-search btn border border-secondary btn-md-square rounded-circle bg-white me-4" data-bs-toggle="modal" data-bs-target="#searchModal">
+                           {/*  <button className="btn-search btn border border-secondary btn-md-square rounded-circle bg-white me-4" data-bs-toggle="modal" data-bs-target="#searchModal">
                                 <i className="fas fa-search text-primary"></i>
-                            </button>
+                            </button> */}
                             {/*  <a href="#" className="position-relative me-4 my-auto">
                                 <i className="fa fa-shopping-bag fa-2x"></i>
                                 <span className="position-absolute bg-secondary rounded-circle d-flex align-items-center justify-content-center text-dark px-1" style={{top: "-5px", left: "15px", height: "20px", minWidth: "20px"}}>3</span>
                             </a> */}
-                            <a href="/login" className="my-auto mx-2">
-                                <i className="fas fa-sign-in-alt fa-2x"></i>
-                            </a>
-                            <a href="/signup" className="my-auto mx-2">
-                                <i className="fas fa-user-plus fa-2x"></i>
-                            </a>
+
+{(userId==0) &&<Link to="/login" className="nav-link" >
+        <div>
+           <FontAwesomeIcon icon={faSignInAlt} className="fa-lg mb-1" />
+        </div>
+        Login
+      </Link>}
+      {(userId==0) &&<Link to="/signup" className="nav-link" >
+        <div>
+           <FontAwesomeIcon icon={faUserPlus} className="fa-lg mb-1" />
+        </div>
+        signup
+      </Link>}
+
+
+                         
+                          
+      <Link to="/dash/Profile" className="nav-link">
+                  <div>
+                    <FontAwesomeIcon icon={faIdCard} className="fa-lg" />
+                    
+                  </div>
+                   {username} 
+                </Link>
+                            {buttonContent}
                             {/*  <a href="#" className="my-auto mx-2">
                                 <i className="fas fa-sign-out-alt fa-2x"></i>
                             </a>

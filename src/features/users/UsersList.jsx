@@ -66,17 +66,28 @@ const UsersList = () => {
         content = (
             <>
                 <Header />
+                <div className="container-fluid page-header py-5">
+        <h1 className="text-center text-white display-6">Sign Up</h1>
+        <ol className="breadcrumb justify-content-center mb-0">
+          <li className="breadcrumb-item" />
+          <li className="breadcrumb-item" />
+          <li className="breadcrumb-item active text-white"></li>
+        </ol>
+      </div>
+      <div className="container-fluid py-5">
+        <div className="container py-5">
+
                 <section className="contact-us" id="contact">
                     <div className="container">
                         <div className="row">
                             <div className="col-lg-12 align-self-center">
                                 <div>
-                                    <select value={selectedRole} onChange={handleRoleChange}>
-                                        <option value="">Select Role</option>
-                                        {roleOptions.map(role => (
-                                            <option key={role} value={role}>{role}</option>
-                                        ))}
-                                    </select>
+                                <select value={selectedRole} onChange={handleRoleChange} style={{ backgroundColor: '#f2f2f2', padding: '10px', borderRadius: '5px', border: '1px solid #ccc' }}>
+  <option value="">Select Role</option>
+  {roleOptions.map(role => (
+    <option key={role} value={role}>{role}</option>
+  ))}
+</select>
                                 </div>
                                 <table className="table table--users">
                                     <thead>
@@ -96,9 +107,8 @@ const UsersList = () => {
                         </div>
                     </div>
                 </section>
-                <section className="upcoming-meetings" id="meetings">
-                    <Footer />
-                </section>
+                </div>
+                </div>
             </>
         );
     }
