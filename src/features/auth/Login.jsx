@@ -95,21 +95,19 @@ const Login = () => {
                     <li className="breadcrumb-item active text-white"></li>
                 </ol>
             </div>
+
+
             <div className="container-fluid py-5">
-                <div className="container py-5">
-
-
-
-
-
-                    <p ref={errRef} className={errClass} aria-live="assertive" style={{ color: 'red' }}>{errMsg}</p>
-
+            <div className="container py-5 border border-secondary rounded p-4">
+                <p ref={errRef} className={errClass} aria-live="assertive" style={{ color: 'red' }}>{errMsg}</p>
+                <div className="row">
+                <div className="col-md-8 col-lg-8">
                     <form onSubmit={handleSubmit}>
                         <div className="row g-5">
-                            <div className="col-md-12 col-lg-6 col-xl-7">
+                            <div className="col-md-12 col-lg-12 col-xl-7">
 
                                 <div className="row">
-                                    <div className="col-md-12 col-lg-6">
+                                    <div className="col-md-12 col-lg-12">
                                         <div className="form-item w-100">
                                             <label className="form-label my-3">Email:</label>
                                             <input
@@ -131,7 +129,7 @@ const Login = () => {
 
                                 </div>
                                 <div className="row">
-                                    <div className="col-md-12 col-lg-6">
+                                    <div className="col-md-12 col-lg-12">
                                         <div className="form-item w-100">
                                             <label className="form-label my-3">Password:</label>
                                             <input
@@ -176,7 +174,7 @@ const Login = () => {
                                 </fieldset>
                             </div>
                         </div>
-                        <button className="btn border border-secondary rounded-pill px-4 py-2 mb-4 text-primary" style={{ marginTop: '20px' }} disabled={!validEmail || !validPassword}>
+                        <button className="btn border border-secondary rounded-pill px-4 py-2 mb-4 text-primary" style={{ marginTop: '40px' }} disabled={!validEmail || !validPassword}>
                             <i className=" me-2 text-primary"></i>
                             LogIn
                         </button>
@@ -184,16 +182,16 @@ const Login = () => {
 
 
                     </form>
-
-
-
-
-
-                    <section className="upcoming-meetings" id="meetings">
-                        <Footer />
-                    </section>
                 </div>
+                <div className="col-md-4 col-lg-4 my-auto">
+                <img src="public/img/talenthublogo.png" alt="Description de l'image" className="img-fluid" />
             </div>
+        </div>
+        </div>
+
+              
+            </div>
+            <div>  <Footer /> </div>
         </>
     )
 

@@ -131,18 +131,18 @@ const Signup = () => {
 
 
       <div className="container-fluid py-5">
-        <div className="container py-5">
-
-
-
-          <p style={{ color: 'red' }} ref={usernameRef} className={errClass} aria-live="assertive">{errMsg}</p>
-          <form onSubmit={handleSubmit}>
+      <div className="container py-5 border border-secondary rounded p-4">
+  <p style={{ color: 'red' }} ref={usernameRef} className={errClass} aria-live="assertive">{errMsg}</p>
+         
+          <div className="row">
+                <div className="col-md-8 col-lg-8">
+                   <form onSubmit={handleSubmit}>
             <div className="row g-5">
               <div className="col-md-12 col-lg-6 col-xl-7">
 
 
                 <div className="row">
-                  <div className="col-md-12 col-lg-6">
+                  <div className="col-md-12 col-lg-12">
                     <div className="form-item w-100">
                       <label className="form-label my-3">Username:</label>
                       <input
@@ -162,7 +162,7 @@ const Signup = () => {
 
                 </div>
                 <div className="row">
-                  <div className="col-md-12 col-lg-6">
+                  <div className="col-md-12 col-lg-12">
                     <div className="form-item w-100">
                       <label className="form-label my-3">Email:</label>
                       <input
@@ -184,7 +184,7 @@ const Signup = () => {
 
                 </div>
                 <div className="row">
-                  <div className="col-md-12 col-lg-6">
+                  <div className="col-md-12 col-lg-12">
                     <div className="form-item w-100">
                       <label className="form-label my-3">Password:</label>
                       <input
@@ -207,7 +207,7 @@ const Signup = () => {
 
 
                 <div className="row">
-                  <div className="col-md-12 col-lg-6">
+                  <div className="col-md-12 col-lg-12">
                     <div className="form-item w-100">
                       <fieldset>
                         <label htmlFor="JobType" className="form-label">Role:</label>
@@ -223,17 +223,25 @@ const Signup = () => {
               </div>
             </div>
 
-            <button className="btn border border-secondary rounded-pill px-4 py-2 mb-4 text-primary" style={{ marginTop: '20px' }} >
+            <button className="btn border border-secondary rounded-pill px-4 py-2 mb-4 text-primary" style={{ marginTop: '40px' }} >
               <i className=" me-2 text-primary"></i>
               Sign Up</button>
           </form>
 
 
-          <section className="upcoming-meetings" id="meetings">
-            <Footer />
-          </section>
+         
         </div>
+        <div className="col-md-4 col-lg-4 my-auto">
+                <img src="public/img/talenthublogo.png" alt="Description de l'image" className="img-fluid" />
+            </div>
       </div>
+      </div>
+      </div>
+
+
+   
+            <Footer />
+         
     </>
   )
 
