@@ -29,7 +29,7 @@ const User = ({ userId }) => {
                         className="icon-button table__button"
                         onClick={handleEdit}
                     >
-                        <FontAwesomeIcon icon={faPenToSquare} />
+                        <FontAwesomeIcon icon={faPenToSquare}style={{ color: 'red' }} />
                     </button>
                 </td>
             </tr>

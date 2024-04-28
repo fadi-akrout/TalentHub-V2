@@ -18,7 +18,7 @@ const VerifyEmail = () => {
         otp: otp
       });
       console.log(response.data);
-      //  navigate("/login")
+        navigate("/login")
       // Handle success, show message or redirect
     } catch (error) {
       console.error('Error occurred:', error);

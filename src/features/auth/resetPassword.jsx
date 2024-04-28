@@ -112,7 +112,14 @@ if(busy) return (
      
 
 <HeaderClient />
-
+<div className="container-fluid page-header py-5">
+                <h1 className="text-center text-white display-6">Reset Password</h1>
+                <ol className="breadcrumb justify-content-center mb-0">
+                    <li className="breadcrumb-item" />
+                    <li className="breadcrumb-item" />
+                    <li className="breadcrumb-item active text-white"></li>
+                </ol>
+            </div>
      
         <section className="contact-us" id="contact">
     <div className="container">
@@ -123,7 +130,8 @@ if(busy) return (
                 <p  className={errClass} aria-live="assertive">{error}</p>
 
                 <form id="contact" onSubmit={handleSubmit}>
-                  
+                <div className="row g-5">
+                            <div className="col-md-12 col-lg-6 col-xl-7">
                     <label htmlFor="password">Password:</label>
                     <input
                         className="form-control"
@@ -151,7 +159,9 @@ if(busy) return (
                         value={password}
                         required */
                     />
-                    <button className="form__submit-button">Reset Password</button>
+                    </div>
+          </div>
+                    <button className="btn border border-secondary rounded-pill px-4 py-2 mb-4 text-primary" style={{ marginTop: '20px' }}>Reset Password</button>
 
                   
                 </form>

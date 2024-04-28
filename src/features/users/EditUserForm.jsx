@@ -117,17 +117,27 @@ const EditUserForm = ({ user }) => {
         <div>
             <Header />
           </div>
-          <section className="contact-us" id="contact">
-        <div className="container">
-          <div className="row">
-            <div className="col-lg-12 align-self-center">
+          <div className="container-fluid page-header py-5">
+        <h1 className="text-center text-white display-6">Edit User</h1>
+        <ol className="breadcrumb justify-content-center mb-0">
+          <li className="breadcrumb-item" />
+          <li className="breadcrumb-item" />
+          <li className="breadcrumb-item active text-white"></li>
+        </ol>
+      </div>
+
+      <div className="container-fluid py-5">
+        <div className="container py-5">
+        <div className="row g-5">
+              <div className="col-md-12 col-lg-6 col-xl-7">
+         
               <div className="row">
                 <div className="col-lg-12"></div>
             <p className={errClass}>{errContent}</p>
 
             <form className="form" onSubmit={e => e.preventDefault()}>
                 <div className="form__title-row">
-                    <h2>Edit User</h2>
+                    
                     <div className="form__action-buttons">
                         <button
                             className="icon-button"
@@ -135,21 +145,21 @@ const EditUserForm = ({ user }) => {
                             onClick={onSaveUserClicked}
                             disabled={!canSave}
                         >
-                            <FontAwesomeIcon icon={faSave} />
+                            <FontAwesomeIcon icon={faSave} style={{ color: 'red' }} />
                         </button>
                         <button
                             className="icon-button"
                             title="Delete"
                             onClick={onDeleteUserClicked}
                         >
-                            <FontAwesomeIcon icon={faTrashCan} />
+                            <FontAwesomeIcon icon={faTrashCan} style={{ color: 'red' }} />
                         </button>
                     </div>
                 </div>
-                <label className="form__label" htmlFor="username">
+                <label className="form-label my-3" htmlFor="username">
                     Username: <span className="nowrap">[3-20 letters]</span></label>
                 <input
-                    className={`form__input ${validUserClass}`}
+                    className={`form-control ${validUserClass}`}
                     id="username"
                     name="username"
                     type="text"
@@ -157,11 +167,11 @@ const EditUserForm = ({ user }) => {
                     value={username}
                     onChange={onUsernameChanged}
                 />
-                <label className="form__label" htmlFor="email">
+                <label className="form-label my-3" htmlFor="email">
                     Email: <span className="nowrap">[valid email address]</span>
                   </label>
                   <input
-                    className={`form__input ${validEmailClass}`}
+                    className={`form-control ${validEmailClass}`}
                     id="email"
                     name="email"
                     type="email"
@@ -170,10 +180,10 @@ const EditUserForm = ({ user }) => {
                     onChange={onEmailChanged}
                   />
 
-                <label className="form__label" htmlFor="password">
+                <label className="form-label my-3" htmlFor="password">
                     Password: <span className="nowrap">[empty = no change]</span> <span className="nowrap">[4-12 chars incl. !@#$%]</span></label>
                 <input
-                    className={`form__input ${validPwdClass}`}
+                    className={`form-control ${validPwdClass}`}
                     id="password"
                     name="password"
                     type="password"
@@ -181,41 +191,43 @@ const EditUserForm = ({ user }) => {
                     onChange={onPasswordChanged}
                 />
 
-                <label className="form__label form__checkbox-container" htmlFor="user-active">
-                    ACTIVE:
-                    <input
-                        className="form__checkbox"
-                        id="user-active"
-                        name="user-active"
-                        type="checkbox"
-                        checked={active}
-                        onChange={onActiveChanged}
-                    />
-                </label>
+              <label className="form-label my-3 form__checkbox-container" htmlFor="user-active" style={{ display: 'flex', alignItems: 'center' }}>
+  <span style={{ marginRight: '10px' }}>ACTIVE:</span>
+  <input
+    className="form__checkbox"
+    id="user-active"
+    name="user-active"
+    type="checkbox"
+    checked={active}
+    onChange={onActiveChanged}
+    style={{ marginLeft: '5px' }}
+  />
+</label>
 
-                <label className="form__label" htmlFor="roles">
-                    ASSIGNED ROLES:</label>
-                <select
-                    id="roles"
-                    name="roles"
-                    className={`form__select ${validRolesClass}`}
-                    multiple={true}
-                    size="5"
-                    value={roles}
-                    onChange={onRolesChanged}
-                >
-                    {options}
-                </select>
+<label className="form-label my-3" htmlFor="roles" style={{ fontWeight: 'bold' }}>
+  ASSIGNED ROLES:
+</label>
+<select
+  id="roles"
+  name="roles"
+  className={`form__select ${validRolesClass}`}
+  multiple={true}
+  size="5"
+  value={roles}
+  onChange={onRolesChanged}
+  style={{ width: '100%', borderRadius: '10px', border: '1px solid #ccc', padding: '5px' }}
+>
+  {options}
+</select>
 
             </form>
             </div>
+        
+
             </div>
             </div>
             </div>
-            </section>
-            <section className="upcoming-meetings" id="meetings">
-        <Footer />
-      </section>
+            </div>
         </>
     )
 

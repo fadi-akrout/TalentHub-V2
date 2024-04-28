@@ -27,21 +27,32 @@ const ForgotPassword = () => {
     <div>
     <HeaderClient />
   </div>
-  <br></br>
-  <section className="contact-us" id="contact">
-<div className="container">
-  <div className="row">
-    <div className="col-lg-12 align-self-center">
-      <div className="row">
-        <div className="col-lg-12"></div>
+  <div className="container-fluid page-header py-5">
+                <h1 className="text-center text-white display-6">Forget Password</h1>
+                <ol className="breadcrumb justify-content-center mb-0">
+                    <li className="breadcrumb-item" />
+                    <li className="breadcrumb-item" />
+                    <li className="breadcrumb-item active text-white"></li>
+                </ol>
+            </div>
+
+            <div className="container-fluid py-5">
+                <div className="container py-5">
+
+  
+     
+        
     <div>
-      <h2>Forgot Password</h2>
+    
       {message && <p >{message}</p>}
       {error && <p  >{error}</p>}
       <form id="contact" onSubmit={handleSubmit}>
+      <div className="row g-5">
+      <div className="col-md-12 col-lg-6 col-xl-7">
         <div>
-          <label htmlFor="email">Email:</label>
+          <label className="form-label my-3">Email:</label>
           <input
+          className='form-control'
             type="email"
             id="email"
             value={email}
@@ -49,17 +60,15 @@ const ForgotPassword = () => {
             required
           />
         </div>
-        <button type="submit">Submit</button>
+        </div>
+        </div>
+        <button className="btn border border-secondary rounded-pill px-4 py-2 mb-4 text-primary" style={{ marginTop: '20px' }} type="submit">Submit</button>
       </form>
     </div>
-    </div>
+    
+           
             </div>
             </div>
-            </div>
-            </section>
-            <section className="upcoming-meetings" id="meetings">
-        <Footer />
-      </section>
             </>
   );
 };
