@@ -1,5 +1,5 @@
 import React from 'react'
-import Header from './Header'
+import Footer from '../Dashboard/Footer'
 import HeaderClient from '../Dashboard/HeaderClient'
 
 function Home() {
@@ -138,11 +138,7 @@ function Home() {
         </div>
     </div>
 </div>
-{/* <!-- Featurs End -->
-
-
-<!-- Vesitable Shop Start--> */}
-
+<Footer/>
    </>
   )
 }

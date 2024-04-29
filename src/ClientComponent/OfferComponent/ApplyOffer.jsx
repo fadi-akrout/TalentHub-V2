@@ -16,6 +16,8 @@ function ApplyOffer() {
     const [Speciality,SetSpeciality]=useState()
     const [JobType,SetJobType]=useState()
     const [JobCity,SetJobCity]=useState()
+    const [profileImage,SetprofileImage]=useState()
+
     const { userId } = useAuth()
    
    
@@ -32,6 +34,8 @@ function ApplyOffer() {
                       SetSpeciality(response.data.Speciality);
                       SetJobType(response.data.JobType);
                       SetJobCity(response.data.JobCity);
+                      SetprofileImage(response.data.profileImage);
+
    
    
                    })
@@ -88,8 +92,8 @@ function ApplyOffer() {
                             <div className="col-lg-6">
                                 <div className="border rounded">
                                 <div className="fruite-img">
-                                                    {/* <img src={offer.image} className="img-fluid w-100 rounded-top" alt=""/> */}
-                                                    <img src="img/featur-1.jpg" className="img-fluid w-100 rounded-top" alt=""/>
+                                                     <img src={profileImage} className="img-fluid w-100 rounded-top" alt=""/> 
+
                                                 </div>
                                     
                                 </div>

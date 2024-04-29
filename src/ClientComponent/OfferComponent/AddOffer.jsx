@@ -17,6 +17,8 @@ function AddOffer() {
       Speciality: '',
       JobType: '',
       JobCity: '',
+      profileImage: null,
+
   
     });
     const [errors, setErrors] = useState({});
@@ -31,7 +33,8 @@ function AddOffer() {
         if (!formData.Speciality.trim()) newErrors.Speciality = "Speciality is required.";
         if (!formData.JobType.trim()) newErrors.JobType = "Job Type is required.";
         if (!formData.JobCity.trim()) newErrors.JobCity = "Job City is required.";
-  
+        if (!formData.profileImage) newErrors.profileImage = "Profile image is required.";
+
   
         setErrors(newErrors); // Use setErrors to update the state
         return Object.keys(newErrors).length === 0;
@@ -48,6 +51,35 @@ function AddOffer() {
         [name]: value
       }));
     };
+    const handleImageChange = (e) => {
+      const file = e.target.files[0];
+      if (file) {
+          // Perform validation checks here if needed, for example:
+          // Check the file size
+          if (file.size > 1024 * 1024 * 5) { // for 5MB
+              setErrors(prevErrors => ({ ...prevErrors, profileImage: 'File size should not exceed 5MB.' }));
+              return;
+          }
+
+          // Check the file type
+          if (!file.type.match('image.*')) {
+              setErrors(prevErrors => ({ ...prevErrors, profileImage: 'Please select a valid image.' }));
+              return;
+          }
+
+          // If no errors, clear any existing error message for image
+          setErrors(prevErrors => ({ ...prevErrors, profileImage: '' }));
+
+          const reader = new FileReader();
+          reader.onload = (upload) => {
+              setFormData(prev => ({ ...prev, profileImage: upload.target.result }));
+          };
+          reader.readAsDataURL(file);
+      } else {
+          // If no file is selected, set an error
+          setErrors(prevErrors => ({ ...prevErrors, profileImage: 'Please select an image.' }));
+      }
+  };
   
     const handleSubmit = async (e) => {
       e.preventDefault();
@@ -139,7 +171,12 @@ function AddOffer() {
                                                     <input type="text" id="JobCity" className="form-control" name="JobCity" value={formData.JobCity} onChange={handleChange} onBlur={handleBlur} required />
                                                     {errors.JobCity && <div className="text-danger">{errors.JobCity}</div>}
                                                 </div>
-                                            </div>
+                                                <div className="mb-3">
+                                                         <label htmlFor="profileImage" className="form-label" style={{marginTop:"25px"}}>Image:</label>
+                                                         <input type="file" accept=".png, .jpg, .jpeg" id="profileImage" className="form-control" name="profileImage" onChange={handleImageChange} onBlur={handleBlur} />
+                                                         {errors.profileImage && <div className="text-danger">{errors.profileImage}</div>}
+                                                     </div>  
+                                            </div> 
                                             <div className="mb-3">
                                                     <label htmlFor="Description" className="form-label my-3">Description:</label>
                                                     <textarea name="Description" className="form-control" spellCheck="false" cols="30" rows="11" placeholder="Order Notes (Optional)" value={formData.Description} onChange={handleChange} onBlur={handleBlur} required></textarea>
