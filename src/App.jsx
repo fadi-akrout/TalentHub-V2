@@ -34,7 +34,7 @@ const VerifyEmail = lazy(() => import('./features/auth/verifyEmail'));
 import ForgotPassword from './features/auth/forgotPassword';
 import Evenements from './ClientComponent/EventComponent/Event'
 import AddEvent from './ClientComponent/EventComponent/AddEvent'
-import AddStudent from'./ClientComponent/StudentComponent/AddStudent';
+import AddStudent from './ClientComponent/StudentComponent/AddStudent';
 import { ROLES } from './config/roles'
 import UpdateOffer from './ClientComponent/OfferComponent/UpdateOffer'
 const Myoffers = lazy(() => import('./ClientComponent/OfferComponent/ownedOfferList'));
@@ -95,22 +95,22 @@ function App() {
                       <Route index element={<UpdateOffer />} />
                     </Route>
                     <Route path="myoffers/:id">
-                        <Route index element={<Myoffers />} />
+                      <Route index element={<Myoffers />} />
                     </Route>
                     <Route path="ownedoffers/:id">
-                        <Route index element={<Ownedoffers />} />
-                      </Route>   
+                      <Route index element={<Ownedoffers />} />
+                    </Route>
                     <Route path="ownedofferUserList/:id">
-                        <Route index element={<OwnedofferUserList />} />
-                      </Route>
+                      <Route index element={<OwnedofferUserList />} />
+                    </Route>
                     <Route path="add-Student">
                       <Route index element={<AddStudent />} />
                     </Route>
 
                     <Route path="Alumnis">
-                        <Route index element={<Alumni />} />
-                      </Route>
-                      <Route path="staff">
+                      <Route index element={<Alumni />} />
+                    </Route>
+                    <Route path="staff">
                       <Route index element={<AddStaff />} />
                     </Route>
                     <Route path="ProfileStudent/:id">
@@ -119,18 +119,23 @@ function App() {
                     <Route path="Profile">
                       <Route index element={<Profile />} />
                     </Route>
+                    <Route path="evenements">
+                      <Route index element={<Evenements />} />
+                    </Route>
+
+                    <Route element={<RequireAuth allowedRoles={[ROLES.Admin, ROLES.Recruter, ROLES.Teacher]} />}>
+                      <Route path="add-event">
+                        <Route index element={<AddEvent />} />
+                      </Route>
+                    </Route>
 
 
                   </Route>  {/* End Dash */}
                 </Route>
               </Route>
             </Route>  {/* End Protected Routes */}
-            <Route path="evenements">
-              <Route index element={<Evenements />} />
-            </Route>
-            <Route path="add-event">
-              <Route index element={<AddEvent />} />
-            </Route>
+
+
           </Route>
         </Routes>
       </Suspense>
