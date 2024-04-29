@@ -144,6 +144,7 @@ function App() {
             </Route>  {/* End Protected Routes */}
 
 
+</Route>
           </Route>
         </Routes>
       </Suspense>
