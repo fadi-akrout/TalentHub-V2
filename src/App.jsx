@@ -106,7 +106,7 @@ function App() {
                     <Route path="ownedofferUserList/:id">
                         <Route index element={<OwnedofferUserList />} />
                       </Route>
-                    <Route path="add-Student">
+                    <Route path="AddStudent">
                       <Route index element={<AddStudent />} />
                     </Route>
 
