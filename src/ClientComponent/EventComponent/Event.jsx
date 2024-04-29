@@ -26,7 +26,7 @@ function Evenements() {
             <div className="container-fluid fruite py-5">
                 <div className="container py-5">
                     <div className="tab-class text-center">
-                        <h1 className="text-center mb-4">Events</h1>
+                        <h1 className="text-center mb-4">Welcome to our Events!</h1>
                         <div className="row g-4">
                             {evenements.map((evenement) => (
                                 <Evenement
@@ -40,11 +40,11 @@ function Evenements() {
                                 />
                             ))}
                         </div>
-                        {(isAdmin || isRecruter || isTeacher) && (
+                        {/*  {(isAdmin || isRecruter || isTeacher) && (
                             <div className="text-center mt-4">
                                 <Link to="/dash/add-event" className="btn btn-danger">Add Event</Link>
                             </div>
-                        )}
+                        )} */}
                     </div>
                 </div>
             </div>
@@ -85,16 +85,17 @@ function Evenement({ evenement, setEvenements, isAdmin, isTeacher, isRecruter, u
 
     const handleCancelParticipation = async () => {
         try {
-            const response = await axios.post(`http://localhost:3500/evenements/${evenement._id}/cancelParticipation`, { userId });
+            const response = await axios.post(`http://localhost:3500/evenements/${evenement._id}/annulerParticipation`, { userId });
             if (response.status === 200) {
-                alert('Your participation cancellation has been recorded');
+                alert('Votre annulation de participation a été enregistrée');
                 setIsParticipating(false);
+                // Mise à jour de l'état si nécessaire...
             } else {
-                alert('Error during participation cancellation: Unsuccessful response status');
+                alert('Erreur lors de l\'annulation de la participation: Statut de réponse non réussi');
             }
         } catch (error) {
-            console.error('Error during participation cancellation:', error);
-            alert(`Error during participation cancellation: ${error.message}`);
+            console.error('Erreur lors de l\'annulation de la participation:', error.response || error.message);
+            alert(`Erreur lors de l'annulation de la participation: ${error.response?.data?.message || error.message}`);
         }
     };
 
