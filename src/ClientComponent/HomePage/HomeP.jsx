@@ -194,8 +194,8 @@ function HomeP  ()  {
                                         <div key={offer.id} className="col-md-6 col-lg-6 col-xl-4">
                                             <div className="rounded position-relative fruite-item">
                                                 <div className="fruite-img">
-                                                    {/* <img src={offer.image} className="img-fluid w-100 rounded-top" alt=""/> */}
-                                                    <img src="img/featur-1.jpg" className="img-fluid w-100 rounded-top" alt=""/>
+                                                    <img src={offer.profileImage} className="img-fluid w-100 rounded-top" alt=""/> 
+                                                    
                                                 </div>
                                                 <div className="p-4 border border-secondary border-top-0 rounded-bottom">
                                                     <h4>{offer.Title}</h4>
@@ -204,7 +204,7 @@ function HomeP  ()  {
                                                         <p className="text-dark fs-5 fw-bold mb-0">{offer.JobCity}</p>
                                                         
                                                         <button className="btn border border-secondary rounded-pill px-3 text-primary"onClick={(e) => navigateToApply(offer._id)} >
-                                                            <i className="me-2 text-primary"></i> Apply
+                                                            <i className="me-2 text-primary"></i> Details
                                                           </button>
                                                     </div>
                                                 </div>
