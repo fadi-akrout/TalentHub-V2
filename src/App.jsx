@@ -88,9 +88,7 @@ function App() {
 
                     </Route>
 
-                    <Route path="apply/:id">
-                      <Route index element={<Apply />} />
-                    </Route>
+                  
                     <Route element={<RequireAuth allowedRoles={[ROLES.Admin, ROLES.Recruter]} />}>
                       <Route path="addoffer">
                         <Route index element={<AddOffer />} />
@@ -115,7 +113,9 @@ function App() {
                       </Route>
                     </Route>
                     
-
+                    <Route path="apply/:id">
+                      <Route index element={<Apply />} />
+                    </Route>
 
                     <Route path="AddStudent">
                       <Route index element={<AddStudent />} />
