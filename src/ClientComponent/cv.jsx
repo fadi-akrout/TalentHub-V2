@@ -48,7 +48,7 @@ function Cv() {
           <div className="row">
             <div className="col-lg-12"></div>
     <div>
-     
+    <h6 style={{ color: 'black' }}>please upload your resume to proceed with your application</h6>
       <input type="file" onChange={handleFileChange} accept=".pdf" />
       <button className="btn btn-danger" onClick={handleUpload}>Upload</button>
       {result && !result.error && (

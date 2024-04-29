@@ -55,7 +55,7 @@ function ApplyOffer() {
                toast.success('Congratulations! Your application was successfully submitted!');
    
                console.log(result)
-              navigate('/dash')
+              navigate('/dash/cv')
              })
              .catch(err => {
                // Handle the error based on the error message

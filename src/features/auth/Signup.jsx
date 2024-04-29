@@ -10,7 +10,7 @@ import PulseLoader from 'react-spinners/PulseLoader'
 import HeaderClient from '../../ClientComponent/Dashboard/HeaderClient'
 import Footer from '../../ClientComponent/Dashboard/Footer'
 const USER_REGEX = /^[A-z]{3,20}$/
-const PWD_REGEX = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@!#$%])[A-Za-z\d@!#$%]{8,}$/
+const PWD_REGEX = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@!#$%])[A-Za-z\d@!#$%?]{8,}$/
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 const Signup = () => {
@@ -156,7 +156,7 @@ const Signup = () => {
                         required
                         aria-invalid={!validUsername && username.length > 0 ? 'true' : 'false'}
                       />
-                      {!validUsername && username.length > 0 && <p className="form__input--error">Username must be between 3 and 20 characters and contain only letters.</p>}
+                      {!validUsername && username.length > 0 && <p className="form__input--error" style={{ color: 'red' }}>Username must be between 3 and 20 characters and contain only letters.</p>}
                     </div>
                   </div>
 
@@ -178,7 +178,7 @@ const Signup = () => {
                         aria-invalid={!validEmail && email.length > 0 ? 'true' : 'false'}
 
                       />
-                      {!validEmail && email.length > 0 && <p className="form__input--error">Please enter a valid email address.</p>}
+                      {!validEmail && email.length > 0 && <p className="form__input--error" style={{ color: 'red' }}>Please enter a valid email address.</p>}
                     </div>
                   </div>
 
@@ -199,7 +199,7 @@ const Signup = () => {
                         aria-invalid={!validPassword && password.length > 0 ? 'true' : 'false'}
 
                       />
-                      {!validPassword && password.length > 0 && <p className="form__input--error">Password must be at least 8 characters and contain at least one letter, one number, and one special character.</p>}
+                      {!validPassword && password.length > 0 && <p className="form__input--error" style={{ color: 'red' }}>Password must be at least 8 characters and contain at least one letter, one number, and one special character.</p>}
                     </div>
                   </div>
 
