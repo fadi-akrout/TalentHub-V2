@@ -91,21 +91,32 @@ function App() {
                     <Route path="apply/:id">
                       <Route index element={<Apply />} />
                     </Route>
-                    <Route path="addoffer">
-                      <Route index element={<AddOffer />} />
+                    <Route element={<RequireAuth allowedRoles={[ROLES.Admin, ROLES.Recruter]} />}>
+                      <Route path="addoffer">
+                        <Route index element={<AddOffer />} />
+                      </Route>
                     </Route>
                     <Route path="updateoffer/:id">
                       <Route index element={<UpdateOffer />} />
                     </Route>
-                    <Route path="myoffers/:id">
-                      <Route index element={<Myoffers />} />
+                    <Route element={<RequireAuth allowedRoles={[ROLES.Student, ROLES.Alumni ]} />}>
+                      <Route path="myoffers/:id">
+                        <Route index element={<Myoffers />} />
+                      </Route>
                     </Route>
-                    <Route path="ownedoffers/:id">
-                      <Route index element={<Ownedoffers />} />
+                    <Route element={<RequireAuth allowedRoles={[ROLES.Admin, ROLES.Alumni, ROLES.Recruter ]} />}>
+                      <Route path="ownedoffers/:id">
+                        <Route index element={<Ownedoffers />} />
+                      </Route>
                     </Route>
-                    <Route path="ownedofferUserList/:id">
+                    <Route element={<RequireAuth allowedRoles={[ROLES.Admin, ROLES.Alumni, ROLES.Recruter ]} />}>
+                      <Route path="ownedofferUserList/:id">
                         <Route index element={<OwnedofferUserList />} />
                       </Route>
+                    </Route>
+                    
+
+
                     <Route path="AddStudent">
                       <Route index element={<AddStudent />} />
                     </Route>

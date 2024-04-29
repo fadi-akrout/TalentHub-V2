@@ -48,16 +48,16 @@ function Job() {
           <div className="row">
             <div className="col-lg-12">
     
-      
+            <h6 style={{ color: 'black' }}>please upload your job offer to extract data</h6>
       <input  type="file" onChange={handleFileChange} accept=".pdf" />
       <button className="btn btn-danger" onClick={handleUpload}>Upload</button>
       {result && !result.error && (
         <div >
-          <h2 style={{ color: 'white' }}>Resume Result</h2>
-          <p style={{ color: 'white' }}>Experience Required: {result['Experience Required']}</p>
-          <p style={{ color: 'white' }}>Domain: {result['Domain']}</p>
-          <p style={{ color: 'white' }}>Speciality: {result['Speciality']}</p>
-          <p style={{ color: 'white' }}>Job Type: {result['Job Type']}</p>
+          <h2>Resume Result</h2>
+          <p>Experience Required: {result['Experience Required']}</p>
+          <p>Domain: {result['Domain']}</p>
+          <p>Speciality: {result['Speciality']}</p>
+          <p>Job Type: {result['Job Type']}</p>
           <p style={{ color: 'green' }}>Data Ectracted from Job Description Successfully!</p>
         </div>
       )}
