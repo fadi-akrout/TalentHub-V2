@@ -8,6 +8,7 @@ import useAuth from '../../hooks/useAuth';
 //import Feedback from '../HomePage/FeedBack';
 import Header from '../HomePage/Header';
 import UserList from './OfferUserList'; // Import the UserList component
+import AcceptedUsers from './AcceptedUsers'; // Import the UserList component
 
 function OwnedOfferListRecruiter() {
   const [offers, setOffers] = useState([]);
@@ -185,9 +186,11 @@ function OwnedOfferListRecruiter() {
                                 </>
                               )}
                               <UserList offerId={offer._id} /> {/* Add the UserList component */}
+                              <AcceptedUsers offerId={offer._id} /> {/* Add the UserList component */}
                               <button className="btn btn-primary" onClick={handleGeneratePDF}>
                                 Generate PDF of Offers
                               </button>
+                             
                             </div>
                           </div>
                         </div>
