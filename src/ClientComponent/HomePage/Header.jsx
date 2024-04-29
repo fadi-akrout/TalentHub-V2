@@ -280,18 +280,19 @@ function Header() {
               <a href="#" className="text-white"><small className="text-white mx-2">Terms of Use</small>/</a>
               <a href="#" className="text-white"><small className="text-white ms-2">Sales and Refunds</small></a>
             </div>
+            <div className="container px-0">
+                <nav className="navbar navbar-light bg-white navbar-expand-md">
+                    <a href="/dash" className="navbar-brand"><h1 className="text-primary display-6">TalentHub</h1></a>
+                    <button className="navbar-toggler py-2 px-3" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                        <span className="fa fa-bars text-primary"></span>
+                    </button>
+                    <div className="collapse navbar-collapse bg-white" id="navbarCollapse">
+                        <div className="navbar-nav mx-auto">
+                            <a href="/dash" className="nav-item nav-link active">Home</a>
+                           {/*  <a href="shop.html" className="nav-item nav-link">Shop</a>
           </div>
         </div>
-        <div className="container px-0">
-          <nav className="navbar navbar-light bg-white navbar-expand-md">
-            <a href="index.html" className="navbar-brand"><h1 className="text-primary display-6">TalentHub</h1></a>
-            <button className="navbar-toggler py-2 px-3" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
-              <span className="fa fa-bars text-primary"></span>
-            </button>
-            <div className="collapse navbar-collapse bg-white" id="navbarCollapse">
-              <div className="navbar-nav mx-auto">
-                <a href="/dash" className="nav-item nav-link active">Home</a>
-                {/*  <a href="shop.html" className="nav-item nav-link">Shop</a>
+
                             <a href="shop-detail.html" className="nav-item nav-link">Shop Detail</a> */}
                 <div className="nav-item dropdown">
                   <a href="#" className="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
