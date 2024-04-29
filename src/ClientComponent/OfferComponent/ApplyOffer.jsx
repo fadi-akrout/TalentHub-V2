@@ -18,7 +18,7 @@ function ApplyOffer() {
     const [JobCity,SetJobCity]=useState()
     const [profileImage,SetprofileImage]=useState()
 
-    const { userId } = useAuth()
+    const { userId,isStudent,isAlumni } = useAuth()
    
    
    
@@ -103,10 +103,10 @@ function ApplyOffer() {
                                 <p className="mb-3">Experience required: {Experience_required}</p>
                                
                                 <p style={{ overflowWrap: 'break-word' }}>{Description}</p>
-                                <button className="btn border border-secondary rounded-pill px-4 py-2 mb-4 text-primary" onClick={Update}>
+                                {(isStudent || isAlumni) &&<button className="btn border border-secondary rounded-pill px-4 py-2 mb-4 text-primary" onClick={Update}>
   <i className=" me-2 text-primary"></i>
   Apply Now
-</button>                            </div>
+</button>  }                          </div>
                             <div className="col-lg-12">
                                 <nav>
                                     <div className="nav nav-tabs mb-3">
@@ -233,6 +233,7 @@ function ApplyOffer() {
                 </div>
             </div>
         </div>
+        <ToastContainer></ToastContainer>
      </>
   )
 }
