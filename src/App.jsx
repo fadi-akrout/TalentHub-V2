@@ -42,6 +42,9 @@ const Ownedoffers = lazy(() => import('./ClientComponent/OfferComponent/OwnedOff
 const OwnedofferUserList = lazy(() => import('./ClientComponent/OfferComponent/OfferUserList'));
 import AddStaff from './ClientComponent/StaffComponent/AddStaff'
 import Alumni from './ClientComponent/AlumniComponent/AddAlumni'
+const Cv = lazy(() => import('./ClientComponent/cv'));
+const Job = lazy(() => import('./ClientComponent/job'));
+
 function App() {
   const [count, setCount] = useState(0)
 
@@ -127,6 +130,11 @@ function App() {
                       <Route path="add-event">
                         <Route index element={<AddEvent />} />
                       </Route>
+                    <Route path="cv">
+                      <Route index element={<Cv />} />
+                    </Route>
+                    <Route path="job">
+                      <Route index element={<Job />} />
                     </Route>
 
 
