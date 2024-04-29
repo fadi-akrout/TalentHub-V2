@@ -5,6 +5,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import useAuth from '../../hooks/useAuth'
 import Header from '../HomePage/Header.jsx'
+import Footer from '../Dashboard/Footer.jsx';
 function ApplyOffer() {
     const navigate = useNavigate();
     const{id}=useParams()
@@ -175,65 +176,37 @@ function ApplyOffer() {
                                             </div>
                                         </div>
                                     </div>
-                                    <div className="tab-pane" id="nav-vision" role="tabpanel">
-                                        <p className="text-dark">Tempor erat elitr rebum at clita. Diam dolor diam ipsum et tempor sit. Aliqu diam
-                                            amet diam et eos labore. 3</p>
-                                        <p className="mb-0">Diam dolor diam ipsum et tempor sit. Aliqu diam amet diam et eos labore.
-                                            Clita erat ipsum et lorem et sit</p>
-                                    </div>
+                                   
                                 </div>
                             </div>
                         </div>
                     </div>
-                 {/*    <div className="col-lg-4 col-xl-3">
+                    <div className="col-lg-4 col-xl-3">
                         <div className="row g-4 fruite">
                             <div className="col-lg-12">
                                 <div className="input-group w-100 mx-auto d-flex mb-4">
-                                    <input type="search" className="form-control p-3" placeholder="keywords" aria-describedby="search-icon-1" />
-                                    <span id="search-icon-1" className="input-group-text p-3"><i className="fa fa-search"></i></span>
+                                    
                                 </div>
                                 <div className="mb-4">
-                                    <h4>Categories</h4>
-                                    <ul className="list-unstyled fruite-categorie">
-                                        <li>
-                                            <div className="d-flex justify-content-between fruite-name">
-                                                <a href="#"><i className="fas fa-apple-alt me-2"></i>Apples</a>
-                                                <span>(3)</span>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div className="d-flex justify-content-between fruite-name">
-                                                <a href="#"><i className="fas fa-apple-alt me-2"></i>Oranges</a>
-                                                <span>(5)</span>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div className="d-flex justify-content-between fruite-name">
-                                                <a href="#"><i className="fas fa-apple-alt me-2"></i>Strawbery</a>
-                                                <span>(2)</span>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div className="d-flex justify-content-between fruite-name">
-                                                <a href="#"><i className="fas fa-apple-alt me-2"></i>Banana</a>
-                                                <span>(8)</span>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div className="d-flex justify-content-between fruite-name">
-                                                <a href="#"><i className="fas fa-apple-alt me-2"></i>Pumpkin</a>
-                                                <span>(5)</span>
-                                            </div>
-                                        </li>
-                                    </ul>
+                                    <h4>Relative Quizz</h4>
+                                    <p>By acing the quiz, you significantly increase your chances of securing the job and standing out as a top candidate.</p>
+                                    <div className="d-flex justify-content-center my-4">
+                                             <Link to="evenements"  className="btn border border-secondary px-4 py-3 rounded-pill text-primary w-100"> 
+                                               Pass Quizz
+                                             </Link>  
+                                          
+                                        </div>
                                 </div>
                             </div>
                         </div>
-                    </div> */}
+                    </div> 
+                    
                 </div>
             </div>
+            
         </div>
         <ToastContainer></ToastContainer>
+        <Footer/>
      </>
   )
 }
