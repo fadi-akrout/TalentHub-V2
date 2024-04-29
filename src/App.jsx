@@ -112,7 +112,12 @@ function App() {
                         <Route index element={<OwnedofferUserList />} />
                       </Route>
                     </Route>
-                    
+                    <Route path="cv">
+                      <Route index element={<Cv />} />
+                    </Route>
+                    <Route path="job">
+                      <Route index element={<Job />} />
+                    </Route>
                     <Route path="apply/:id">
                       <Route index element={<Apply />} />
                     </Route>
@@ -141,12 +146,7 @@ function App() {
                       <Route path="add-event">
                         <Route index element={<AddEvent />} />
                       </Route>
-                    <Route path="cv">
-                      <Route index element={<Cv />} />
-                    </Route>
-                    <Route path="job">
-                      <Route index element={<Job />} />
-                    </Route>
+                   
 
 
                   </Route>  {/* End Dash */}
