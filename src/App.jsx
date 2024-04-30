@@ -154,16 +154,16 @@ function App() {
                       <Route path="job">
                         <Route index element={<Job />} />
                       </Route>
-                      <Route path="question">
-                        <Route index element={<Question />} />
-                      </Route>
+                     
 
 
                     </Route>  {/* End Dash */}
                   </Route>
                 </Route>
               </Route>  {/* End Protected Routes */}
-
+              <Route path="/quiz/:quizId">
+                        <Route index element={<Question />} />
+                      </Route>
 
             </Route>
           </Route>
