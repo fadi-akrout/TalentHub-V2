@@ -8,7 +8,7 @@ import { BsPersonWorkspace } from "react-icons/bs";
 import "./AccountStats.css";
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from "recharts";
 import BarAnimation from './BarChart';
-
+import Footer from '../Dashboard/Footer'
 
 
 
@@ -141,6 +141,7 @@ const AccountStats = () => {
         </div>
       </section>
     </div>
+    <Footer/>
     </div>
   );
 };

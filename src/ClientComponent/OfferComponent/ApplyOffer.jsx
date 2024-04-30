@@ -6,6 +6,11 @@ import 'react-toastify/dist/ReactToastify.css';
 import useAuth from '../../hooks/useAuth'
 import Header from '../HomePage/Header.jsx'
 import Footer from '../Dashboard/Footer.jsx';
+import Map from './Maps.jsx';
+import "./maps.css";
+import TranslateDescription from './TranslateDescription.jsx';
+
+
 function ApplyOffer() {
     const navigate = useNavigate();
     const{id}=useParams()
@@ -123,7 +128,7 @@ function ApplyOffer() {
                                 </nav>
                                 <div className="tab-content mb-5">
                                     <div className="tab-pane active" id="nav-about" role="tabpanel" aria-labelledby="nav-about-tab">
-                                    <p style={{ overflowWrap: 'break-word' }}>{Description}</p>
+                                    <p style={{ overflowWrap: 'break-word' }}><TranslateDescription description={Description} /></p>
                                        
                                         <div className="px-2">
                                             <div className="row g-4">
@@ -212,7 +217,12 @@ function ApplyOffer() {
                             </div>
                         </div>
                     </div> 
-                    
+                    <div className="tab-pane active" id="nav-about" role="tabpanel" aria-labelledby="nav-about-tab">
+                        <p style={{ overflowWrap: 'break-word' }}>Map</p>
+                        <div className="maps">
+                            <Map JobCity={JobCity} />
+                        </div>
+                    </div>
                 </div>
             </div>
             
