@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { FaEdit } from 'react-icons/fa';
 import generatePDFOffers from '../generatePDFOffers'; // Make sure this path is correct
 import { MdDeleteForever } from 'react-icons/md';
@@ -8,6 +8,7 @@ import useAuth from '../../hooks/useAuth';
 //import Feedback from '../HomePage/FeedBack';
 import Header from '../HomePage/Header';
 import UserList from './OfferUserList'; // Import the UserList component
+import AcceptedUsers from './AcceptedUsers'; // Import the UserList component
 
 function OwnedOfferListRecruiter() {
   const [offers, setOffers] = useState([]);
@@ -69,14 +70,15 @@ function OwnedOfferListRecruiter() {
           <Header />
         </div>
         <div className="container-fluid page-header py-5">
-        <h1 className="text-center text-white display-6">Sign Up</h1>
+        <h1 className="text-center text-white display-6">My offers</h1>
         <ol className="breadcrumb justify-content-center mb-0">
           <li className="breadcrumb-item" />
           <li className="breadcrumb-item" />
           <li className="breadcrumb-item active text-white"></li>
         </ol>
       </div>
-      <div className="container-fluid py-5">
+
+      <div className="container-fluid py-5" >
         <div className="container py-5">
 
 
@@ -118,7 +120,7 @@ function OwnedOfferListRecruiter() {
           <li className="breadcrumb-item active text-white"></li>
         </ol>
       </div>
-      <section className="upcoming-meetings" id="meetings">
+      <section className="upcoming-meetings" id="meetings"style={{marginTop :"200px"}}>
         <section className="contact-us" id="contact">
           <div className="container">
             <div className="row">
@@ -185,9 +187,12 @@ function OwnedOfferListRecruiter() {
                                 </>
                               )}
                               <UserList offerId={offer._id} /> {/* Add the UserList component */}
+                             
+                              <Link to={`/dash/accepted/${offer._id}`}>User Accepted List</Link>
                               <button className="btn btn-primary" onClick={handleGeneratePDF}>
                                 Generate PDF of Offers
                               </button>
+                             
                             </div>
                           </div>
                         </div>

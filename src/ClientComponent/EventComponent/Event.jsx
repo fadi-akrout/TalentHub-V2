@@ -5,7 +5,7 @@ import { FaEdit } from 'react-icons/fa';
 import { MdDeleteForever } from 'react-icons/md';
 import useAuth from '../../hooks/useAuth';
 import Header from '../HomePage/Header';
-
+import Footer from '../Dashboard/Footer';
 function Evenements() {
     const [evenements, setEvenements] = useState([]);
     const { userId, isAdmin, isTeacher, isRecruter } = useAuth();
@@ -23,6 +23,14 @@ function Evenements() {
     return (
         <>
             <Header />
+            <div className="container-fluid page-header py-5">
+            <h1 className="text-center text-white display-6">Events</h1>
+            <ol className="breadcrumb justify-content-center mb-0">
+                <li className="breadcrumb-item"/>
+                <li className="breadcrumb-item"/>
+                <li className="breadcrumb-item active text-white"></li>
+            </ol>
+        </div>
             <div className="container-fluid fruite py-5">
                 <div className="container py-5">
                     <div className="tab-class text-center">
@@ -48,6 +56,7 @@ function Evenements() {
                     </div>
                 </div>
             </div>
+            <Footer/>
         </>
     );
 }
@@ -100,6 +109,7 @@ function Evenement({ evenement, setEvenements, isAdmin, isTeacher, isRecruter, u
     };
 
     return (
+        
         <div className="col-md-6 col-lg-4 col-xl-3 mb-4">
             <div className="card rounded position-relative fruite-item h-100 shadow">
                 {evenement.image && (
