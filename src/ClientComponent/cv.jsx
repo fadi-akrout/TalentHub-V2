@@ -17,7 +17,7 @@ function Cv() {
       const formData = new FormData();
       formData.append('resume', file);
   
-      const response = await axios.post('http://localhost:5000/upload', formData, {
+      const response = await axios.post('http://localhost:5002/upload', formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { FaEdit } from 'react-icons/fa';
 import generatePDFOffers from '../generatePDFOffers'; // Make sure this path is correct
 import { MdDeleteForever } from 'react-icons/md';
@@ -187,7 +187,8 @@ function OwnedOfferListRecruiter() {
                                 </>
                               )}
                               <UserList offerId={offer._id} /> {/* Add the UserList component */}
-                              <AcceptedUsers offerId={offer._id} /> {/* Add the UserList component */}
+                             
+                              <Link to={`/dash/accepted/${offer._id}`}>User Accepted List</Link>
                               <button className="btn btn-primary" onClick={handleGeneratePDF}>
                                 Generate PDF of Offers
                               </button>
