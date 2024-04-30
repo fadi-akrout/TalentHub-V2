@@ -70,14 +70,15 @@ function OwnedOfferListRecruiter() {
           <Header />
         </div>
         <div className="container-fluid page-header py-5">
-        <h1 className="text-center text-white display-6">Sign Up</h1>
+        <h1 className="text-center text-white display-6">My offers</h1>
         <ol className="breadcrumb justify-content-center mb-0">
           <li className="breadcrumb-item" />
           <li className="breadcrumb-item" />
           <li className="breadcrumb-item active text-white"></li>
         </ol>
       </div>
-      <div className="container-fluid py-5">
+
+      <div className="container-fluid py-5" >
         <div className="container py-5">
 
 
@@ -119,7 +120,7 @@ function OwnedOfferListRecruiter() {
           <li className="breadcrumb-item active text-white"></li>
         </ol>
       </div>
-      <section className="upcoming-meetings" id="meetings">
+      <section className="upcoming-meetings" id="meetings"style={{marginTop :"200px"}}>
         <section className="contact-us" id="contact">
           <div className="container">
             <div className="row">
