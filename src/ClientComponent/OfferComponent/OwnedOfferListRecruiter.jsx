@@ -59,8 +59,10 @@ function OwnedOfferListRecruiter() {
     navigate(`./apply/${offerId}`);
   };
 
-  const handleGeneratePDF = () => {
-    generatePDFOffers(offers); // Assuming generatePDFOffers accepts an array of offer objects
+  const handleGeneratePDF = (offerIds) => {
+   // const offerIds = offers.map((offer) => offer._id);
+   console.log('generate pdf', offerIds);
+    generatePDFOffers(offerIds);
   };
 
   if (error) {
@@ -188,8 +190,8 @@ function OwnedOfferListRecruiter() {
                               )}
                               <UserList offerId={offer._id} /> {/* Add the UserList component */}
                              
-                              <Link to={`/dash/accepted/${offer._id}`}>User Accepted List</Link>
-                              <button className="btn btn-primary" onClick={handleGeneratePDF}>
+                              <button className="btn border border-primary rounded px-1 py-1 mb-4 text-sucess" style={{marginRight :"5px"}}><Link to={`/dash/accepted/${offer._id}`}>User Accepted List</Link></button> 
+                              <button className="btn border border-secondary rounded px-1 py-1 mb-4 text-sucess" onClick={() => handleGeneratePDF(offer._id)}>
                                 Generate PDF of Offers
                               </button>
                              
