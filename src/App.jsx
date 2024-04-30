@@ -26,6 +26,7 @@ import AccountStats from './ClientComponent/AdminStatistique/AcountStats';
 import StudentProfile from './ClientComponent/StudentComponent/StudentProfile';
 import Profile from './features/auth/profile';
 import QuizComponent from './ClientComponent/OfferComponent/QuizComponent';
+import AcceptedUsers from './ClientComponent/OfferComponent/AcceptedUsers'
 
 const Login = lazy(() => import('./features/auth/Login'));
 const Signup = lazy(() => import('./features/auth/Signup'));
@@ -125,6 +126,9 @@ function App() {
                     </Route>
                     <Route path="quiz/:id">
                       <Route index element={<QuizComponent />} />
+                    </Route>
+                    <Route path="accepted/:id">
+                      <Route index element={<AcceptedUsers />} />
                     </Route>
               
                     <Route path="AddStudent">
