@@ -6,6 +6,8 @@ import Footer from '../Dashboard/Footer';
 
 const AcceptedUsers = () => {
   const [acceptedUsers, setAcceptedUsers] = useState([]);
+  const [selectedRole, setSelectedRole] = useState(''); // State to store selected role
+
   const { id } = useParams();
 
   useEffect(() => {

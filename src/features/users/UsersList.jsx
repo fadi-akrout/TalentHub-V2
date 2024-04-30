@@ -24,7 +24,7 @@ const UsersList = () => {
     });
 
     // Options for select dropdown
-    const roleOptions = ['Student', 'Recruiter', 'Teacher', 'Alumni', 'Admin'];
+    const roleOptions = ['Student', 'Recruter', 'Teacher', 'Alumni', 'Admin'];
 
     let content;
 
