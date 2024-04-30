@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { Link ,useParams ,useNavigate} from 'react-router-dom';
+import { Link, useParams, useNavigate } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import useAuth from '../../hooks/useAuth'
@@ -8,6 +8,7 @@ import Header from '../HomePage/Header.jsx'
 import Footer from '../Dashboard/Footer.jsx';
 function ApplyOffer() {
     const navigate = useNavigate();
+
     const{id}=useParams()
     const [Title,SetTitle]=useState()
     const [Experience_required,SetExperience_required]=useState()
@@ -20,6 +21,8 @@ function ApplyOffer() {
     const [profileImage,SetprofileImage]=useState()
 
     const { userId,isStudent,isAlumni } = useAuth()
+        const [quiz, setQuiz] = useState();  // Note the lowercase 'q
+
    
    
    
@@ -36,6 +39,8 @@ function ApplyOffer() {
                       SetJobType(response.data.JobType);
                       SetJobCity(response.data.JobCity);
                       SetprofileImage(response.data.profileImage);
+                     setQuiz(response.data.quiz); // Note the lowercase 'q' here
+                console.log(response.data.quiz);
 
    
    
@@ -70,6 +75,11 @@ function ApplyOffer() {
                console.log(err);
              });
            }
+              const handleQuizButtonClick = () => {
+        if (offer.quiz) {
+            navigate(`/question/${offer.quiz}`);
+        }
+    };
    
    
    
@@ -115,66 +125,90 @@ function ApplyOffer() {
                                             id="nav-about-tab" data-bs-toggle="tab" data-bs-target="#nav-about"
                                             aria-controls="nav-about" aria-selected="true">Description</button>
                                     </div>
-                                </nav>
-                                <div className="tab-content mb-5">
-                                    <div className="tab-pane active" id="nav-about" role="tabpanel" aria-labelledby="nav-about-tab">
+                                </div>
+                                <div className="col-lg-6">
+                                    <h4 className="fw-bold mb-3">{Title}</h4>
+                                    <p className="mb-3">Experience required: {Experience_required}</p>
+
                                     <p style={{ overflowWrap: 'break-word' }}>{Description}</p>
-                                       
-                                        <div className="px-2">
-                                            <div className="row g-4">
-                                                <div className="col-6">
-                                                <div className="row text-center align-items-center justify-content-center py-2">
-                                                        <div className="col-6">
-                                                            <p className="mb-0">Experience required</p>
+                                    <button className="btn border border-secondary rounded-pill px-4 py-2 mb-4 text-primary" onClick={Update}>
+                                        <i className=" me-2 text-primary"></i>
+                                        Apply Now
+                                    </button>
+                                    {!offer.quiz && (
+                                        <button onClick={handleQuizButtonClick}>
+                                            Take the Quiz
+                                        </button>
+                                    )}                  </div>
+                                <div className="col-lg-12">
+                                    <nav>
+                                        <div className="nav nav-tabs mb-3">
+                                            <button className="nav-link active border-white border-bottom-0" type="button" role="tab"
+                                                id="nav-about-tab" data-bs-toggle="tab" data-bs-target="#nav-about"
+                                                aria-controls="nav-about" aria-selected="true">Description</button>
+                                        </div>
+                                    </nav>
+                                    <div className="tab-content mb-5">
+                                        <div className="tab-pane active" id="nav-about" role="tabpanel" aria-labelledby="nav-about-tab">
+                                            <p style={{ overflowWrap: 'break-word' }}>{Description}</p>
+
+                                            <div className="px-2">
+                                                <div className="row g-4">
+                                                    <div className="col-6">
+                                                        <div className="row text-center align-items-center justify-content-center py-2">
+                                                            <div className="col-6">
+                                                                <p className="mb-0">Experience required</p>
+                                                            </div>
+                                                            <div className="col-6">
+                                                                <p className="mb-0">{Experience_required} </p>
+                                                            </div>
                                                         </div>
-                                                        <div className="col-6">
-                                                            <p className="mb-0">{Experience_required} </p>
+
+                                                        <div className="row bg-light text-center align-items-center justify-content-center py-2">
+                                                            <div className="col-6">
+                                                                <p className="mb-0">Mission</p>
+                                                            </div>
+                                                            <div className="col-6">
+                                                                <p className="mb-0">{Mission} </p>
+                                                            </div>
                                                         </div>
-                                                    </div>
-                                                   
-                                                    <div className="row bg-light text-center align-items-center justify-content-center py-2">
-                                                        <div className="col-6">
-                                                            <p className="mb-0">Mission</p>
+                                                        <div className="row text-center align-items-center justify-content-center py-2">
+                                                            <div className="col-6">
+                                                                <p className="mb-0">Salary</p>
+                                                            </div>
+                                                            <div className="col-6">
+                                                                <p className="mb-0">{Salary}</p>
+                                                            </div>
                                                         </div>
-                                                        <div className="col-6">
-                                                            <p className="mb-0">{Mission} </p>
+                                                        <div className="row bg-light text-center align-items-center justify-content-center py-2">
+                                                            <div className="col-6">
+                                                                <p className="mb-0">Speciality</p>
+                                                            </div>
+                                                            <div className="col-6">
+                                                                <p className="mb-0">{Speciality} </p>
+                                                            </div>
                                                         </div>
-                                                    </div>
-                                                    <div className="row text-center align-items-center justify-content-center py-2">
-                                                        <div className="col-6">
-                                                            <p className="mb-0">Salary</p>
+                                                        <div className="row text-center align-items-center justify-content-center py-2">
+                                                            <div className="col-6">
+                                                                <p className="mb-0">Job Type</p>
+                                                            </div>
+                                                            <div className="col-6">
+                                                                <p className="mb-0">{JobType}</p>
+                                                            </div>
                                                         </div>
-                                                        <div className="col-6">
-                                                            <p className="mb-0">{Salary}</p>
-                                                        </div>
-                                                    </div>
-                                                    <div className="row bg-light text-center align-items-center justify-content-center py-2">
-                                                        <div className="col-6">
-                                                            <p className="mb-0">Speciality</p>
-                                                        </div>
-                                                        <div className="col-6">
-                                                            <p className="mb-0">{Speciality} </p>
-                                                        </div>
-                                                    </div>
-                                                    <div className="row text-center align-items-center justify-content-center py-2">
-                                                        <div className="col-6">
-                                                            <p className="mb-0">Job Type</p>
-                                                        </div>
-                                                        <div className="col-6">
-                                                            <p className="mb-0">{JobType}</p>
-                                                        </div>
-                                                    </div>
-                                                    <div className="row bg-light text-center align-items-center justify-content-center py-2">
-                                                        <div className="col-6">
-                                                            <p className="mb-0">Job City</p>
-                                                        </div>
-                                                        <div className="col-6">
-                                                            <p className="mb-0">{JobCity} </p>
+                                                        <div className="row bg-light text-center align-items-center justify-content-center py-2">
+                                                            <div className="col-6">
+                                                                <p className="mb-0">Job City</p>
+                                                            </div>
+                                                            <div className="col-6">
+                                                                <p className="mb-0">{JobCity} </p>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
+
                                     </div>
                                    
                                 </div>
@@ -199,6 +233,7 @@ function ApplyOffer() {
                                 </div>
                             </div>
                         </div>
+
                     </div> 
                     
                 </div>
