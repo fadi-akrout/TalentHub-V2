@@ -5,111 +5,125 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import useAuth from '../../hooks/useAuth'
 import Header from '../HomePage/Header.jsx'
+import Footer from '../Dashboard/Footer.jsx';
 function ApplyOffer() {
     const navigate = useNavigate();
-    const { id } = useParams()
-    const [Title, SetTitle] = useState()
-    const [Experience_required, SetExperience_required] = useState()
-    const [Description, SetDescription] = useState()
-    const [Mission, SetMission] = useState()
-    const [Salary, SetSalary] = useState()
-    const [Speciality, SetSpeciality] = useState()
-    const [JobType, SetJobType] = useState()
-    const [JobCity, SetJobCity] = useState()
-    const [quiz, setQuiz] = useState();  // Note the lowercase 'q
 
+    const{id}=useParams()
+    const [Title,SetTitle]=useState()
+    const [Experience_required,SetExperience_required]=useState()
+    const [Description,SetDescription]=useState()
+    const [Mission,SetMission]=useState()
+    const [Salary,SetSalary]=useState()
+    const [Speciality,SetSpeciality]=useState()
+    const [JobType,SetJobType]=useState()
+    const [JobCity,SetJobCity]=useState()
+    const [profileImage,SetprofileImage]=useState()
 
+    const { userId,isStudent,isAlumni } = useAuth()
+        const [quiz, setQuiz] = useState();  // Note the lowercase 'q
 
-    const { userId } = useAuth()
-    const [offer, setOffer] = useState({});
-
-
-
-
-    useEffect(() => {
-        axios.get('http://localhost:3500/offers/getoffer/' + id)
-            .then(response => {
-                console.log(response)
-                // setOffers(response.data);
-                SetTitle(response.data.Title);
-                SetExperience_required(response.data.Experience_required);
-                SetDescription(response.data.Description);
-                SetMission(response.data.Mission);
-                SetSalary(response.data.Salary);
-                SetSpeciality(response.data.Speciality);
-                SetJobType(response.data.JobType);
-                SetJobCity(response.data.JobCity);
-                setQuiz(response.data.quiz); // Note the lowercase 'q' here
+   
+   
+   
+           useEffect(() => {
+               axios.get('http://localhost:3500/offers/getoffer/'+id)
+                   .then(response => { console.log(response)
+                      // setOffers(response.data);
+                      SetTitle(response.data.Title);
+                      SetExperience_required(response.data.Experience_required);
+                      SetDescription(response.data.Description);
+                      SetMission(response.data.Mission);
+                      SetSalary(response.data.Salary);
+                      SetSpeciality(response.data.Speciality);
+                      SetJobType(response.data.JobType);
+                      SetJobCity(response.data.JobCity);
+                      SetprofileImage(response.data.profileImage);
+                     setQuiz(response.data.quiz); // Note the lowercase 'q' here
                 console.log(response.data.quiz);
 
-
-
-
-
-            })
-            .catch(error => {
-                console.error("Il y a eu une erreur !", error);
-            });
-    }, []);
-
-
-
-
-    const Update = (e) => {
-        e.preventDefault();
-
-        axios.post('http://localhost:3500/offers/apply/' + userId + '/' + id)
-            .then(result => {
-                toast.success('Congratulations! Your application was successfully submitted!');
-
-                console.log(result)
-                navigate('/dash')
-            })
-            .catch(err => {
-                // Handle the error based on the error message
-                if (err.response && err.response.data && err.response.data.error) {
-                    // Display the error message from the backend
-                    toast.error(err.response.data.error);
-                } else {
-                    // Display a generic error message
-                    toast.error('An error occurred while applying to the offer.');
-                }
-                console.log(err);
-            });
-    }
-    const handleQuizButtonClick = () => {
+   
+   
+                   })
+                   .catch(error => {
+                       console.error("Il y a eu une erreur !", error);
+                   });
+           }, []);
+   
+   
+   
+   
+           const Update = (e) => {
+             e.preventDefault();
+             
+             axios.post('http://localhost:3500/offers/apply/'+userId +'/'+id)
+             .then(result=> {
+               toast.success('Congratulations! Your application was successfully submitted!');
+   
+               console.log(result)
+              navigate('/dash/cv')
+             })
+             .catch(err => {
+               // Handle the error based on the error message
+               if (err.response && err.response.data && err.response.data.error) {
+                 // Display the error message from the backend
+                 toast.error(err.response.data.error);
+               } else {
+                 // Display a generic error message
+                 toast.error('An error occurred while applying to the offer.');
+               }
+               console.log(err);
+             });
+           }
+              const handleQuizButtonClick = () => {
         if (offer.quiz) {
             navigate(`/question/${offer.quiz}`);
         }
     };
+   
+   
+   
+  return (
+    <>
+    <Header/>
+    <div className="container-fluid page-header py-5">
+    <h1 className="text-center text-white display-6">Offer details</h1>
+    <ol className="breadcrumb justify-content-center mb-0">
+        <li className="breadcrumb-item"></li>
+        <li className="breadcrumb-item"></li>
+        <li className="breadcrumb-item active text-white"></li>
+    </ol>
+    </div>
 
+<div className="container-fluid py-5 mt-5">
+            <div className="container py-5">
+                <div className="row g-4 mb-5">
+                    <div className="col-lg-8 col-xl-9">
+                        <div className="row g-4">
+                            <div className="col-lg-6">
+                                <div className="border rounded">
+                                <div className="fruite-img">
+                                                     <img src={profileImage} className="img-fluid w-100 rounded-top" alt=""/> 
 
-
-
-    return (
-        <>
-            <Header />
-            <div className="container-fluid page-header py-5">
-                <h1 className="text-center text-white display-6">Offer details</h1>
-                <ol className="breadcrumb justify-content-center mb-0">
-                    <li className="breadcrumb-item"></li>
-                    <li className="breadcrumb-item"></li>
-                    <li className="breadcrumb-item active text-white"></li>
-                </ol>
-            </div>
-
-            <div className="container-fluid py-5 mt-5">
-                <div className="container py-5">
-                    <div className="row g-4 mb-5">
-                        <div className="col-lg-8 col-xl-9">
-                            <div className="row g-4">
-                                <div className="col-lg-6">
-                                    <div className="border rounded">
-                                        <div className="fruite-img">
-                                            {/* <img src={offer.image} className="img-fluid w-100 rounded-top" alt=""/> */}
-                                            <img src="img/featur-1.jpg" className="img-fluid w-100 rounded-top" alt="" />
-                                        </div>
-
+                                                </div>
+                                    
+                                </div>
+                            </div>
+                            <div className="col-lg-6">
+                                <h4 className="fw-bold mb-3">{Title}</h4>
+                                <p className="mb-3">Experience required: {Experience_required}</p>
+                               
+                                <p style={{ overflowWrap: 'break-word' }}>{Description}</p>
+                                {(isStudent || isAlumni) &&<button className="btn border border-secondary rounded-pill px-4 py-2 mb-4 text-primary" onClick={Update}>
+  <i className=" me-2 text-primary"></i>
+  Apply Now
+</button>  }                          </div>
+                            <div className="col-lg-12">
+                                <nav>
+                                    <div className="nav nav-tabs mb-3">
+                                        <button className="nav-link active border-white border-bottom-0" type="button" role="tab"
+                                            id="nav-about-tab" data-bs-toggle="tab" data-bs-target="#nav-about"
+                                            aria-controls="nav-about" aria-selected="true">Description</button>
                                     </div>
                                 </div>
                                 <div className="col-lg-6">
@@ -194,66 +208,42 @@ function ApplyOffer() {
                                                 </div>
                                             </div>
                                         </div>
-                                        <div className="tab-pane" id="nav-vision" role="tabpanel">
-                                            <p className="text-dark">Tempor erat elitr rebum at clita. Diam dolor diam ipsum et tempor sit. Aliqu diam
-                                                amet diam et eos labore. 3</p>
-                                            <p className="mb-0">Diam dolor diam ipsum et tempor sit. Aliqu diam amet diam et eos labore.
-                                                Clita erat ipsum et lorem et sit</p>
-                                        </div>
+
                                     </div>
+                                   
                                 </div>
                             </div>
                         </div>
-                        {/*    <div className="col-lg-4 col-xl-3">
+                    </div>
+                    <div className="col-lg-4 col-xl-3">
                         <div className="row g-4 fruite">
                             <div className="col-lg-12">
                                 <div className="input-group w-100 mx-auto d-flex mb-4">
-                                    <input type="search" className="form-control p-3" placeholder="keywords" aria-describedby="search-icon-1" />
-                                    <span id="search-icon-1" className="input-group-text p-3"><i className="fa fa-search"></i></span>
+                                    
                                 </div>
                                 <div className="mb-4">
-                                    <h4>Categories</h4>
-                                    <ul className="list-unstyled fruite-categorie">
-                                        <li>
-                                            <div className="d-flex justify-content-between fruite-name">
-                                                <a href="#"><i className="fas fa-apple-alt me-2"></i>Apples</a>
-                                                <span>(3)</span>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div className="d-flex justify-content-between fruite-name">
-                                                <a href="#"><i className="fas fa-apple-alt me-2"></i>Oranges</a>
-                                                <span>(5)</span>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div className="d-flex justify-content-between fruite-name">
-                                                <a href="#"><i className="fas fa-apple-alt me-2"></i>Strawbery</a>
-                                                <span>(2)</span>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div className="d-flex justify-content-between fruite-name">
-                                                <a href="#"><i className="fas fa-apple-alt me-2"></i>Banana</a>
-                                                <span>(8)</span>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div className="d-flex justify-content-between fruite-name">
-                                                <a href="#"><i className="fas fa-apple-alt me-2"></i>Pumpkin</a>
-                                                <span>(5)</span>
-                                            </div>
-                                        </li>
-                                    </ul>
+                                    <h4>Relative Quizz</h4>
+                                    <p>By acing the quiz, you significantly increase your chances of securing the job and standing out as a top candidate.</p>
+                                    <div className="d-flex justify-content-center my-4">
+                                             <Link to="evenements"  className="btn border border-secondary px-4 py-3 rounded-pill text-primary w-100"> 
+                                               Pass Quizz
+                                             </Link>  
+                                          
+                                        </div>
                                 </div>
                             </div>
                         </div>
-                    </div> */}
-                    </div>
+
+                    </div> 
+                    
                 </div>
             </div>
-        </>
-    )
+            
+        </div>
+        <ToastContainer></ToastContainer>
+        <Footer/>
+     </>
+  )
 }
 
 export default ApplyOffer
