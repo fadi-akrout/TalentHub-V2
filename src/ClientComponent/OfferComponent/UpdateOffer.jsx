@@ -3,13 +3,13 @@ import axios from 'axios';
 import { Link ,useParams ,useNavigate} from 'react-router-dom';
 import Header from '../HomePage/Header';
 import useAuth from '../../hooks/useAuth';
-
+import Footer from '../Dashboard/Footer';
 function UpdateOffer() {
   const navigate = useNavigate();
  const{id}=useParams()
  const [Title,SetTitle]=useState()
  const [Experience_required,SetExperience_required]=useState()
- const [Domain,SetDomain]=useState()
+ const [Description,SetDescription]=useState()
  const [Mission,SetMission]=useState()
  const [Salary,SetSalary]=useState()
  const [Speciality,SetSpeciality]=useState()
@@ -23,7 +23,7 @@ function UpdateOffer() {
                    // setOffers(response.data);
                    SetTitle(response.data.Title);
                    SetExperience_required(response.data.Experience_required);
-                   SetDomain(response.data.Domain);
+                   SetDescription(response.data.Description);
                    SetMission(response.data.Mission);
                    SetSalary(response.data.Salary);
                    SetSpeciality(response.data.Speciality);
@@ -39,10 +39,9 @@ function UpdateOffer() {
 
 
 
-
         const Update = (e) => {
           e.preventDefault();
-          axios.patch('http://localhost:3500/offers/'+id,{Title,Experience_required,Domain,Mission,Salary,Speciality,JobType,JobCity})
+          axios.patch('http://localhost:3500/offers/'+id,{Title,Experience_required,Description,Mission,Salary,Speciality,JobType,JobCity})
           .then(result=> {
             console.log(result)
             navigate(`/dash/ownedoffers/${userId}`)
@@ -54,10 +53,17 @@ function UpdateOffer() {
 
   return (
     <>
-    <div>
+    
         <Header />
-        
-    </div>
+        <div className="container-fluid page-header py-5">
+            <h1 className="text-center text-white display-6">Update offer</h1>
+            <ol className="breadcrumb justify-content-center mb-0">
+                <li className="breadcrumb-item"/>
+                <li className="breadcrumb-item"/>
+                <li className="breadcrumb-item active text-white"></li>
+            </ol>
+        </div>
+    
     <section className="contact-us" id="contact" style={{ marginTop: '100px' }}>
                 <div className="container">
                     <div className="row">
@@ -80,20 +86,18 @@ function UpdateOffer() {
                                                     <label htmlFor="Experience_required" className="form-label my-3">Experience required:</label>
                                                     <input type="text" id="Title" className="form-control" name="Title" value={Experience_required} onChange={(e)=>SetExperience_required(e.target.value)} required />
                                                 </div>
+                                              
                                                 <div className="mb-3">
-                                                    <label htmlFor="Domain" className="form-label my-3">Domain:</label>
-                                                    <input type="text" id="Title" className="form-control" name="Title" value={Domain} onChange={(e)=>SetDomain(e.target.value)} required />
-                                                </div>
-                                                <div className="mb-3">
-                                                    <label htmlFor="Mission" className="form-label my-3">Mission:</label>
+                                                    <label htmlFor="Mission" className="form-label my-3">Post:</label>
                                                     <input type="text" id="Title" className="form-control" name="Title" value={Mission} onChange={(e)=>SetMission(e.target.value)} required />
                                                 </div>
-                                            </div>
-                                            <div className="col-md-6">
                                                 <div className="mb-3">
                                                     <label htmlFor="Salary" className="form-label my-3">Salary:</label>
                                                     <input type="text" id="Title" className="form-control" name="Title" value={Salary} onChange={(e)=>SetSalary(e.target.value)} required />
                                                 </div>
+                                            </div>
+                                            <div className="col-md-6">
+                                               
                                                 <div className="mb-3">
                                                     <label htmlFor="Speciality" className="form-label my-3">Speciality:</label>
                                                     <input type="text" id="Title" className="form-control" name="Title" value={Speciality} onChange={(e)=>SetSpeciality(e.target.value)} required />
@@ -114,7 +118,12 @@ function UpdateOffer() {
                                                     <label htmlFor="JobCity" className="form-label my-3">Job City:</label>
                                                     <input type="text" id="Title" className="form-control" name="Title" value={JobCity} onChange={(e)=>SetJobCity(e.target.value)} required />
                                                 </div>
+                                              
                                             </div>
+                                            <div className="mb-3">
+                                                    <label htmlFor="Description" className="form-label my-3">Description:</label>
+                                                    <textarea name="Description" className="form-control" spellCheck="false" cols="30" rows="11" placeholder="Order Notes (Optional)" value={Description} onChange={(e)=>SetDescription(e.target.value)} required />
+                                                </div>
                                         </div>
                                         <button type="submit" className="btn border border-secondary rounded-pill px-4 py-2 mb-4 text-primary">Update Offer</button>
                                     </form>
@@ -124,7 +133,7 @@ function UpdateOffer() {
                     </div>
                 </div>
             </section>
-
+<Footer/>
 </>
   );
 }
