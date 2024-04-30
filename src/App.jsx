@@ -35,6 +35,8 @@ import ForgotPassword from './features/auth/forgotPassword';
 import Evenements from './ClientComponent/EventComponent/Event'
 import AddEvent from './ClientComponent/EventComponent/AddEvent'
 import AddStudent from './ClientComponent/StudentComponent/AddStudent';
+import Question from './ClientComponent/OfferComponent/Question';
+
 import { ROLES } from './config/roles'
 import UpdateOffer from './ClientComponent/OfferComponent/UpdateOffer'
 const Myoffers = lazy(() => import('./ClientComponent/OfferComponent/ownedOfferList'));
@@ -130,21 +132,24 @@ function App() {
                       <Route path="add-event">
                         <Route index element={<AddEvent />} />
                       </Route>
-                    <Route path="cv">
-                      <Route index element={<Cv />} />
-                    </Route>
-                    <Route path="job">
-                      <Route index element={<Job />} />
-                    </Route>
+                      <Route path="cv">
+                        <Route index element={<Cv />} />
+                      </Route>
+                      <Route path="job">
+                        <Route index element={<Job />} />
+                      </Route>
+                      <Route path="question">
+                        <Route index element={<Question />} />
+                      </Route>
 
 
-                  </Route>  {/* End Dash */}
+                    </Route>  {/* End Dash */}
+                  </Route>
                 </Route>
-              </Route>
-            </Route>  {/* End Protected Routes */}
+              </Route>  {/* End Protected Routes */}
 
 
-</Route>
+            </Route>
           </Route>
         </Routes>
       </Suspense>
