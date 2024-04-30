@@ -26,7 +26,7 @@ import AccountStats from './ClientComponent/AdminStatistique/AcountStats';
 import StudentProfile from './ClientComponent/StudentComponent/StudentProfile';
 import Profile from './features/auth/profile';
 import QuizComponent from './ClientComponent/OfferComponent/QuizComponent';
-import AcceptedUsers from './ClientComponent/OfferComponent/AcceptedUsers'
+import AcceptedUsers from './ClientComponent/OfferComponent/AcceptedUsers';
 
 const Login = lazy(() => import('./features/auth/Login'));
 const Signup = lazy(() => import('./features/auth/Signup'));
@@ -88,8 +88,8 @@ function App() {
                       <Route path="stats">
                         <Route index element={<AccountStats />} />
                       </Route>
-
                     </Route>
+                    
 
                   
                     <Route element={<RequireAuth allowedRoles={[ROLES.Admin, ROLES.Recruter]} />}>
@@ -134,7 +134,6 @@ function App() {
                     <Route path="AddStudent">
                       <Route index element={<AddStudent />} />
                     </Route>
-
                     <Route path="Alumnis">
                       <Route index element={<Alumni />} />
                     </Route>
