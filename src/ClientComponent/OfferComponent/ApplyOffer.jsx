@@ -40,6 +40,7 @@ function ApplyOffer() {
                       SetprofileImage(response.data.profileImage);
                       setQuiz(response.data.quiz); // Note the lowercase 'q' here
                       console.log(response.data.quiz);
+                      console.log("offerId",id);
 
    
    
@@ -204,6 +205,7 @@ function ApplyOffer() {
                                                     No Quiz Available
                                                 </button>
                                             )} */} 
+                                             <Link to={`/dash/quiz/${id}`}>Start Quiz</Link>
                                           
                                         </div>
                                 </div>

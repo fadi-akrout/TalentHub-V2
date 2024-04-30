@@ -25,7 +25,7 @@ import NewUserForm from './features/users/NewUserForm';
 import AccountStats from './ClientComponent/AdminStatistique/AcountStats';
 import StudentProfile from './ClientComponent/StudentComponent/StudentProfile';
 import Profile from './features/auth/profile';
-
+import QuizComponent from './ClientComponent/OfferComponent/QuizComponent';
 
 const Login = lazy(() => import('./features/auth/Login'));
 const Signup = lazy(() => import('./features/auth/Signup'));
@@ -123,7 +123,10 @@ function App() {
                     <Route path="apply/:id">
                       <Route index element={<Apply />} />
                     </Route>
-
+                    <Route path="quiz/:id">
+                      <Route index element={<QuizComponent />} />
+                    </Route>
+              
                     <Route path="AddStudent">
                       <Route index element={<AddStudent />} />
                     </Route>
