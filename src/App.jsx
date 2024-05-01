@@ -40,7 +40,8 @@ import Question from './ClientComponent/OfferComponent/Question';
 
 import { ROLES } from './config/roles'
 import UpdateOffer from './ClientComponent/OfferComponent/UpdateOffer'
-const Myoffers = lazy(() => import('./ClientComponent/OfferComponent/ownedOfferList'));
+/* const Myoffers = lazy(() => import('./ClientComponent/OfferComponent/ownedOfferList')); */
+const OwnedOfferStudent = lazy(() => import('./ClientComponent/OfferComponent/OwnedOfferStudent'));
 const Ownedoffers = lazy(() => import('./ClientComponent/OfferComponent/OwnedOfferListRecruiter'));
 const OwnedofferUserList = lazy(() => import('./ClientComponent/OfferComponent/OfferUserList'));
 import AddStaff from './ClientComponent/StaffComponent/AddStaff'
@@ -102,7 +103,7 @@ function App() {
                     </Route>
                     <Route element={<RequireAuth allowedRoles={[ROLES.Student, ROLES.Alumni ]} />}>
                       <Route path="myoffers/:id">
-                        <Route index element={<Myoffers />} />
+                        <Route index element={<OwnedOfferStudent />} />
                       </Route>
                     </Route>
                     <Route element={<RequireAuth allowedRoles={[ROLES.Admin, ROLES.Alumni, ROLES.Recruter ]} />}>
