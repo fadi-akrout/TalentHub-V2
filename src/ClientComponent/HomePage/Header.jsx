@@ -304,7 +304,7 @@ function Header() {
                   <div className="dropdown-menu m-0 bg-secondary rounded-0">
                     <Link to="/dash/evenements" className="dropdown-item">Events</Link>
 
-                    <a href="chackout.html" className="dropdown-item">Chackout</a>
+                    {(isAdmin || isRecruter || isAlumni) && <a href="/dash/addQuestions" className="dropdown-item">Add questions</a>}
                     <a href="testimonial.html" className="dropdown-item">Testimonial</a>
                     <a href="404.html" className="dropdown-item">404 Page</a>
                   </div>
