@@ -9,7 +9,7 @@ import useAuth from '../../hooks/useAuth';
 import Header from '../HomePage/Header';
 import UserList from './OfferUserList'; // Import the UserList component
 import AcceptedUsers from './AcceptedUsers'; // Import the UserList component
-
+import Footer from '../Dashboard/Footer';
 function OwnedOfferListRecruiter() {
   const [offers, setOffers] = useState([]);
   const [searchQuery, setSearchQuery] = useState('');
@@ -104,7 +104,8 @@ function OwnedOfferListRecruiter() {
         </section>
         </div>
             </div>
-      
+            <Footer/>
+
       </>
     );
   }
@@ -206,9 +207,10 @@ function OwnedOfferListRecruiter() {
             </div>
           </div>
         </section>
+        
       </section>
+      <Footer/>
 
-     
     </>
   );
 }
