@@ -65,11 +65,12 @@ const VerifyEmail = () => {
               </div>
             </div>
           </form>
-          <section className="upcoming-meetings" id="meetings">
-            <Footer />
-          </section>
+       
+         
+        
         </div>
       </div>
+      <Footer />
     </>
   );
 };

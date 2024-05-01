@@ -7,6 +7,11 @@ import { MdDeleteForever } from 'react-icons/md'
 import useAuth from '../../hooks/useAuth'
 //import Feedback from '../HomePage/FeedBack';
 import Header from '../HomePage/Header';
+import Footer from '../Dashboard/Footer';
+import OwlCarousel from 'react-owl-carousel';
+import 'owl.carousel/dist/assets/owl.carousel.css';
+import 'owl.carousel/dist/assets/owl.theme.default.css';
+import './Card.css';
 
 function OwnedOfferStudent() {
   const [offers, setOffers] = useState([]);
@@ -72,6 +77,13 @@ function OwnedOfferStudent() {
     console.log('generate pdf', offerIds);
      generatePDFOffers(offerIds);
    };
+   const options = {
+    nav: true,
+    navText: [
+      '<i class="fas fa-arrow-left"></i>',
+      '<i class="fas fa-arrow-right"></i>',
+    ],
+  };
   if (error) {
     return (
         <>
@@ -112,7 +124,7 @@ function OwnedOfferStudent() {
                 <li className="breadcrumb-item active text-white"></li>
             </ol>
         </div>
-    <section className="upcoming-meetings" id="meetings"style={{ marginTop: '200px' }}>
+{/*     <section className="upcoming-meetings" id="meetings"style={{ marginTop: '200px' }}>
        <section className="contact-us" id="contact">
         <div className="container">
           <div className="row">
@@ -154,13 +166,9 @@ function OwnedOfferStudent() {
                     <li className="list-group-item">
                       <strong>Job City:</strong> {offer.JobCity}
                     </li>
-                   {/*  <li className="list-group-item">
-                      <Feedback offerId={offer._id} />
-                    </li> */}
+                  
                   </ul>
-                 {/*  {(isStudent || isAlumni) &&
-                    <button type="submit" className="btn btn-danger" onClick={() => navigateToApply(offer._id)}>Apply now</button>
-                  } */}
+              
                   {(isAdmin || isRecruter) &&
                     <>
                       <MdDeleteForever onClick={() => handleDelete(offer._id)} style={{ cursor: 'pointer', float: 'right', color: 'red', marginLeft: '10px' }} />
@@ -175,15 +183,77 @@ function OwnedOfferStudent() {
             </div>
           ))}
           <div className="col-12 text-center">
-          {/*   <button className="btn btn-primary" onClick={handleGeneratePDF}>Generate PDF of Offers</button> */}
+         
           </div>
         </div>
       </div>
 
       </div></div></div></div>
-    </section>    </section>
+    </section>    </section> */}
+  <div className="container-fluid testimonial py-5">
+      <div className="container py-5">
+        <div className="testimonial-header text-center">
+          <h4 className="text-primary">Check your applications status </h4>
+          <h1 className="display-5 mb-5 text-dark"></h1>
+        </div>
+      {/*   {offers.map((offer) => (
+       <div class="testimonial-item img-border-radius bg-light rounded p-4" style={{ marginTop:"20px" }}>
+                        <div class="position-relative">
+                            <div class="mb-4 pb-4 border-bottom border-secondary">
+                         
+                            </div>
+                            <div class="d-flex align-items-center flex-nowrap">
+                                <div class="bg-secondary rounded"style={{marginLeft:"20px",marginTop :"50px"}}>
+                                    <img src={offer.profileImage} class="img-fluid rounded" style={{ width: '400px', height: '200px' }} alt=""/>
+                                </div>
+                                <div class="ms-4 d-block" >
+                                    <h1 class="text-dark" style={{ marginLeft:"200px" }}>{offer.Title}</h1>
+                                    <h4 class="text-dark" style={{ marginLeft:"200px" }}>{offer.Salary}</h4>  
+                                    <h4 class="text-dark" style={{ marginLeft:"200px" }}>{offer.JobType}</h4>  
+                                    <h4 class="text-dark" style={{ marginLeft:"200px" }}>{offer.JobCty}</h4>  
+                                
+                                </div>
+                                
+                            </div>
+                            {(isAdmin || isRecruter) &&
+                    <>
+                      <MdDeleteForever onClick={() => handleDelete(offer._id)} style={{ cursor: 'pointer', float: 'right', color: 'red', marginLeft: '10px',marginTop :"50px" }} />
+                      <FaEdit onClick={() => navigateToUpdateOffer(offer._id)} style={{ cursor: 'pointer', float: 'right', color: '#0d6efd' ,marginTop :"50px"}} />
+                    </>
+                  }
+                             <button className="btn border border-secondary rounded px-1 py-1 mb-4 text-sucess" onClick={() => handleGeneratePDF(offer._id)} style={{marginTop :"50px"}}>
+                                Generate PDF for the offer
+                              </button>  
+                        </div>
+                    </div>
+                  ))}
+ */}
+<div className="cards" style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between',flexDirection:"row"}}>
+    {offers.map((offer) => (
+        <div key={offer} className="card red" >
+              <div class="d-flex align-items-center flex-nowrap">
+                                <div class="bg-secondary rounded"style={{marginLeft:"20px",marginTop :"50px"}}>
+                                    <img src={offer.profileImage} class="img-fluid rounded" style={{ width: '400px', height: '200px' }} alt=""/>
+                                </div>
+                                <div class="ms-4 d-block" >
+                                    <h1 class="text-dark" >{offer.Title}</h1>
+                                    <h4 class="text-dark" >{offer.Salary}</h4>  
+                                    <h4 class="text-dark" >{offer.JobType}</h4>  
+                                    <h4 class="text-dark" >{offer.JobCty}</h4>  
+                                
+                                </div>
+                                      
+             </div>
+             <button className="btn border border-secondary rounded px-1 py-1 mb-4 text-dark" onClick={() => handleGeneratePDF(offer._id)} style={{marginTop :"50px"}}>
+                                Generate PDF for the offer
+                              </button>    
+        </div>
+    ))}
+</div>
+      </div>
+    </div>
 
-
+<Footer/>
 </>
   );
 }
