@@ -3,9 +3,12 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { FaEdit } from 'react-icons/fa';
 import { MdDeleteForever } from 'react-icons/md';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import useAuth from '../../hooks/useAuth';
 import Header from '../HomePage/Header';
 import Footer from '../Dashboard/Footer';
+
 function Evenements() {
     const [evenements, setEvenements] = useState([]);
     const { userId, isAdmin, isTeacher, isRecruter } = useAuth();
@@ -20,18 +23,34 @@ function Evenements() {
             });
     }, []);
 
+    const handleDelete = async (id) => {
+        if (window.confirm("ARE YOU SURE YOU WANT TO DELETE THIS EVENT")) {
+            try {
+                const response = await axios.delete(`http://localhost:3500/evenements/${id}`);
+                if (response.status === 200 || response.status === 204) {
+                    setEvenements(prev => prev.filter(ev => ev._id !== id));
+                    toast.success("Event successfully deleted.");
+                }
+            } catch (error) {
+                console.error("Error deleting event", error);
+                toast.error("Failed to delete event.");
+            }
+        }
+    };
+
     return (
         <>
             <Header />
+            <ToastContainer />
             <div className="container-fluid page-header py-5">
-            <h1 className="text-center text-white display-6">Events</h1>
-            <ol className="breadcrumb justify-content-center mb-0">
-                <li className="breadcrumb-item"/>
-                <li className="breadcrumb-item"/>
-                <li className="breadcrumb-item active text-white"></li>
-            </ol>
-        </div>
-            <div className="container-fluid fruite py-5">
+                <h1 className="text-center text-white display-6">Events</h1>
+                <ol className="breadcrumb justify-content-center mb-0">
+                    <li className="breadcrumb-item"/>
+                    <li className="breadcrumb-item"/>
+                    <li className="breadcrumb-item active text-white"></li>
+                </ol>
+            </div>
+            <div className="container-fluid py-5">
                 <div className="container py-5">
                     <div className="tab-class text-center">
                         <h1 className="text-center mb-4">Welcome to our Events!</h1>
@@ -40,55 +59,36 @@ function Evenements() {
                                 <Evenement
                                     key={evenement._id}
                                     evenement={evenement}
-                                    setEvenements={setEvenements}
                                     isAdmin={isAdmin}
                                     isTeacher={isTeacher}
                                     isRecruter={isRecruter}
                                     userId={userId}
+                                    onDelete={handleDelete}
                                 />
                             ))}
                         </div>
-                        {/*  {(isAdmin || isRecruter || isTeacher) && (
-                            <div className="text-center mt-4">
-                                <Link to="/dash/add-event" className="btn btn-danger">Add Event</Link>
-                            </div>
-                        )} */}
                     </div>
                 </div>
             </div>
-            <Footer/>
+            <Footer />
         </>
     );
 }
 
-function Evenement({ evenement, setEvenements, isAdmin, isTeacher, isRecruter, userId }) {
+function Evenement({ evenement, isAdmin, isTeacher, isRecruter, userId, onDelete }) {
     const [isParticipating, setIsParticipating] = useState(evenement.participants.includes(userId));
-
-    const handleDelete = async () => {
-        if (window.confirm("ARE YOU SURE YOU WANT TO DELETE THIS EVENT")) {
-            try {
-                const response = await axios.delete(`http://localhost:3500/evenements/${evenement._id}`);
-                if (response.status === 200 || response.status === 204) {
-                    setEvenements(prev => prev.filter(ev => ev._id !== evenement._id));
-                }
-            } catch (error) {
-                console.error("Error deleting event", error);
-            }
-        }
-    };
-
     const handleParticipate = async () => {
         try {
             const response = await axios.post(`http://localhost:3500/evenements/${evenement._id}/participate`, { userId });
             if (response.status === 200) {
-                alert('Your participation has been recorded');
-                setIsParticipating(true);
+                setIsParticipating(true);  // Update the participation status
+                toast.success('Participation confirmed! You will receive a confirmation email shortly.');  // Show success toast
             } else {
-                alert('Error during participation: Unsuccessful response status');
+                toast.error(response.data.message || 'Error during participation');
             }
         } catch (error) {
             console.error('Error during participation:', error);
-            alert(`Error during participation: ${error.message}`);
+            toast.error(`Error during participation: ${error.response?.data?.message || error.message}`);
         }
     };
 
@@ -96,22 +96,20 @@ function Evenement({ evenement, setEvenements, isAdmin, isTeacher, isRecruter, u
         try {
             const response = await axios.post(`http://localhost:3500/evenements/${evenement._id}/annulerParticipation`, { userId });
             if (response.status === 200) {
-                alert('Votre annulation de participation a été enregistrée');
+                toast.success('Votre annulation de participation a été enregistrée');
                 setIsParticipating(false);
-                // Mise à jour de l'état si nécessaire...
             } else {
-                alert('Erreur lors de l\'annulation de la participation: Statut de réponse non réussi');
+                toast.error('Erreur lors de l\'annulation de la participation: Statut de réponse non réussi');
             }
         } catch (error) {
-            console.error('Erreur lors de l\'annulation de la participation:', error.response || error.message);
-            alert(`Erreur lors de l'annulation de la participation: ${error.response?.data?.message || error.message}`);
+            console.error('Erreur lors de l\'annulation de la participation:', error);
+            toast.error(`Erreur lors de l'annulation de la participation: ${error.message}`);
         }
     };
 
     return (
-        
-        <div className="col-md-6 col-lg-4 col-xl-3 mb-4">
-            <div className="card rounded position-relative fruite-item h-100 shadow">
+        <div className="col-md-6 col-lg-4">
+            <div className="rounded position-relative fruite-item d-flex flex-column h-100">
                 {evenement.image && (
                     <div className="fruite-img">
                         <img src={evenement.image} className="img-fluid w-100 rounded-top" alt={evenement.nom} />
@@ -128,7 +126,7 @@ function Evenement({ evenement, setEvenements, isAdmin, isTeacher, isRecruter, u
                     {isAdmin || isTeacher || isRecruter ? (
                         <>
                             <FaEdit style={{ cursor: 'pointer', color: '#0d6efd' }} onClick={() => { /* function to edit event */ }} />
-                            <MdDeleteForever style={{ cursor: 'pointer', color: 'red' }} onClick={handleDelete} />
+                            <MdDeleteForever style={{ cursor: 'pointer', color: 'red' }} onClick={() => onDelete(evenement._id)} />
                         </>
                     ) : null}
                     {isParticipating ? (
