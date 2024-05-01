@@ -1,6 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import Header from '../HomePage/Header';
+import Footer from '../Dashboard/Footer';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import useAuth from '../../hooks/useAuth';
 
 function QuizComponent() {
     const { id } = useParams();
@@ -11,6 +16,7 @@ function QuizComponent() {
     const [completed, setCompleted] = useState(false);
     const [loading, setLoading] = useState(true);
     const navigate = useNavigate();
+    const { userId } = useAuth();
 
     useEffect(() => {
         const fetchQuiz = async () => {
@@ -29,23 +35,40 @@ function QuizComponent() {
     const handleOptionChange = (index) => {
         setSelectedOption(index);
     };
+    const handleCompletion = async () => {
+        // Calculate the final score immediately before sending it
+        const finalScore = score + (quiz.questions[currentQuestionIndex].correctOption === selectedOption ? 1 : 0);
+
+        try {
+            await axios.post('http://localhost:3500/Result/quiz-results', {
+                userId: userId,  // Assuming you get userId from context or props
+                quizId: id,      // The ID of the quiz
+                offerId: id, // Assuming offerId is passed correctly
+                score: finalScore  // Send the final score
+            });
+            setCompleted(true);
+        } catch (error) {
+            console.error('Failed to submit quiz results:', error);
+        }
+    }
 
     const handleSubmit = () => {
         if (selectedOption === null) {
-            alert('Please select an option.');
+            toast.error('Please select an option.');
             return;
         }
 
         if (quiz.questions[currentQuestionIndex].correctOption === selectedOption) {
-            setScore(score + 1);
+            setScore(prevScore => prevScore + 1);
         }
 
         const nextQuestionIndex = currentQuestionIndex + 1;
         if (nextQuestionIndex < quiz.questions.length) {
             setCurrentQuestionIndex(nextQuestionIndex);
-            setSelectedOption(null); // Reset for the next question
+            setSelectedOption(null);
         } else {
-            setCompleted(true);
+            handleCompletion();
+            navigate('/dash', { state: { score, total: quiz.questions.length } });
         }
     };
 
@@ -57,37 +80,43 @@ function QuizComponent() {
         return <p>No quiz available for this offer.</p>;
     }
 
-    if (completed) {
-        return (
-            <div>
-                <h1>Quiz Completed</h1>
-                <p>Your score: {score} out of {quiz.questions.length}</p>
-                <button onClick={() => navigate('/some/path')}>Go somewhere</button>
-            </div>
-        );
-    }
-
     const question = quiz.questions[currentQuestionIndex];
 
     return (
-        <div>
-            <h1>{quiz.title}</h1>
-            <div>
-                <h2>Question {currentQuestionIndex + 1}</h2>
-                <p>{question.questionText}</p>
-                <ul>
-                    {question.options.map((option, index) => (
-                        <li key={index}>
-                            <label>
-                                <input type="radio" value={index} checked={selectedOption === index} onChange={() => handleOptionChange(index)} />
-                                {option}
-                            </label>
-                        </li>
-                    ))}
-                </ul>
-                <button onClick={handleSubmit}>Next</button>
+        <>
+            <Header />
+            <div className="container-fluid py-5">
+                <div className="container border border-secondary rounded p-4 bg-light">
+                    <div className="row">
+                        <div className="col-lg-8 mx-auto">
+                            <h1 className="text-center mb-4">{quiz.title}</h1>
+                            <h2>Question {currentQuestionIndex + 1} of {quiz.questions.length}</h2>
+                            <p>{question.questionText}</p>
+                            <form>
+                                {question.options.map((option, index) => (
+                                    <div key={index} className="form-check my-3">
+                                        <input
+                                            className="form-check-input"
+                                            type="radio"
+                                            name="option"
+                                            id={`option${index}`}
+                                            checked={selectedOption === index}
+                                            onChange={() => handleOptionChange(index)}
+                                        />
+                                        <label className="form-check-label" htmlFor={`option${index}`}>
+                                            {option}
+                                        </label>
+                                    </div>
+                                ))}
+                                <button className="btn btn-primary mt-4" onClick={handleSubmit} type="button">Next</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </div>
+            <Footer />
+            <ToastContainer />
+        </>
     );
 }
 
