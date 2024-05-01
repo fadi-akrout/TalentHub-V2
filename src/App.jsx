@@ -46,6 +46,7 @@ const Ownedoffers = lazy(() => import('./ClientComponent/OfferComponent/OwnedOff
 const OwnedofferUserList = lazy(() => import('./ClientComponent/OfferComponent/OfferUserList'));
 import AddStaff from './ClientComponent/StaffComponent/AddStaff'
 import Alumni from './ClientComponent/AlumniComponent/AddAlumni'
+import AddQuestionForm from './ClientComponent/QuestionComponent/AddQuestionForm'
 const Cv = lazy(() => import('./ClientComponent/cv'));
 const Job = lazy(() => import('./ClientComponent/job'));
 
@@ -114,6 +115,11 @@ function App() {
                     <Route element={<RequireAuth allowedRoles={[ROLES.Admin, ROLES.Alumni, ROLES.Recruter ]} />}>
                       <Route path="ownedofferUserList/:id">
                         <Route index element={<OwnedofferUserList />} />
+                      </Route>
+                    </Route>
+                    <Route element={<RequireAuth allowedRoles={[ROLES.Admin, ROLES.Alumni, ROLES.Recruter ]} />}>
+                      <Route path="addQuestions">
+                        <Route index element={<AddQuestionForm  />} />
                       </Route>
                     </Route>
                     <Route path="cv">
