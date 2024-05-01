@@ -72,7 +72,7 @@ function HomeP  ()  {
                                     <input
                                         type="search"
                                         className="form-control p-3"
-                                        placeholder="keywords"
+                                        placeholder="Search"
                                         value={searchQuery}
                                         onChange={handleSearchInputChange}
                                     />

@@ -1,13 +1,10 @@
-import React, { useState, useEffect } from 'react';
+/* import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
 
 
 
-/* function navigateToUpdateOffer(offerId) {
-    const navigate = useNavigate();
-    navigate(`/updateoffer/${offerId}`);
-  } */
+
 function OfferList() {
     const [offers, setOffers] = useState([]);
     const navigate = useNavigate();
@@ -52,7 +49,7 @@ function OfferList() {
             doc.text(offer.Title, 14, 20);
             doc.setFontSize(10);
             doc.text(`Experience Required: ${offer.Experience_required}`, 14, 30);
-            doc.text(`Domain: ${offer.Domain}`, 14, 40);
+            doc.text(`Description: ${offer.Description}`, 14, 40);
             doc.text(`Mission: ${offer.Mission}`, 14, 50);
             doc.text(`Salary: ${offer.Salary}`, 14, 60);
             doc.text(`Speciality: ${offer.Speciality}`, 14, 70);
@@ -79,8 +76,6 @@ function OfferList() {
                                             <h4 className="job-title">{offer.Title}</h4>
                                             <div className="job-details">
                                                 <p className="job-info"><span className="info-label"><strong>Experience Required:</strong></span> {offer.Experience_required}</p>
-                                                <p className="job-info"><span className="info-label"><strong>Domain:</strong></span> {offer.Domain}</p>
-                                                <p className="job-info"><span className="info-label"><strong>Mission:</strong></span> {offer.Mission}</p>
                                                 <p className="job-info"><span className="info-label"><strong>Salary:</strong></span> {offer.Salary}</p>
                                                 <p className="job-info"><span className="info-label"><strong>Speciality:</strong></span> {offer.Speciality}</p>
                                                 <p className="job-info"><span className="info-label"><strong>Job Type:</strong></span> {offer.JobType}</p>
@@ -94,9 +89,7 @@ function OfferList() {
                                             <button onClick={generatePDFOffers} style={{ margin: '20px', padding: '10px 20px', fontSize: '16px' }}>Generate PDF of Offers</button>
 
                                         </div>
-                                        {/* <MdDeleteForever onClick={(e) => handleDelete(offer._id)} style={{ cursor: 'pointer', float: 'right', color: 'red', marginLeft: '10px' }} />
-                                        <FaEdit onClick={() => navigateToUpdateOffer(offer._id)} style={{ cursor: 'pointer', float: 'right', color: '#0d6efd' }} />
-                                   */}  </div>
+                                     </div>
                                 </div>
                             </div>
                         ))}
@@ -110,4 +103,4 @@ function OfferList() {
     );
 }
 
-export default OfferList;
+export default OfferList; */

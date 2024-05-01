@@ -7,7 +7,7 @@ import { MdDeleteForever } from 'react-icons/md'
 import useAuth from '../../hooks/useAuth'
 //import Feedback from '../HomePage/FeedBack';
 import Header from '../HomePage/Header';
-
+import Footer from '../Dashboard/Footer';
 function ownedOfferList() {
   const [offers, setOffers] = useState([]);
   const [searchQuery, setSearchQuery] = useState('');
@@ -179,6 +179,7 @@ function ownedOfferList() {
       </div></div></div></div>
     </section>    </section>
 
+    <Footer/>
 
 </>
   );
