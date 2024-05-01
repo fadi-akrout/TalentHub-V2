@@ -67,9 +67,11 @@ function OwnedOfferStudent() {
     navigate(`./apply/${offerId}`);
   };
 
-   const handleGeneratePDF = () => {
-    generatePDFOffers(offers);  // Assuming generatePDFOffers accepts an array of offer objects
-  }; 
+  const handleGeneratePDF = (offerIds) => {
+    // const offerIds = offers.map((offer) => offer._id);
+    console.log('generate pdf', offerIds);
+     generatePDFOffers(offerIds);
+   };
   if (error) {
     return (
         <>
@@ -165,7 +167,9 @@ function OwnedOfferStudent() {
                       <FaEdit onClick={() => navigateToUpdateOffer(offer._id)} style={{ cursor: 'pointer', float: 'right', color: '#0d6efd' }} />
                     </>
                   }
-                   <button className="btn btn-primary"  onClick={handleGeneratePDF} style={{ marginTop: '20px' }}>Generate PDF of Offers</button>
+                    <button className="btn border border-secondary rounded px-1 py-1 mb-4 text-sucess" onClick={() => handleGeneratePDF(offer._id)}>
+                                Generate PDF of Offers
+                              </button>
                 </div>
               </div>
             </div>
