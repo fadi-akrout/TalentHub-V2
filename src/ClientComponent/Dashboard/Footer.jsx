@@ -60,7 +60,7 @@ function Footer() {
                   </div>
                   <div className="col-lg-3 col-md-6">
                         <div className="d-flex flex-column text-start footer-item">
-                            <h4 className="text-light mb-3">Shop Info</h4>
+                            <h4 className="text-light mb-3">User Info</h4>
                             <p>Current User: {username}</p>
                             <p>Status: {status}</p>
                             <p>Email: {email}</p>

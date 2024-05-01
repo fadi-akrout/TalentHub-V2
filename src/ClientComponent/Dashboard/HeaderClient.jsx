@@ -30,7 +30,9 @@ function HeaderClient() {
             </div>
             <div className="container px-0">
                 <nav className="navbar navbar-light bg-white navbar-expand-md">
+                <img src="../../public/img/talenthublogo2.png" alt="Logo" className=" mr-2" />
                     <a href="/" className="navbar-brand"><h1 className="text-primary display-6">Talent Hub</h1></a>
+                    <img src="../../public/img/esprit.png" alt="Logo" className=" mr-2" />
                     <button className="navbar-toggler py-2 px-3" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
                         <span className="fa fa-bars text-primary"></span>
                     </button>
