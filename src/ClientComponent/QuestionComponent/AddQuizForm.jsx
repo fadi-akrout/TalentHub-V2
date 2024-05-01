@@ -6,6 +6,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import Header from '../HomePage/Header';
 import Footer from '../Dashboard/Footer';
 import './quiz.css';
+import './quizcheckbox.css';
 
 const AddQuizForm = () => {
   const [title, setTitle] = useState('');
@@ -88,14 +89,13 @@ const AddQuizForm = () => {
       </div>
       </div>
 
-
       <div className="row">
       <div className="col-md-12 col-lg-12">
                         <div className="form-item w-100">
         <label>Questions</label>
         {questions.map((question) => (
           <div key={question._id}>
-            <label className="form-label my-3">
+            <label className="checkbox-btn">
               <input
               
                 type="checkbox"
@@ -103,6 +103,7 @@ const AddQuizForm = () => {
                 checked={selectedQuestions.includes(question._id)}
                 onChange={handleQuestionSelect}
               />
+               <span class="checkmark"></span>
               {question.questionText}
             </label>
           </div>

@@ -4,7 +4,7 @@ import User from './User';
 import PulseLoader from 'react-spinners/PulseLoader';
 import Header from "../../ClientComponent/HomePage/Header";
 import Footer from "../../ClientComponent/Dashboard/Footer";
-
+import './userlist.css'
 const UsersList = () => {
     const [currentPage, setCurrentPage] = useState(1);
     const [selectedRole, setSelectedRole] = useState(''); // State to store selected role
@@ -74,6 +74,9 @@ const UsersList = () => {
           <li className="breadcrumb-item active text-white"></li>
         </ol>
       </div>
+
+     
+
       <div className="container-fluid py-5">
         <div className="container py-5">
 
@@ -104,11 +107,20 @@ const UsersList = () => {
                                 </table>
                                 {pagination}
                             </div>
+                            
                         </div>
                     </div>
                 </section>
+ {/*                <div className="brick one"></div>
+<div className="tooltip-mario-container">
+  <div className="box"></div>
+  <div className="mush"></div>
+</div>
+<div class="brick two"></div> */}
                 </div>
+                
                 </div>
+                
                 <Footer />
             </>
         );
