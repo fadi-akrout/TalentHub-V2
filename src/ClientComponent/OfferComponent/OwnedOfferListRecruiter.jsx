@@ -146,16 +146,13 @@ function OwnedOfferListRecruiter() {
                       {offers.map((offer) => (
                         <div key={offer._id} className="justify-content-center col-lg-10 col-md-6 col-sm-8 mb-6">
                           <div className="card h-100">
-                            <img src="../../assets/images/meeting-01.jpg" className="card-img-top" alt="Offer" />
+                            <img src={offer.profileImage} className="card-img-top w-50" alt="Offer" />
                             <div className="card-body">
                               <h5 className="card-title">{offer.Title}</h5>
                               <p className="card-text">{offer.Mission}</p>
                               <ul className="list-group list-group-flush">
                                 <li className="list-group-item">
                                   <strong>Experience Required:</strong> {offer.Experience_required}
-                                </li>
-                                <li className="list-group-item">
-                                  <strong>Domain:</strong> {offer.Domain}
                                 </li>
                                 <li className="list-group-item">
                                   <strong>Salary:</strong> {offer.Salary}

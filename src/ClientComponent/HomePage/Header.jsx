@@ -284,7 +284,13 @@ function Header() {
         </div>
         <div className="container px-0">
           <nav className="navbar navbar-light bg-white navbar-expand-md">
-            <a href="/dash" className="navbar-brand"><h1 className="text-primary display-6">TalentHub</h1></a>
+          <img src="../../public/img/talenthublogo2.png" alt="Logo" className=" mr-2" />
+            <a href="/dash" className="navbar-brand">
+           
+              <h1 className="text-primary display-6">TalentHub</h1>
+             
+              </a>
+              <img src="../../public/img/esprit.png" alt="Logo" className=" mr-2" />
             <button className="navbar-toggler py-2 px-3" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
               <span className="fa fa-bars text-primary"></span>
             </button>
@@ -334,13 +340,13 @@ function Header() {
 
 
 
-                <Link to="/dash/Profile" className="nav-link">
+                {(!isAdmin) && <Link to="/dash/Profile" className="nav-link">
                   <div>
                     <FontAwesomeIcon icon={faIdCard} className="fa-lg" />
 
                   </div>
                   {username}
-                </Link>
+                </Link>}
                 {buttonContent}
                 {/*  <a href="#" className="my-auto mx-2">
                                 <i className="fas fa-sign-out-alt fa-2x"></i>
