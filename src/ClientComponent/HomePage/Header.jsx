@@ -256,7 +256,7 @@ function Header() {
       <>
         {newNoteButton}
         {newUserButton}
-        {notesButton}
+       {/*  {notesButton} */}
         {jobsButton}
         {myOffersButton}
         {ownerOffersButton}

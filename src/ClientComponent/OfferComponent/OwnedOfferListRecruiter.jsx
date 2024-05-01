@@ -241,6 +241,9 @@ function OwnedOfferListRecruiter() {
             <button className="btn border border-secondary rounded px-1 py-1 mb-4 text-success" onClick={() => handleGeneratePDF(offer._id)}>
               Generate PDF for the offer
             </button>
+            <button className="btn border border-primary rounded px-1 py-1 mb-4 text-success me-2" style={{ marginLeft: "5px" }}>
+              <Link to={`/dash/addQuiz/${offer._id}`}>Add Quiz</Link>
+            </button>
           </div>
         </div>
       ))}
