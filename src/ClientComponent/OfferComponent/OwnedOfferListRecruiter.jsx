@@ -123,7 +123,8 @@ function OwnedOfferListRecruiter() {
           <li className="breadcrumb-item active text-white"></li>
         </ol>
       </div>
-      <section className="upcoming-meetings" id="meetings"style={{marginTop :"200px"}}>
+
+     {/*  <section className="upcoming-meetings" id="meetings"style={{marginTop :"200px"}}>
         <section className="contact-us" id="contact">
           <div className="container">
             <div className="row">
@@ -167,13 +168,9 @@ function OwnedOfferListRecruiter() {
                                 <li className="list-group-item">
                                   <strong>Job City:</strong> {offer.JobCity}
                                 </li>
-                               {/*  <li className="list-group-item">
-                                  <Feedback offerId={offer._id} />
-                                </li> */}
+                              
                               </ul>
-                              {/*  {(isStudent || isAlumni) &&
-                                <button type="submit" className="btn btn-danger" onClick={() => navigateToApply(offer._id)}>Apply now</button>
-                              } */}
+                            
                               {(isAdmin || isRecruter) && (
                                 <>
                                   <MdDeleteForever
@@ -186,7 +183,7 @@ function OwnedOfferListRecruiter() {
                                   />
                                 </>
                               )}
-                              <UserList offerId={offer._id} /> {/* Add the UserList component */}
+                              <UserList offerId={offer._id} /> 
                              
                               <button className="btn border border-primary rounded px-1 py-1 mb-4 text-sucess" style={{marginRight :"5px"}}><Link to={`/dash/accepted/${offer._id}`}>User Accepted List</Link></button> 
                               <button className="btn border border-secondary rounded px-1 py-1 mb-4 text-sucess" onClick={() => handleGeneratePDF(offer._id)}>
@@ -198,7 +195,7 @@ function OwnedOfferListRecruiter() {
                         </div>
                       ))}
                       <div className="col-12 text-center">
-                        {/*   <button className="btn btn-primary" onClick={handleGeneratePDF}>Generate PDF of Offers</button> */}
+                      
                       </div>
                     </div>
                   </div>
@@ -208,7 +205,47 @@ function OwnedOfferListRecruiter() {
           </div>
         </section>
         
-      </section>
+      </section> */}
+
+<div className="container-fluid testimonial py-5">
+  <div className="container py-5">
+    <div className="testimonial-header text-center">
+      <h4 className="text-primary">Check your Offers status</h4>
+    </div>
+    <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center',flexDirection:"row"}}>
+      {offers.map((offer) => (
+        <div className="testimonial-item img-border-radius bg-light rounded p-4 d-flex flex-column align-items-center" style={{ marginTop: "20px", width: "80%" }}>
+          <div className="d-flex flex-wrap justify-content-between align-items-center w-100">
+            <div className="bg-secondary rounded" style={{ marginLeft: "20px" }}>
+              <img src={offer.profileImage} className="img-fluid rounded" style={{ width: '400px', height: '200px' }} alt="" />
+            </div>
+            <div className="ms-4 d-block " >
+              <h1 className="text-dark"style={{ marginLeft: '-550px' }}>{offer.Title}</h1>
+              <h4 className="text-dark"style={{ marginLeft: '-550px' }}>{offer.Salary}</h4>
+              <h4 className="text-dark"style={{ marginLeft: '-550px' }}>{offer.JobType}</h4>
+              <h4 className="text-dark"style={{ marginLeft: '-550px' }}>{offer.JobCity}</h4>
+            </div>
+          </div>
+          {(isAdmin || isRecruter) && (
+            <div className="d-flex justify-content-end w-100" style={{ marginTop: "50px" }}>
+              <MdDeleteForever onClick={() => handleDelete(offer._id)} style={{ cursor: 'pointer', marginLeft: '10px', color: 'red' }} />
+              <FaEdit onClick={() => navigateToUpdateOffer(offer._id)} style={{ cursor: 'pointer', marginLeft: '10px', color: '#0d6efd' }} />
+            </div>
+          )}
+          <UserList offerId={offer._id} /> {/* Add the UserList component */}
+          <div className="d-flex justify-content-center w-100" style={{ marginTop: "20px" }}>
+            <button className="btn border border-primary rounded px-1 py-1 mb-4 text-success me-2">
+              <Link to={`/dash/accepted/${offer._id}`}>User Accepted List</Link>
+            </button>
+            <button className="btn border border-secondary rounded px-1 py-1 mb-4 text-success" onClick={() => handleGeneratePDF(offer._id)}>
+              Generate PDF for the offer
+            </button>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</div>
       <Footer/>
 
     </>

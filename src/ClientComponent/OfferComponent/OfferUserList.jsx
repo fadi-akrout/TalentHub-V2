@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import './Card.css';
 const UserList = ({ offerId }) => {
   const [users, setUsers] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -59,25 +60,27 @@ const UserList = ({ offerId }) => {
 
   return (
     <div>
-      <h2>Users Applied to this Offer</h2>
-      <ul>
-        {users.map((user) => (
-          <li key={user._id}>
-           {/*  <div>
-              <strong>Username:</strong> {user.username}
-            </div> */}
-            <div style={{ display: 'flex', alignItems: 'center' }}>
-              <strong>Email:</strong> {user.email} 
-              <button className="btn border border-secondary rounded-pill px-1 py-1 mb-4 text-primary" style={{ marginTop: '20px', marginLeft: 'auto' }} onClick={() => handleAcceptCandidate(user._id)}>Accept Candidate</button>
-            </div>
+      <h4>Users Applied to this Offer</h4>
+     
+       
+        
+     
+      <div className="cards" style={{ display: 'flex', flexWrap: 'wrap', flexDirection:"row"}}>
+    {users.map((user) => (
+        <div key={user._id} className="card red" style={{ margin: '5px', padding: '10px', minWidth: '100px', maxWidth: '200px' }}>
+            <p className="second-text"style={{ margin: '10px' }}>{user.email}</p>
+            <button className="btn border border-secondary rounded-pill px-1 py-1 mb-4 text-dark" style={{ margin: '10px' }} onClick={() => handleAcceptCandidate(user._id)}>Accept Candidate</button>
+        </div>
+    ))}
+</div>
+
+
             <div>{error}</div>
            
-           {/*  <div>
-              <strong>Roles:</strong> {user.roles.join(', ')}
-            </div> */}
-          </li>
-        ))}
-      </ul>
+      
+       
+      
+
       <ToastContainer/>
     </div>
   );
