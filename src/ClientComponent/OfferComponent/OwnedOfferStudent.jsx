@@ -12,6 +12,7 @@ import OwlCarousel from 'react-owl-carousel';
 import 'owl.carousel/dist/assets/owl.carousel.css';
 import 'owl.carousel/dist/assets/owl.theme.default.css';
 import './Card.css';
+import ResultScore from './ResultScore';
 
 function OwnedOfferStudent() {
   const [offers, setOffers] = useState([]);
@@ -215,7 +216,8 @@ function OwnedOfferStudent() {
              </div>
              <button className="btn border border-secondary rounded px-1 py-1 mb-4 text-dark" onClick={() => handleGeneratePDF(offer._id)} style={{marginTop :"50px"}}>
                                 Generate PDF for the offer
-                              </button>    
+                              </button>
+                              <ResultScore offerId={offer._id}/>   
         </div>
     ))}
 </div>

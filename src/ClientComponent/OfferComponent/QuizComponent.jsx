@@ -10,6 +10,8 @@ import useAuth from '../../hooks/useAuth';
 function QuizComponent() {
     const { id } = useParams();
     const [quiz, setQuiz] = useState(null);
+    const [quizDeja, setQuizDeja] = useState(false);
+    const [noQuiz, setNoQuiz] = useState(false);
     const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
     const [selectedOption, setSelectedOption] = useState(null);
     const [score, setScore] = useState(0);
@@ -21,10 +23,34 @@ function QuizComponent() {
     useEffect(() => {
         const fetchQuiz = async () => {
             try {
-                const response = await axios.get(`http://localhost:3500/offers/quiz/${id}`);
+                const response = await axios.get(`http://localhost:3500/offers/quiz/${id}`,{
+                    headers:{'user-id' :userId}
+                });
                 setQuiz(response.data);
                 setLoading(false);
             } catch (error) {
+                switch (error.response.status) {
+                    case 400:
+                        toast.error('You have already taken the quiz for this offer');
+                        setQuizDeja(true);
+                        break;
+                      case 401:
+                        toast.error('No quiz associated with this offer');
+                        setNoQuiz(true);
+                        break;
+                      case 404:
+                        toast.error('Offer not found');
+                        break;
+                      case 500:
+                        toast.error('server error');
+                        break;
+                      default:
+                        toast.error('An error occurred');
+                        break;
+                }
+
+
+
                 console.error('Failed to fetch quiz:', error);
                 setLoading(false);
             }
@@ -76,8 +102,71 @@ function QuizComponent() {
         return <p>Loading quiz...</p>;
     }
 
+    if (quizDeja) {
+        return (
+            <>
+            <Header />
+            <div className="container-fluid page-header py-5">
+        <h1 className="text-center text-white display-6">Quiz</h1>
+        <ol className="breadcrumb justify-content-center mb-0">
+          <li className="breadcrumb-item" />
+          <li className="breadcrumb-item" />
+          <li className="breadcrumb-item active text-white"></li>
+        </ol>
+      </div>
+            <div className="container-fluid py-5">
+                <div className="container border border-secondary rounded p-4 bg-light">
+            <p style={{color: 'red'}}>You have already taken the quiz for this offer.</p>
+            </div>
+            </div>
+            <Footer />
+            <ToastContainer />
+        </>
+        );
+    }
+    if (noQuiz) {
+        return (
+            <>
+            <Header />
+            <div className="container-fluid page-header py-5">
+        <h1 className="text-center text-white display-6">Quiz</h1>
+        <ol className="breadcrumb justify-content-center mb-0">
+          <li className="breadcrumb-item" />
+          <li className="breadcrumb-item" />
+          <li className="breadcrumb-item active text-white"></li>
+        </ol>
+      </div>
+            <div className="container-fluid py-5">
+                <div className="container border border-secondary rounded p-4 bg-light">
+            <p style={{color: 'red'}}>No Quiz associated with this offer.</p>
+            </div>
+            </div>
+            <Footer />
+            <ToastContainer />
+        </>
+        );
+    }
     if (!quiz) {
-        return <p>No quiz available for this offer.</p>;
+        return (
+            <>
+            <Header />
+            <div className="container-fluid page-header py-5">
+        <h1 className="text-center text-white display-6">Quiz</h1>
+        <ol className="breadcrumb justify-content-center mb-0">
+          <li className="breadcrumb-item" />
+          <li className="breadcrumb-item" />
+          <li className="breadcrumb-item active text-white"></li>
+        </ol>
+      </div>
+            <div className="container-fluid py-5">
+                <div className="container border border-secondary rounded p-4 bg-light">
+            <p>No quiz available for this offer.</p>
+            </div>
+            </div>
+            <Footer />
+            <ToastContainer />
+        </>
+        );
     }
 
     const question = quiz.questions[currentQuestionIndex];
