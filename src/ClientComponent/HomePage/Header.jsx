@@ -309,7 +309,7 @@ function Header() {
                     <a href="404.html" className="dropdown-item">404 Page</a>
                   </div>
                 </div>
-                {(isAdmin || isRecruter) && <li><Link to="/dash/stats" className="nav-link px-2 link-dark">Statistics</Link></li>}
+                {(isAdmin) && <li><Link to="/dash/stats" className="nav-link px-2 link-dark">Statistics</Link></li>}
                 {(isAdmin || isRecruter) && <li><Link to="/dash/addoffer" className="nav-link px-2 link-dark"> Add Offer</Link></li>}
                 {(isAdmin || isRecruter) && <li><Link to="/dash/add-event" className="nav-link px-2 link-dark"> Add Events</Link></li>}
 

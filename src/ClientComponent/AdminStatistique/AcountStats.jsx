@@ -116,6 +116,7 @@ const AccountStats = () => {
                   </div>
                 </div>
               </main>
+              <div className="logo"><h3>Account Counts</h3></div>
               <div className="mt-4">
                 <PieChart
                   series={[
@@ -129,9 +130,10 @@ const AccountStats = () => {
                 />
               </div>
             </div>
-            <div className="logo"><h3>Account Counts</h3></div>
-            <div className="bar-chart-wrapper">
-              <ResponsiveContainer width="100%" height={400}>
+
+            <div className="bar-chart-wrapper mt-4">
+              <div className="barchart line-chart-container">
+              <ResponsiveContainer width="100%" height={300}>
                 <BarChart
                   data={barChartData}
                   margin={{ top: 20, right: 20, left: 20, bottom: 20 }}
@@ -144,6 +146,7 @@ const AccountStats = () => {
                   <Bar dataKey="count" fill="#8884d8" />
                 </BarChart>
               </ResponsiveContainer>
+            </div>
             </div>
             <div className="logo"><h3>Events</h3></div>
             <div className="line-chart-wrapper">
