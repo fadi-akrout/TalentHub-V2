@@ -8,7 +8,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import useAuth from '../../hooks/useAuth';
 import Header from '../HomePage/Header';
 import Footer from '../Dashboard/Footer';
-
+import '../OfferComponent/Card.css'
 function Evenements() {
     const [evenements, setEvenements] = useState([]);
     const { userId, isAdmin, isTeacher, isRecruter } = useAuth();
@@ -96,7 +96,7 @@ function Evenement({ evenement, isAdmin, isTeacher, isRecruter, userId, onDelete
         try {
             const response = await axios.post(`http://localhost:3500/evenements/${evenement._id}/annulerParticipation`, { userId });
             if (response.status === 200) {
-                toast.success('Votre annulation de participation a été enregistrée');
+                toast.success('Your participation is canceled');
                 setIsParticipating(false);
             } else {
                 toast.error('Erreur lors de l\'annulation de la participation: Statut de réponse non réussi');
@@ -109,34 +109,36 @@ function Evenement({ evenement, isAdmin, isTeacher, isRecruter, userId, onDelete
 
     return (
         <div className="col-md-6 col-lg-4">
-            <div className="rounded position-relative fruite-item d-flex flex-column h-100">
-                {evenement.image && (
-                    <div className="fruite-img">
-                        <img src={evenement.image} className="img-fluid w-100 rounded-top" alt={evenement.nom} />
-                    </div>
-                )}
-                <div className="card-body">
-                    <h4 className="card-title">{evenement.nom}</h4>
-                    <p className="card-text">{evenement.description}</p>
-                </div>
-                <div className="card-footer bg-white d-flex justify-content-between flex-wrap">
-                    <a href="#" className="btn border border-secondary rounded-pill px-3 text-primary">
-                        <i className="fa fa-info me-2 text-primary"></i> Details
-                    </a>
-                    {isAdmin || isTeacher || isRecruter ? (
-                        <>
-                            <FaEdit style={{ cursor: 'pointer', color: '#0d6efd' }} onClick={() => { /* function to edit event */ }} />
-                            <MdDeleteForever style={{ cursor: 'pointer', color: 'red' }} onClick={() => onDelete(evenement._id)} />
-                        </>
-                    ) : null}
-                    {isParticipating ? (
-                        <button className="btn btn-warning" onClick={handleCancelParticipation}>Cancel</button>
-                    ) : (
-                        <button className="btn btn-primary" onClick={handleParticipate}>Participate</button>
-                    )}
-                </div>
-            </div>
-        </div>
+  <div className="card mb-4 h-100">
+    {evenement.image && (
+      <div className="position-relative">
+        <img src={evenement.image} className="card-img-top" alt={evenement.nom} style={{ height: "200px", objectFit: "cover" }} />
+      </div>
+    )}
+    <div className="card-body">
+      <h5 className="card-title">{evenement.nom}</h5>
+      <p className="card-text">{evenement.description}</p>
+    </div>
+    <div className="card-footer bg-white d-flex justify-content-between">
+      <a href="#" className="btn border border-secondary rounded-pill px-3 text-primary">
+        <i className="fa fa-info me-2 text-primary"></i> Details
+      </a>
+      {isAdmin || isTeacher || isRecruter ? (
+        <>
+          <FaEdit style={{ cursor: 'pointer', color: '#0d6efd' }} onClick={() => { /* function to edit event */ }} />
+          <MdDeleteForever style={{ cursor: 'pointer', color: 'red' }} onClick={() => onDelete(evenement._id)} />
+        </>
+      ) : null}
+      {isParticipating ? (
+        <button className="btn btn-warning" onClick={handleCancelParticipation}>Cancel</button>
+      ) : (
+        <button className="btn btn-primary" onClick={handleParticipate}>Participate</button>
+      )}
+    </div>
+  </div>
+</div>
+
+      
     );
 }
 

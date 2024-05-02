@@ -153,36 +153,34 @@ function HomeP  ()  {
 
 
 
-
-
                             <div className="col-lg-9" style={{ marginTop: "65px" }}>
-    <div className="row g-4 justify-content-center">
+      <div className="row g-4 justify-content-center">
         {offers.map(offer => (
-            <div key={offer.id} className="col-md-6 col-lg-6 col-xl-4">
-                <div className="rounded position-relative fruite-item d-flex flex-column h-100">
-                    <div className="fruite-img">
-                        <img src={offer.profileImage} className="img-fluid w-100 rounded-top" alt="" />
-                    </div>
-                    <div className="p-4 border border-secondary border-top-0 rounded-bottom flex-grow-1">
-                        <strong><h4>{offer.Title}</h4></strong>
-                        <p>{offer.Salary}</p>
-                        <div className="d-flex justify-content-between flex-lg-wrap">
-                            <li>
-                                <p className="text-dark fs-5 fw-bold mb-0">{offer.JobCity}</p>
-                                <Feedback offerId={offer._id} />
-                            </li>
-                            <button className="btn border border-secondary rounded-pill px-3 text-primary" onClick={(e) => navigateToApply(offer._id)}>
-                                <i className="me-2 text-primary"></i> Details
-                            </button>
-                        </div>
-                    </div>
+          <div key={offer.id} className="col-md-6 col-lg-6 col-xl-4">
+            <div className="rounded position-relative fruite-item d-flex flex-column h-100">
+              <div className="fruite-img" style={{ height: "200px", overflow: "hidden" }}>
+                <img src={offer.profileImage} className="img-fluid w-100 rounded-top" alt="" style={{ objectFit: "cover", height: "100%" }} />
+              </div>
+              <div className="p-4 border border-secondary border-top-0 rounded-bottom flex-grow-1">
+                <strong><h4>{offer.Title}</h4></strong>
+                <p>{offer.Salary} DT</p>
+                <p className="text-dark fs-5 fw-bold mb-0">{offer.JobCity}</p>
+                <div className="d-flex justify-content-between align-items-center mb-3">
+                  <div>
+                    <Feedback offerId={offer._id} /> 
+                  </div>
+                  <div>
+                    <button className="btn border border-secondary rounded-pill px-3 text-primary me-2" onClick={(e) => navigateToApply(offer._id)}>
+                      <i className="me-2 text-primary"></i> Details
+                    </button>
+                  </div>
                 </div>
+              </div>
             </div>
+          </div>
         ))}
+      </div>
     </div>
-</div>
-
-
 
 
                         </div>

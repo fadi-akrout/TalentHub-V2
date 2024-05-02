@@ -129,7 +129,7 @@ function ApplyOffer() {
                                     </nav>
                                     <div className="tab-content mb-5">
                                         <div className="tab-pane active" id="nav-about" role="tabpanel" aria-labelledby="nav-about-tab">
-                                            <p style={{ overflowWrap: 'break-word' }}><TranslateDescription description={Description} /></p>
+                                            <p style={{ overflowWrap: 'break-word' ,marginTop:"20px",marginBottom :"20px", padding :"20px"}}><TranslateDescription description={Description} /></p>
 
                                             <div className="px-2">
                                                 <div className="row g-4">
@@ -156,7 +156,7 @@ function ApplyOffer() {
                                                                 <p className="mb-0">Salary</p>
                                                             </div>
                                                             <div className="col-6">
-                                                                <p className="mb-0">{Salary}</p>
+                                                                <p className="mb-0">{Salary} DT</p>
                                                             </div>
                                                         </div>
                                                         <div className="row bg-light text-center align-items-center justify-content-center py-2">
