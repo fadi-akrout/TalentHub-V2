@@ -80,144 +80,14 @@ const IA= async()=>{
         <>
             <Header />
             <div className="container-fluid page-header py-5">
-            <h1 className="text-center text-white display-6">Add offer</h1>
+            <h1 className="text-center text-white display-6">Profile</h1>
             <ol className="breadcrumb justify-content-center mb-0">
                 <li className="breadcrumb-item"/>
                 <li className="breadcrumb-item"/>
                 <li className="breadcrumb-item active text-white"></li>
             </ol>
         </div>
-          {/*   <section>
-                <div className="profile-container">
-                    <h1 className='st'>Student Profile</h1>
-                    <div className="d-flex justify-content-center align-items-center" style={{ minHeight: '80vh' }}>
-                        <MDBCol lg="6">
-                            <MDBCard className="mb-8">
-                        <MDBCardBody>
-                            <MDBRow>
-                                <MDBCol sm="3">
-                                    <MDBCardText><strong>Full Name</strong></MDBCardText>
-                                </MDBCol>
-                                <MDBCol sm="9">
-                                    <MDBCardText className="text-muted">{profile.name} {profile.lastname}</MDBCardText>
-                                </MDBCol>
-                            </MDBRow>
-                            <hr />
-                            <MDBRow>
-                                <MDBCol sm="3">
-                                    <MDBCardText><strong>Email</strong></MDBCardText>
-                                </MDBCol>
-                                <MDBCol sm="9">
-                                    <MDBCardText className="text-muted">{profile.email}</MDBCardText>
-                                </MDBCol>
-                            </MDBRow>
-                    <hr />
-                    <MDBRow>
-                    <MDBCol sm="3">
-                        <MDBCardText><strong>Diploma</strong></MDBCardText>
-                    </MDBCol>
-                    <MDBCol sm="9">
-                        <MDBCardText className="text-muted">{profile.diploma}</MDBCardText>
-                    </MDBCol>
-                    </MDBRow>
-                    <hr />
-                    <MDBRow>
-                    <MDBCol sm="3">
-                        <MDBCardText><strong>Actual Post</strong></MDBCardText>
-                    </MDBCol>
-                    <MDBCol sm="9">
-                        <MDBCardText className="text-muted">{profile.actualPost}</MDBCardText>
-                    </MDBCol>
-                    </MDBRow>
-                    <hr />
-                    <MDBRow>
-                    <MDBCol sm="3">
-                        <MDBCardText><strong>Number Years Of Experience</strong></MDBCardText>
-                    </MDBCol>
-                    <MDBCol sm="9">
-                        <MDBCardText className="text-muted">{profile.nbrYearsOfExperience}</MDBCardText>
-                    </MDBCol>
-                    </MDBRow>
-                    <hr />
-                    <MDBRow>
-                    <MDBCol sm="3">
-                        <MDBCardText><strong>lastPostOccupied</strong></MDBCardText>
-                    </MDBCol>
-                    <MDBCol sm="9">
-                        <MDBCardText className="text-muted">{profile.lastPostOccupied}</MDBCardText>
-                    </MDBCol>
-                    </MDBRow><hr />
-                    <MDBRow>
-                    <MDBCol sm="3">
-                        <MDBCardText><strong>Date Of Birth</strong></MDBCardText>
-                    </MDBCol>
-                    <MDBCol sm="9">
-                        <MDBCardText className="text-muted">{new Date(profile.dateOfBirth).toLocaleDateString()}</MDBCardText>
-                    </MDBCol>
-                    </MDBRow>
-                    <hr />
-                    <MDBRow>
-                    <MDBCol sm="3">
-                        <MDBCardText><strong>Address</strong></MDBCardText>
-                    </MDBCol>
-                    <MDBCol sm="9">
-                        <MDBCardText className="text-muted">{profile.address}</MDBCardText>
-                    </MDBCol>
-                    </MDBRow>
-                    <hr />
-                    <MDBRow>
-                    <MDBCol sm="3">
-                        <MDBCardText><strong>City</strong></MDBCardText>
-                    </MDBCol>
-                    <MDBCol sm="9">
-                        <MDBCardText className="text-muted">{profile.city}</MDBCardText>
-                    </MDBCol>
-                    </MDBRow>
-                    <hr />
-                    <MDBRow>
-                    <MDBCol sm="3">
-                        <MDBCardText><strong>Phone Number</strong></MDBCardText>
-                    </MDBCol>
-                    <MDBCol sm="9">
-                        <MDBCardText className="text-muted">{profile.phoneNumber}</MDBCardText>
-                    </MDBCol>
-                    </MDBRow>
-                    <hr />
-                    <MDBRow>
-                    <MDBCol sm="3">
-                        <MDBCardText><strong>Skills</strong></MDBCardText>
-                    </MDBCol>
-                    <MDBCol sm="9">
-                        <MDBCardText className="text-muted">{profile.skills.join(', ')}</MDBCardText>
-                    </MDBCol>
-                    </MDBRow>
-                    <hr />
-                    <MDBRow>
-                    <MDBCol sm="3">
-                        <MDBCardText><strong>Languages</strong></MDBCardText>
-                    </MDBCol>
-                    <MDBCol sm="9">
-                        <MDBCardText className="text-muted">{profile.languages.join(', ')}</MDBCardText>
-                    </MDBCol>
-                    </MDBRow>
-                    <hr />
-                    <MDBRow>
-                    <MDBCol sm="3">
-                        <MDBCardText><strong>LinkedIn Profile</strong></MDBCardText>
-                    </MDBCol>
-                    <MDBCol sm="9">
-                        <MDBCardText className="text-muted">{profile.linkedinProfile}</MDBCardText>
-                    </MDBCol>
-                    </MDBRow>
-                    <PDFGeneratorButton candidate={candidate} />
-                
-                    <br></br>  <Link to="/dash/cv" className="btn btn-danger">Extract data from CV</Link>
-                    </MDBCardBody>
-                    </MDBCard>
-                </MDBCol>
-            </div>
-            </div>
-        </section> */}
+   
          <div className="container-fluid testimonial py-5">
       <div className="container py-5">
         <div className="testimonial-header text-center">
