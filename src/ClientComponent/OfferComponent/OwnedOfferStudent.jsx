@@ -196,38 +196,7 @@ function OwnedOfferStudent() {
           <h4 className="text-primary">Check your applications status </h4>
           <h1 className="display-5 mb-5 text-dark"></h1>
         </div>
-      {/*   {offers.map((offer) => (
-       <div class="testimonial-item img-border-radius bg-light rounded p-4" style={{ marginTop:"20px" }}>
-                        <div class="position-relative">
-                            <div class="mb-4 pb-4 border-bottom border-secondary">
-                         
-                            </div>
-                            <div class="d-flex align-items-center flex-nowrap">
-                                <div class="bg-secondary rounded"style={{marginLeft:"20px",marginTop :"50px"}}>
-                                    <img src={offer.profileImage} class="img-fluid rounded" style={{ width: '400px', height: '200px' }} alt=""/>
-                                </div>
-                                <div class="ms-4 d-block" >
-                                    <h1 class="text-dark" style={{ marginLeft:"200px" }}>{offer.Title}</h1>
-                                    <h4 class="text-dark" style={{ marginLeft:"200px" }}>{offer.Salary}</h4>  
-                                    <h4 class="text-dark" style={{ marginLeft:"200px" }}>{offer.JobType}</h4>  
-                                    <h4 class="text-dark" style={{ marginLeft:"200px" }}>{offer.JobCty}</h4>  
-                                
-                                </div>
-                                
-                            </div>
-                            {(isAdmin || isRecruter) &&
-                    <>
-                      <MdDeleteForever onClick={() => handleDelete(offer._id)} style={{ cursor: 'pointer', float: 'right', color: 'red', marginLeft: '10px',marginTop :"50px" }} />
-                      <FaEdit onClick={() => navigateToUpdateOffer(offer._id)} style={{ cursor: 'pointer', float: 'right', color: '#0d6efd' ,marginTop :"50px"}} />
-                    </>
-                  }
-                             <button className="btn border border-secondary rounded px-1 py-1 mb-4 text-sucess" onClick={() => handleGeneratePDF(offer._id)} style={{marginTop :"50px"}}>
-                                Generate PDF for the offer
-                              </button>  
-                        </div>
-                    </div>
-                  ))}
- */}
+    
 <div className="cards" style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between',flexDirection:"row"}}>
     {offers.map((offer) => (
         <div key={offer} className="card red" >

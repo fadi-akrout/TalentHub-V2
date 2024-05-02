@@ -59,7 +59,7 @@ const generatePDF = (candidate) => {
 
 const PDFGeneratorButton = ({ candidate }) => {
     return (
-        <button onClick={() => generatePDF(candidate)}>Generate PDF</button>
+        <button className="btn border border-secondary rounded px-1 py-1 mb-4 text-dark" style={{marginTop :"50px"}} onClick={() => generatePDF(candidate)}>Generate PDF</button>
     );
 };
 
