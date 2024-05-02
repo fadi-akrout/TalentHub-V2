@@ -200,7 +200,7 @@ function OwnedOfferStudent() {
     
 <div className="cards" style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between',flexDirection:"row"}}>
     {offers.map((offer) => (
-        <div key={offer} className="card red" >
+        <div key={offer} className="card " >
               <div class="d-flex align-items-center flex-nowrap">
                                 <div class="bg-secondary rounded"style={{marginLeft:"20px",marginTop :"50px"}}>
                                     <img src={offer.profileImage} class="img-fluid rounded" style={{ width: '400px', height: '200px' }} alt=""/>
@@ -214,10 +214,12 @@ function OwnedOfferStudent() {
                                 </div>
                                       
              </div>
-             <button className="btn border border-secondary rounded px-1 py-1 mb-4 text-dark" onClick={() => handleGeneratePDF(offer._id)} style={{marginTop :"50px"}}>
+             <div style={{marginTop :"30px"}}></div>
+             <ResultScore offerId={offer._id}/>   
+             <button className="btn border border-secondary rounded px-1 py-1 mb-4 text-dark" onClick={() => handleGeneratePDF(offer._id)} style={{marginTop :"20px"}}>
                                 Generate PDF for the offer
                               </button>
-                              <ResultScore offerId={offer._id}/>   
+                              
         </div>
     ))}
 </div>

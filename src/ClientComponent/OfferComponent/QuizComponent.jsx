@@ -106,6 +106,7 @@ function QuizComponent() {
         return (
             <>
             <Header />
+            
             <div className="container-fluid page-header py-5">
         <h1 className="text-center text-white display-6">Quiz</h1>
         <ol className="breadcrumb justify-content-center mb-0">
@@ -174,6 +175,14 @@ function QuizComponent() {
     return (
         <>
             <Header />
+            <div className="container-fluid page-header py-5">
+        <h1 className="text-center text-white display-6">Quiz</h1>
+        <ol className="breadcrumb justify-content-center mb-0">
+          <li className="breadcrumb-item" />
+          <li className="breadcrumb-item" />
+          <li className="breadcrumb-item active text-white"></li>
+        </ol>
+      </div>
             <div className="container-fluid py-5">
                 <div className="container border border-secondary rounded p-4 bg-light">
                     <div className="row">
