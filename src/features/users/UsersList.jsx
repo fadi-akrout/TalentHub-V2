@@ -84,8 +84,8 @@ const UsersList = () => {
                     <div className="container">
                         <div className="row">
                             <div className="col-lg-12 align-self-center">
-                                <div>
-                                <select value={selectedRole} onChange={handleRoleChange} style={{ backgroundColor: '#f2f2f2', padding: '10px', borderRadius: '5px', border: '1px solid #ccc' }}>
+                                <div className='col-lg-4'>
+                                <select   className="form-select " value={selectedRole} onChange={handleRoleChange} >
   <option value="">Select Role</option>
   {roleOptions.map(role => (
     <option key={role} value={role}>{role}</option>

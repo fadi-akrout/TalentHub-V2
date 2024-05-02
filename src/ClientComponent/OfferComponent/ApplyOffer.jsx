@@ -211,7 +211,12 @@ function ApplyOffer() {
                                                     No Quiz Available
                                                 </button>
                                             )} */}
-                                            <Link to={`/dash/quiz/${id}`}>Start Quiz</Link>
+                                            <Link to={`/dash/quiz/${id}`}>
+                                            <button className="btn border border-secondary rounded-pill px-4 py-2 mb-4 text-primary" >
+                                              <i className=" me-2 text-primary"></i>
+                                               Start Quiz
+                                            </button>   
+                                     </Link>
 
                                         </div>
                                     </div>

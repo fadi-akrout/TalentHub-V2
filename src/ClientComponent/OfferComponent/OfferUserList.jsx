@@ -70,20 +70,13 @@ const UserList = ({ offerId }) => {
       <div className="cards" style={{ display: 'flex', flexWrap: 'wrap', flexDirection:"row"}}>
     {users.map((user) => (
         <div key={user._id} className="card red" style={{ margin: '5px', padding: '10px', minWidth: '100px', maxWidth: '200px' }}>
-            <p className="second-text"style={{ margin: '10px' }}>{user.email}</p>
+            <p style={{ margin: '10px' }}> {user.email} </p>
             <ResultScoreAdmin offerId={offerId} userId={user._id}/>
-            <button className="btn border border-secondary rounded-pill px-1 py-1 mb-4 text-dark" style={{ margin: '10px' }} onClick={() => handleAcceptCandidate(user._id)}>Accept Candidate</button>
+            <button className="btn border border-secondary rounded-pill px-1 py-1 mb-4 text-dark"  onClick={() => handleAcceptCandidate(user._id)}>Accept Candidate</button>
         </div>
     ))}
 </div>
-
-
             <div>{error}</div>
-           
-      
-       
-      
-
       <ToastContainer/>
     </div>
   );

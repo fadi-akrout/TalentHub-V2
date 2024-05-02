@@ -30,11 +30,11 @@ const ResultScoreAdmin = ({ offerId, userId }) => {
       {scores.length > 0 ? (
         <ul>
           {scores.map((result, index) => (
-            <li key={index}>Score: {result.score}</li>
+            <p key={index}>Score: {result.score}</p>
           ))}
         </ul>
       ) : (
-        <p>No results found.</p>
+        <p> No results found </p>
       )}
     </div>
   );
