@@ -31,11 +31,11 @@ const ResultScore = ({ offerId }) => {
       {scores.length > 0 ? (
         <ul>
           {scores.map((result, index) => (
-            <li key={index}>Score: {result.score}</li>
+            <h6 key={index}>Score: {result.score}</h6>
           ))}
         </ul>
       ) : (
-        <p>No results found.</p>
+        <h6>No results found</h6>
       )}
     </div>
   );

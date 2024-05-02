@@ -276,9 +276,9 @@ function Header() {
               <small className="me-3"><i className="fas fa-envelope me-2 text-secondary"></i><a href="#" className="text-white">TalentHub@Esprit.tn</a></small>
             </div>
             <div className="top-link pe-2">
-              <a href="#" className="text-white"><small className="text-white mx-2">Privacy Policy</small>/</a>
-              <a href="#" className="text-white"><small className="text-white mx-2">Terms of Use</small>/</a>
-              <a href="#" className="text-white"><small className="text-white ms-2">Sales and Refunds</small></a>
+              <a className="text-white"><small className="text-white mx-2">Privacy Policy</small>/</a>
+              <a className="text-white"><small className="text-white mx-2">Terms of Use</small>/</a>
+              <a  className="text-white"><small className="text-white ms-2">Sales and Refunds</small></a>
             </div>
           </div>
         </div>
@@ -297,22 +297,11 @@ function Header() {
             <div className="collapse navbar-collapse bg-white" id="navbarCollapse">
               <div className="navbar-nav mx-auto">
                 <a href="/dash" className="nav-item nav-link active">Home</a>
-                {/*  <a href="shop.html" className="nav-item nav-link">Shop</a>
-                            <a href="shop-detail.html" className="nav-item nav-link">Shop Detail</a> */}
-                <div className="nav-item dropdown">
-                  <a href="#" className="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
-                  <div className="dropdown-menu m-0 bg-secondary rounded-0">
-                    <Link to="/dash/evenements" className="dropdown-item">Events</Link>
-
-                    {(isAdmin || isRecruter || isAlumni) && <a href="/dash/addQuestions" className="dropdown-item">Add questions</a>}
-                    <a href="testimonial.html" className="dropdown-item">Testimonial</a>
-                    <a href="404.html" className="dropdown-item">404 Page</a>
-                  </div>
-                </div>
+                {(isAdmin || isRecruter) && <li> <Link to="/dash/evenements" className="nav-link px-2 link-dark" >Events</Link></li>}
                 {(isAdmin || isRecruter) && <li><Link to="/dash/stats" className="nav-link px-2 link-dark">Statistics</Link></li>}
                 {(isAdmin || isRecruter) && <li><Link to="/dash/addoffer" className="nav-link px-2 link-dark"> Add Offer</Link></li>}
                 {(isAdmin || isRecruter) && <li><Link to="/dash/add-event" className="nav-link px-2 link-dark"> Add Events</Link></li>}
-
+                {(isAdmin || isRecruter || isAlumni) && <a href="/dash/addQuestions"  className="nav-link px-2 link-dark">Add questions</a>}
 
               </div>
               <div className="d-flex m-3 me-0">
@@ -359,22 +348,7 @@ function Header() {
           </nav>
         </div>
       </div>
-      <div classname="modal fade" id="searchModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div classname="modal-dialog modal-fullscreen">
-          <div classname="modal-content rounded-0">
-            <div classname="modal-header">
-              <h5 classname="modal-title" id="exampleModalLabel">Search by keyword</h5>
-              <button type="button" classname="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div classname="modal-body d-flex align-items-center">
-              <div classname="input-group w-75 mx-auto d-flex">
-                <input type="search" classname="form-control p-3" placeholder="keywords" aria-describedby="search-icon-1" />
-                <span id="search-icon-1" classname="input-group-text p-3"><i classname="fa fa-search"></i></span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+   
 
     </>
   )

@@ -86,8 +86,8 @@ function QuestionComponent() {
                         <div className="quiz-options">
                             {question.options.map((option, index) => (
                                 <React.Fragment key={index}>
-                                    <input type="radio" className={`input-radio ${questionNumber}-${index}`} id={`option-${questionNumber}-${index}`} name={`answer-${questionNumber}`} onChange={() => handleOptionChange(index)} checked={selectedOption === index} required />
-                                    <label className={`radio-label`} htmlFor={`option-${questionNumber}-${index}`}>
+                                    <input type="radio" className={`input-radio ${questionNumber}-${index}`} id={`option-${questionNumber}-${index}`} name={`answer-${questionNumber}`}  onChange={() => handleOptionChange(index)} checked={selectedOption === index} required />
+                                    <label className={`radio-label`} htmlFor={`option-${questionNumber}-${index}`} >
                                         <span className="alphabet">{String.fromCharCode(65 + index)}</span> {option}
                                         {/* Consider including icons only if needed */}
                                     </label>

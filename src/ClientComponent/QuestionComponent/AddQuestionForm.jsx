@@ -96,7 +96,7 @@ const AddQuestionForm = () => {
               type="text"
               value={option}
               onChange={(e) => handleOptionChange(index, e.target.value)}
-            />
+              style={{margin:"10px"}} />
           </div>
           {options.length > 2 && (
             <div className="col-1">
