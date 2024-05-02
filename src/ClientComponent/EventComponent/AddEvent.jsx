@@ -84,7 +84,7 @@ function EvenementForm() {
             try {
                 const response = await axios.post('http://localhost:3500/evenements', formData);
                 console.log(response.data);
-                navigate('/dash');
+                navigate('/dash/evenements');
             } catch (error) {
                 console.error("Il y a eu un problème avec l'envoi du formulaire :", error);
             }

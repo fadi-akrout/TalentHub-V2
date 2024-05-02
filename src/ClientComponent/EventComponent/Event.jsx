@@ -24,7 +24,7 @@ function Evenements() {
     }, []);
 
     const handleDelete = async (id) => {
-        if (window.confirm("ARE YOU SURE YOU WANT TO DELETE THIS EVENT")) {
+       /*  if (window.confirm("ARE YOU SURE YOU WANT TO DELETE THIS EVENT")) { */
             try {
                 const response = await axios.delete(`http://localhost:3500/evenements/${id}`);
                 if (response.status === 200 || response.status === 204) {
@@ -35,7 +35,7 @@ function Evenements() {
                 console.error("Error deleting event", error);
                 toast.error("Failed to delete event.");
             }
-        }
+       /*  } */
     };
 
     return (
