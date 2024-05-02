@@ -6,6 +6,7 @@ import axios from 'axios';
 import { Link ,useNavigate} from 'react-router-dom';
 import useAuth from '../../hooks/useAuth.jsx'
 import Chatbot from '../Chatbot/Chatbot.jsx';
+import Feedback from './FeedBack.jsx';
 
 function HomeP  ()  {
   
@@ -166,7 +167,10 @@ function HomeP  ()  {
                         <strong><h4>{offer.Title}</h4></strong>
                         <p>{offer.Salary}</p>
                         <div className="d-flex justify-content-between flex-lg-wrap">
-                            <p className="text-dark fs-5 fw-bold mb-0">{offer.JobCity}</p>
+                            <li>
+                                <p className="text-dark fs-5 fw-bold mb-0">{offer.JobCity}</p>
+                                <Feedback offerId={offer._id} />
+                            </li>
                             <button className="btn border border-secondary rounded-pill px-3 text-primary" onClick={(e) => navigateToApply(offer._id)}>
                                 <i className="me-2 text-primary"></i> Details
                             </button>

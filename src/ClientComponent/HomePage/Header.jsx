@@ -298,7 +298,8 @@ function Header() {
               <div className="navbar-nav mx-auto">
                 <a href="/dash" className="nav-item nav-link active">Home</a>
                 {(isAdmin || isRecruter) && <li> <Link to="/dash/evenements" className="nav-link px-2 link-dark" >Events</Link></li>}
-                {(isAdmin || isRecruter) && <li><Link to="/dash/stats" className="nav-link px-2 link-dark">Statistics</Link></li>}
+                {(isAdmin) && <li><Link to="/dash/stats" className="nav-link px-2 link-dark">Statistics</Link></li>}
+
                 {(isAdmin || isRecruter) && <li><Link to="/dash/addoffer" className="nav-link px-2 link-dark"> Add Offer</Link></li>}
                 {(isAdmin || isRecruter) && <li><Link to="/dash/add-event" className="nav-link px-2 link-dark"> Add Events</Link></li>}
                 {(isAdmin || isRecruter || isAlumni) && <a href="/dash/addQuestions"  className="nav-link px-2 link-dark">Add questions</a>}
